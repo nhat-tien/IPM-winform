@@ -1,3 +1,5 @@
+using IPM_winform.IPM.Views;
+
 namespace IPM_winform
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace IPM_winform
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new Dashboard("Tien"));
         }
     }
 }
