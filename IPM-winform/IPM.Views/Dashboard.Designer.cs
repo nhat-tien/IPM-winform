@@ -41,7 +41,8 @@
             panel1 = new Panel();
             label1 = new Label();
             home = new Button();
-            donvitructhuoc = new Button();
+            myproject = new Button();
+            admin = new Button();
             menuTransition = new System.Windows.Forms.Timer(components);
             rightPanel = new Panel();
             mainPanel = new Panel();
@@ -65,7 +66,7 @@
             header.Location = new Point(0, 0);
             header.Margin = new Padding(4, 3, 4, 3);
             header.Name = "header";
-            header.Size = new Size(638, 46);
+            header.Size = new Size(654, 46);
             header.TabIndex = 0;
             // 
             // label2
@@ -74,7 +75,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(458, 16);
+            label2.Location = new Point(474, 16);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(74, 16);
@@ -86,7 +87,7 @@
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox1.ContextMenuStrip = contextMenuStrip1;
             pictureBox1.Image = Properties.Resources.user;
-            pictureBox1.Location = new Point(585, 7);
+            pictureBox1.Location = new Point(601, 7);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(31, 32);
@@ -134,13 +135,14 @@
             menu.BackColor = Color.FromArgb(15, 16, 46);
             menu.Controls.Add(panel1);
             menu.Controls.Add(home);
-            menu.Controls.Add(donvitructhuoc);
+            menu.Controls.Add(myproject);
+            menu.Controls.Add(admin);
             menu.Dock = DockStyle.Left;
             menu.FlowDirection = FlowDirection.TopDown;
             menu.Location = new Point(0, 0);
             menu.Margin = new Padding(4, 3, 4, 3);
             menu.Name = "menu";
-            menu.Size = new Size(225, 554);
+            menu.Size = new Size(209, 554);
             menu.TabIndex = 1;
             menu.WrapContents = false;
             // 
@@ -150,7 +152,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0, 0, 0, 6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(198, 46);
+            panel1.Size = new Size(209, 46);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -180,7 +182,7 @@
             home.Margin = new Padding(0, 6, 0, 6);
             home.Name = "home";
             home.Padding = new Padding(12, 2, 12, 2);
-            home.Size = new Size(198, 43);
+            home.Size = new Size(209, 43);
             home.TabIndex = 4;
             home.Text = "  HOME";
             home.TextAlign = ContentAlignment.MiddleRight;
@@ -188,27 +190,49 @@
             home.UseVisualStyleBackColor = false;
             home.Click += home_Click;
             // 
-            // donvitructhuoc
+            // myproject
             // 
-            donvitructhuoc.BackColor = Color.Transparent;
-            donvitructhuoc.Cursor = Cursors.Hand;
-            donvitructhuoc.FlatAppearance.BorderSize = 0;
-            donvitructhuoc.FlatAppearance.MouseOverBackColor = Color.FromArgb(56, 140, 247);
-            donvitructhuoc.FlatStyle = FlatStyle.Flat;
-            donvitructhuoc.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            donvitructhuoc.ForeColor = Color.White;
-            donvitructhuoc.Image = (Image)resources.GetObject("donvitructhuoc.Image");
-            donvitructhuoc.ImageAlign = ContentAlignment.MiddleLeft;
-            donvitructhuoc.Location = new Point(0, 113);
-            donvitructhuoc.Margin = new Padding(0, 6, 0, 6);
-            donvitructhuoc.Name = "donvitructhuoc";
-            donvitructhuoc.Padding = new Padding(12, 2, 12, 2);
-            donvitructhuoc.Size = new Size(198, 43);
-            donvitructhuoc.TabIndex = 0;
-            donvitructhuoc.Text = "  Đơn Vị Trực Thuộc";
-            donvitructhuoc.TextAlign = ContentAlignment.MiddleLeft;
-            donvitructhuoc.TextImageRelation = TextImageRelation.ImageBeforeText;
-            donvitructhuoc.UseVisualStyleBackColor = false;
+            myproject.BackColor = Color.Transparent;
+            myproject.Cursor = Cursors.Hand;
+            myproject.FlatAppearance.BorderSize = 0;
+            myproject.FlatAppearance.MouseOverBackColor = Color.FromArgb(56, 140, 247);
+            myproject.FlatStyle = FlatStyle.Flat;
+            myproject.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            myproject.ForeColor = Color.White;
+            myproject.Image = (Image)resources.GetObject("myproject.Image");
+            myproject.ImageAlign = ContentAlignment.MiddleLeft;
+            myproject.Location = new Point(0, 113);
+            myproject.Margin = new Padding(0, 6, 0, 6);
+            myproject.Name = "myproject";
+            myproject.Padding = new Padding(12, 2, 12, 2);
+            myproject.Size = new Size(209, 43);
+            myproject.TabIndex = 5;
+            myproject.Text = "  DỰ ÁN CỦA TÔI";
+            myproject.TextAlign = ContentAlignment.MiddleLeft;
+            myproject.TextImageRelation = TextImageRelation.ImageBeforeText;
+            myproject.UseVisualStyleBackColor = false;
+            // 
+            // admin
+            // 
+            admin.BackColor = Color.Transparent;
+            admin.Cursor = Cursors.Hand;
+            admin.FlatAppearance.BorderSize = 0;
+            admin.FlatAppearance.MouseOverBackColor = Color.FromArgb(56, 140, 247);
+            admin.FlatStyle = FlatStyle.Flat;
+            admin.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            admin.ForeColor = Color.White;
+            admin.Image = (Image)resources.GetObject("admin.Image");
+            admin.ImageAlign = ContentAlignment.MiddleLeft;
+            admin.Location = new Point(0, 168);
+            admin.Margin = new Padding(0, 6, 0, 6);
+            admin.Name = "admin";
+            admin.Padding = new Padding(12, 2, 12, 2);
+            admin.Size = new Size(209, 43);
+            admin.TabIndex = 0;
+            admin.Text = "  ADMIN";
+            admin.TextAlign = ContentAlignment.MiddleLeft;
+            admin.TextImageRelation = TextImageRelation.ImageBeforeText;
+            admin.UseVisualStyleBackColor = false;
             // 
             // menuTransition
             // 
@@ -220,10 +244,10 @@
             rightPanel.Controls.Add(mainPanel);
             rightPanel.Controls.Add(header);
             rightPanel.Dock = DockStyle.Fill;
-            rightPanel.Location = new Point(225, 0);
+            rightPanel.Location = new Point(209, 0);
             rightPanel.Margin = new Padding(4, 3, 4, 3);
             rightPanel.Name = "rightPanel";
-            rightPanel.Size = new Size(638, 554);
+            rightPanel.Size = new Size(654, 554);
             rightPanel.TabIndex = 1;
             // 
             // mainPanel
@@ -232,7 +256,7 @@
             mainPanel.Location = new Point(0, 46);
             mainPanel.Margin = new Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(638, 508);
+            mainPanel.Size = new Size(654, 508);
             mainPanel.TabIndex = 1;
             // 
             // Dashboard
@@ -266,7 +290,7 @@
         private System.Windows.Forms.Panel header;
         private System.Windows.Forms.PictureBox btnMenu;
         private System.Windows.Forms.FlowLayoutPanel menu;
-        private System.Windows.Forms.Button donvitructhuoc;
+        private System.Windows.Forms.Button admin;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Panel rightPanel;
         private System.Windows.Forms.Panel mainPanel;
@@ -278,6 +302,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
+        private Button myproject;
     }
 }
 

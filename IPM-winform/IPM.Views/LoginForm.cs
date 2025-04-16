@@ -19,7 +19,7 @@ namespace IPM_winform.IPM.Views
         public string Password { get => txtPassword.Text; }
         public string Message { get => lbMessage.Text; set => lbMessage.Text = value; }
         public event EventHandler OnLogin;
-        
+
 
         public LoginForm()
         {
@@ -60,6 +60,11 @@ namespace IPM_winform.IPM.Views
         private void txtPassword_Enter(object sender, EventArgs e)
         {
             Message = "";
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

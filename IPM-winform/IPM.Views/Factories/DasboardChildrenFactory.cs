@@ -1,4 +1,6 @@
 ﻿using IPM_winform.IPM.Views;
+using IPM_winform.IPM.Views.ChucVu;
+using IPM_winform.IPM.Views.Container;
 using IPM_winform.IPM.Views.DonViTrucThuoc;
 using System;
 using System.Collections.Generic;
@@ -16,8 +18,8 @@ namespace IPM_winform.IPM.Views.Factories
             {
                 case "home":
                      return new Home();
-                case "donvitructhuoc":
-                    return new DonViTrucThuocForm();
+                case "admin":
+                    return new AdminContainer();
                 default:
                     throw new ArgumentOutOfRangeException();
 

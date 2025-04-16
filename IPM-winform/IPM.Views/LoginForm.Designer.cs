@@ -36,12 +36,14 @@
             txtUserName = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            label5 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.None;
+            panel1.Controls.Add(label5);
             panel1.Controls.Add(lbMessage);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(txtPassword);
@@ -67,7 +69,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(43, 331);
+            button1.Location = new Point(43, 317);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new Size(304, 32);
@@ -119,12 +121,22 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(97, 70);
+            label1.Location = new Point(111, 69);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(170, 33);
             label1.TabIndex = 0;
             label1.Text = "Đăng Nhập";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(161, 426);
+            label5.Name = "label5";
+            label5.Size = new Size(186, 15);
+            label5.TabIndex = 7;
+            label5.Text = "Chưa có tài khoản? đi đến đăng kí";
+            label5.Click += label5_Click;
             // 
             // LoginForm
             // 
@@ -152,5 +164,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label2;
+        private Label label5;
     }
 }

@@ -1,18 +1,18 @@
 ﻿using IPM.Infrastructure.EntityFrameworkDataAccess;
 using IPM_winform.Dtos;
-using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
+using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Views.GenericForm;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
-namespace IPM_winform.IPM.Views.DonViTrucThuoc
+namespace IPM_winform.IPM.Views.DonViTienTe
 {
-    public class DonViTrucThuocForm : FormContainer
+    public class DonViTienTeForm: FormContainer
     {
         private readonly AppDBContext db = AppDbContextSingleton.GetInstance();
         public override DataGridViewTextBoxColumn[] Columns
@@ -27,37 +27,36 @@ namespace IPM_winform.IPM.Views.DonViTrucThuoc
             },
                 new DataGridViewTextBoxColumn()
                 {
-                    HeaderText = "Tên Đơn Vị Trực Thuộc",
-                    Name = "AffiliatedName",
+                    HeaderText = "Đơn Vị Tiền Tệ",
+                    Name = "CurrencyUnitName",
                 }
         ]; set => base.Columns = value;
         }
+        public override string InsertLabel { get => "Đơn vị tiền tệ"; }
+        public override string UpdateLabel { get => "Đơn vị tiền tệ"; }
 
-        public override string InsertLabel { get => "Đơn vị trực thuộc"; }
-        public override string UpdateLabel { get => "Đơn vị trực thuộc"; }
+        public override string Label => "Đơn Vị Tiền Tệ";
 
-        public override string Label => "Đơn vị trực thuộc";
-
-        public DonViTrucThuocForm() : base()
+        public DonViTienTeForm() : base()
         {
 
         }
 
         public override void OnCreate(string name)
         {
-            db.AffiliatedUnits.Add(new AffiliatedUnit()
+            db.CurrencyUnits.Add(new CurrencyUnit()
             {
-                AffiliatedUnitName = name
+                CurrencyUnitName = name
             });
             db.SaveChanges();
         }
 
         public override IEnumerable<TableDto> Rows()
         {
-            var affiliated = db.AffiliatedUnits.Select(r => new TableDto()
+            var affiliated = db.CurrencyUnits.Select(r => new TableDto()
             {
-                Id = r.AffiliatedUnitId.ToString(),
-                Name = r.AffiliatedUnitName ?? ""
+                Id = r.CurrencyUnitId.ToString(),
+                Name = r.CurrencyUnitName ?? ""
             }).ToList();
 
             return affiliated;
@@ -66,7 +65,7 @@ namespace IPM_winform.IPM.Views.DonViTrucThuoc
         public override void OnDelete(string id)
         {
             int idNum = Int32.Parse(id);
-            db.AffiliatedUnits.Where(r => r.AffiliatedUnitId == idNum).ExecuteDelete();
+            db.CurrencyUnits.Where(r => r.CurrencyUnitId == idNum).ExecuteDelete();
             Reload();
         }
 
@@ -74,8 +73,8 @@ namespace IPM_winform.IPM.Views.DonViTrucThuoc
         {
             string updateName = (string)name;
             int idNum = Int32.Parse(id);
-            db.AffiliatedUnits.Where(r => r.AffiliatedUnitId == idNum)
-                .ExecuteUpdate(r => r.SetProperty(e => e.AffiliatedUnitName, updateName));
+            db.CurrencyUnits.Where(r => r.CurrencyUnitId == idNum)
+                .ExecuteUpdate(r => r.SetProperty(e => e.CurrencyUnitName, updateName));
         }
     }
 }

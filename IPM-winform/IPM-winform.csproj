@@ -21,12 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IPM.Views\LoaiVienTro\" />
-    <Folder Include="IPM.Views\CoQuanPheDuyet\" />
-    <Folder Include="IPM.Views\DanhMuc\" />
-    <Folder Include="IPM.Views\DoiTac\" />
-    <Folder Include="IPM.Views\DonViTienTe\" />
-    <Folder Include="IPM.Views\NhaTaiTro\" />
+    <Folder Include="IPM.Views\DuAn\" />
+    <Folder Include="IPM.Views\User\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

@@ -33,6 +33,9 @@ namespace IPM_winform.IPM.Views.ChucVu
         ]; set => base.Columns = value;
         }
 
+        public override string InsertLabel { get => "Tên Chức Vụ"; }
+        public override string UpdateLabel { get => "Tên Chức Vụ"; }
+
         public override string Label => "Chức Vụ";
 
         public ChucVuForm() : base()
@@ -63,7 +66,7 @@ namespace IPM_winform.IPM.Views.ChucVu
         public override void OnDelete(string id)
         {
             int idNum = Int32.Parse(id);
-            db.AffiliatedUnits.Where(r => r.AffiliatedUnitId == idNum).ExecuteDelete();
+            db.Positions.Where(r => r.PositionId == idNum).ExecuteDelete();
             Reload();
         }
 
@@ -71,8 +74,8 @@ namespace IPM_winform.IPM.Views.ChucVu
         {
             string updateName = (string)name;
             int idNum = Int32.Parse(id);
-            db.AffiliatedUnits.Where(r => r.AffiliatedUnitId == idNum)
-                .ExecuteUpdate(r => r.SetProperty(e => e.AffiliatedUnitName, updateName));
+            db.Positions.Where(r => r.PositionId == idNum)
+                .ExecuteUpdate(r => r.SetProperty(e => e.PositionName, updateName));
         }
     }
 }

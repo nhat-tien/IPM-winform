@@ -1,18 +1,18 @@
 ﻿using IPM.Infrastructure.EntityFrameworkDataAccess;
 using IPM_winform.Dtos;
-using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
+using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Views.GenericForm;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
-namespace IPM_winform.IPM.Views.DonViTrucThuoc
+namespace IPM_winform.IPM.Views.NhaTaiTro
 {
-    public class DonViTrucThuocForm : FormContainer
+    public class NhaTaiTroForm: FormContainer
     {
         private readonly AppDBContext db = AppDbContextSingleton.GetInstance();
         public override DataGridViewTextBoxColumn[] Columns
@@ -27,37 +27,37 @@ namespace IPM_winform.IPM.Views.DonViTrucThuoc
             },
                 new DataGridViewTextBoxColumn()
                 {
-                    HeaderText = "Tên Đơn Vị Trực Thuộc",
-                    Name = "AffiliatedName",
+                    HeaderText = "Nhà Tài Trợ",
+                    Name = "SponsorName",
                 }
         ]; set => base.Columns = value;
         }
 
-        public override string InsertLabel { get => "Đơn vị trực thuộc"; }
-        public override string UpdateLabel { get => "Đơn vị trực thuộc"; }
+        public override string InsertLabel { get => "Nhà tài trợ"; }
+        public override string UpdateLabel { get => "Nhà tài trợ"; }
 
-        public override string Label => "Đơn vị trực thuộc";
+        public override string Label => "Nhà Tài Trợ";
 
-        public DonViTrucThuocForm() : base()
+        public NhaTaiTroForm() : base()
         {
 
         }
 
         public override void OnCreate(string name)
         {
-            db.AffiliatedUnits.Add(new AffiliatedUnit()
+            db.Sponsors.Add(new Sponsor()
             {
-                AffiliatedUnitName = name
+                SponsorName = name
             });
             db.SaveChanges();
         }
 
         public override IEnumerable<TableDto> Rows()
         {
-            var affiliated = db.AffiliatedUnits.Select(r => new TableDto()
+            var affiliated = db.Sponsors.Select(r => new TableDto()
             {
-                Id = r.AffiliatedUnitId.ToString(),
-                Name = r.AffiliatedUnitName ?? ""
+                Id = r.SponsorId.ToString(),
+                Name = r.SponsorName ?? ""
             }).ToList();
 
             return affiliated;
@@ -66,7 +66,7 @@ namespace IPM_winform.IPM.Views.DonViTrucThuoc
         public override void OnDelete(string id)
         {
             int idNum = Int32.Parse(id);
-            db.AffiliatedUnits.Where(r => r.AffiliatedUnitId == idNum).ExecuteDelete();
+            db.Sponsors.Where(r => r.SponsorId == idNum).ExecuteDelete();
             Reload();
         }
 
@@ -74,8 +74,8 @@ namespace IPM_winform.IPM.Views.DonViTrucThuoc
         {
             string updateName = (string)name;
             int idNum = Int32.Parse(id);
-            db.AffiliatedUnits.Where(r => r.AffiliatedUnitId == idNum)
-                .ExecuteUpdate(r => r.SetProperty(e => e.AffiliatedUnitName, updateName));
+            db.Sponsors.Where(r => r.SponsorId == idNum)
+                .ExecuteUpdate(r => r.SetProperty(e => e.SponsorName, updateName));
         }
     }
 }

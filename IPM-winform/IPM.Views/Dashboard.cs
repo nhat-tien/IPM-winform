@@ -61,13 +61,14 @@ namespace IPM_winform.IPM.Views
             else
             {
                 menu.Width += 10;
-                if (menu.Width >= 170)
+                if (menu.Width >= 209)
                 {
                     menuExpand = true;
                     menuTransition.Stop();
 
                     home.Text = "  HOME";
-                    donvitructhuoc.Text = "  Đơn Vị Trực Thuộc";
+                    admin.Text = "  ADMIN";
+                    myproject.Text = "  DỰ ÁN CỦA TÔI";
                     label1.Text = "IPM";
                     home.Width = menu.Width;
                     foreach (Button button in getMenuControls())
@@ -82,7 +83,8 @@ namespace IPM_winform.IPM.Views
         private void btnMenu_Click(object sender, EventArgs e)
         {
             home.Text = "";
-            donvitructhuoc.Text = "";
+            admin.Text = "";
+            myproject.Text = "";
             label1.Text = "";
             menuTransition.Start();
         }
