@@ -1,6 +1,6 @@
-﻿namespace IPM_winform.IPM.Views.GenericForm
+﻿namespace IPM_winform.IPM.Views.User
 {
-    partial class IndexForm
+    partial class UserIndexForm
     {
         /// <summary>
         /// Required designer variable.

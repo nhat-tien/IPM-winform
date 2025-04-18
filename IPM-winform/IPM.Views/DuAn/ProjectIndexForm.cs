@@ -1,4 +1,5 @@
 ﻿using IPM_winform.Dtos;
+using IPM_winform.IPM.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -10,22 +11,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IPM_winform.IPM.Views.GenericForm
+namespace IPM_winform.IPM.Views.DuAn
 {
-    public partial class IndexForm : Form, IIndexForm
+    public partial class ProjectIndexForm : Form 
     {
-        private readonly FormContainer _parentView;
+        private readonly ProjectForm _parentView;
        
         private readonly DataGridViewTextBoxColumn[] _columns; 
-        public IndexForm(FormContainer parentView, IEnumerable<TableDto> rows)
+        public ProjectIndexForm(ProjectForm parentView, IEnumerable<Project> rows)
         {
             InitializeComponent();
             _parentView = parentView;
             _columns = _parentView.Columns;
             setUpDataGridViewColumn();
             LoadData(rows);
-            DisableDeleteBtn();
-            DisableEditBtn();
         }
 
         public void setUpDataGridViewColumn()
@@ -109,14 +108,14 @@ namespace IPM_winform.IPM.Views.GenericForm
             _parentView.OnDelete(GetSelectedRowId());
         }
 
-        public void LoadData(IEnumerable<TableDto> rows)
+        public void LoadData(IEnumerable<Project> rows)
         {
             dataGridView1.Rows.Clear();
             foreach (var row in rows)
             {
                 dataGridView1.Rows.Add(
-                   row.Id,
-                   row.Name
+                   row.ProjectId,
+                   row.ProjectNameVietnamese
                 );
             }
         }

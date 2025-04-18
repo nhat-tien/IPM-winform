@@ -2,6 +2,7 @@
 using IPM_winform.IPM.Views.ChucVu;
 using IPM_winform.IPM.Views.Container;
 using IPM_winform.IPM.Views.DonViTrucThuoc;
+using IPM_winform.IPM.Views.DuAn;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace IPM_winform.IPM.Views.Factories
                      return new Home();
                 case "admin":
                     return new AdminContainer();
+                case "myproject":
+                    return new ProjectForm();
                 default:
                     throw new ArgumentOutOfRangeException();
 

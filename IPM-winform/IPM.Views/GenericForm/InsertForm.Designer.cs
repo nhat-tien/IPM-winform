@@ -1,6 +1,6 @@
 ﻿namespace IPM_winform.IPM.Views.GenericForm
 {
-    partial class InsertForm
+    partial class ProjectAddForm
     {
         /// <summary>
         /// Required designer variable.

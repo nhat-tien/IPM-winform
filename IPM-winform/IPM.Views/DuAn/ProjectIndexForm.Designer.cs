@@ -1,6 +1,6 @@
-﻿namespace IPM_winform.IPM.Views.GenericForm
+﻿namespace IPM_winform.IPM.Views.DuAn
 {
-    partial class IndexForm
+    partial class ProjectIndexForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,14 +35,12 @@
             btnEdit = new Button();
             btnDelete = new Button();
             btnAdd = new Button();
-            groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
             toolTip1 = new ToolTip(components);
             toolTip2 = new ToolTip(components);
             toolTip3 = new ToolTip(components);
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
-            groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -60,7 +58,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Controls.Add(flowLayoutPanel2, 0, 0);
-            tableLayoutPanel1.Controls.Add(groupBox1, 0, 1);
+            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -137,28 +135,17 @@
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(dataGridView1);
-            groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(3, 51);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(663, 371);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Bảng dữ liệu";
-            // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 19);
+            dataGridView1.Location = new Point(3, 51);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(657, 349);
-            dataGridView1.TabIndex = 0;
+            dataGridView1.Size = new Size(663, 371);
+            dataGridView1.TabIndex = 1;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // IndexForm
@@ -173,7 +160,6 @@
             Text = "FormIndex";
             tableLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -186,10 +172,9 @@
         private Button btnEdit;
         private Button btnDelete;
         private Button btnAdd;
+        private DataGridView dataGridView1;
         private ToolTip toolTip1;
         private ToolTip toolTip2;
         private ToolTip toolTip3;
-        private GroupBox groupBox1;
-        private DataGridView dataGridView1;
     }
 }

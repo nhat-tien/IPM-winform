@@ -65,8 +65,8 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(71, 3);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(67, 3);
+            label2.Margin = new Padding(0);
             label2.Name = "label2";
             label2.Size = new Size(13, 20);
             label2.TabIndex = 7;
@@ -75,7 +75,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(90, 6);
+            label3.Location = new Point(82, 6);
             label3.Margin = new Padding(2, 3, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(38, 15);

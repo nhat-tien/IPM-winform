@@ -1,15 +1,10 @@
 namespace IPM.Infrastructure.EntityFrameworkDataAccess;
 
 using IPM_winform.IPM.Infrastructure.Configurations;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using IPM_winform.IPM.Infrastructure.Entities;
 
-public class AppDBContext : IdentityDbContext<
-        User, Role, string,
-        IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>,
-        IdentityRoleClaim<string>, IdentityUserToken<string>>
+public class AppDBContext : DbContext
 {
     public AppDBContext()
         : base() { }
@@ -27,7 +22,10 @@ public class AppDBContext : IdentityDbContext<
     public DbSet<ReportedProject> ReportedProjects { get; set; } = null!;
     public DbSet<Sponsor> Sponsors { get; set; } = null!;
     public DbSet<File> Files {get; set;} = null!;
-    public DbSet<FileType> FileTypes {get; set;} = null!;
+    //public DbSet<FileType> FileTypes {get; set;} = null!;
+    public DbSet<User> Users { get; set; } = null!;
+    //public DbSet<Role> Roles { get; set; } = null!;
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -47,7 +45,7 @@ public class AppDBContext : IdentityDbContext<
             }
         }
         builder.ApplyConfiguration(new UserConfiguration());
-        builder.ApplyConfiguration(new RoleConfiguration());
+        //builder.ApplyConfiguration(new RoleConfiguration());
         builder.ApplyConfiguration(new ParticipationConfiguration());
         // builder.ApplyConfiguration(new ProjectConfiguration());
         // builder.HasDefaultSchema();

@@ -10,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IPM_winform.IPM.Views.GenericForm
+namespace IPM_winform.IPM.Views.User
 {
-    public partial class IndexForm : Form, IIndexForm
+    public partial class UserIndexForm : Form
     {
-        private readonly FormContainer _parentView;
+        private readonly UserForm _parentView;
        
         private readonly DataGridViewTextBoxColumn[] _columns; 
-        public IndexForm(FormContainer parentView, IEnumerable<TableDto> rows)
+        public UserIndexForm(UserForm parentView, IEnumerable<Infrastructure.Entities.User> rows)
         {
             InitializeComponent();
             _parentView = parentView;
@@ -109,14 +109,18 @@ namespace IPM_winform.IPM.Views.GenericForm
             _parentView.OnDelete(GetSelectedRowId());
         }
 
-        public void LoadData(IEnumerable<TableDto> rows)
+        public void LoadData(IEnumerable<Infrastructure.Entities.User> rows)
         {
             dataGridView1.Rows.Clear();
             foreach (var row in rows)
             {
                 dataGridView1.Rows.Add(
-                   row.Id,
-                   row.Name
+                   row.UserId,
+                   row.LastName,
+                   row.FirstName,
+                   row.Email,
+                   row.PhoneNumber,
+                   row.Role
                 );
             }
         }

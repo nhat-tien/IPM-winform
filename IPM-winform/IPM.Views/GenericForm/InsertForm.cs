@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace IPM_winform.IPM.Views.GenericForm
 {
-    public partial class InsertForm : Form
+    public partial class ProjectAddForm : Form
     {
 
         private readonly FormContainer _parentView;
-        public InsertForm(FormContainer parentView)
+        public ProjectAddForm(FormContainer parentView)
         {
             InitializeComponent();
             _parentView = parentView;

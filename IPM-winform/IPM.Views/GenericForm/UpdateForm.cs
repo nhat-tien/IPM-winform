@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace IPM_winform.IPM.Views.GenericForm
 {
-    public partial class UpdateForm: Form
+    public partial class UpdateForm : Form
     {
         private readonly FormContainer _parentView;
         private readonly string _id;
@@ -19,7 +19,7 @@ namespace IPM_winform.IPM.Views.GenericForm
             InitializeComponent();
             _parentView = parentView;
             _id = idSelected;
-            txtName.Text = name;   
+            txtName.Text = name;
             label1.Text = _parentView.InsertLabel;
         }
 
@@ -27,5 +27,12 @@ namespace IPM_winform.IPM.Views.GenericForm
         {
             _parentView.OnUpdate(_id, txtName.Text);
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            _parentView.GoToIndex();
+        }
+
+
     }
 }

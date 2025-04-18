@@ -117,38 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>153, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="myproject.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE5SURBVDhPjZK9
-        K0VxGMePl8XLwoRCyaA7CQMx3cG12w0WjEo2oyhZyObl/g0KE5O6pYwGRUrJZFAGSY7P8/y+p3vuPdx7
-        P/XpPi/f369zuieqRxzHTSobxw7hMj7iF17jmNb1IbyC1XzgkCK1IfjsR7LsKvI/hDpC9k/OFasNwdeQ
-        z7CnSBmGXTin1qFft3QVn5hTpAzDZiyqdehbcAPf0bjHvNZZWB5im+p2XMATHMZuzGMRZzH7XTC0AwWc
-        xxdMeMN9/PYucIuV3wSDHtzGG0wo4UMoK7DXucJJHfcLcviEp3iGRr92A3iMB9in2QjeWe3QLKHxg5uh
-        DBcY1DPoj83vKB7hGg4mgU7cQfv77BGN9AXTOK76wpZQ8mUahhO4hZfYq7HNp2ynehHtQ1v1ZSMQbjXV
-        poiiX79X7IOfn9ZrAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="admin.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE5SURBVDhPjZK9
-        K0VxGMePl8XLwoRCyaA7CQMx3cG12w0WjEo2oyhZyObl/g0KE5O6pYwGRUrJZFAGSY7P8/y+p3vuPdx7
-        P/XpPi/f369zuieqRxzHTSobxw7hMj7iF17jmNb1IbyC1XzgkCK1IfjsR7LsKvI/hDpC9k/OFasNwdeQ
-        z7CnSBmGXTin1qFft3QVn5hTpAzDZiyqdehbcAPf0bjHvNZZWB5im+p2XMATHMZuzGMRZzH7XTC0AwWc
-        xxdMeMN9/PYucIuV3wSDHtzGG0wo4UMoK7DXucJJHfcLcviEp3iGRr92A3iMB9in2QjeWe3QLKHxg5uh
-        DBcY1DPoj83vKB7hGg4mgU7cQfv77BGN9AXTOK76wpZQ8mUahhO4hZfYq7HNp2ynehHtQ1v1ZSMQbjXV
-        poiiX79X7IOfn9ZrAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="menuTransition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>133</value>
-  </metadata>
 </root>

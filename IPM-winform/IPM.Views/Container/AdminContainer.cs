@@ -48,5 +48,10 @@ namespace IPM_winform.IPM.Views.Container
             mainPanel.Controls.Add(childrenView);
             childrenView.Show();
         }
+
+        private void quảnLíNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetChildren(AdminContainerChildFactory.GetInstance("user"));
+        }
     }
 }

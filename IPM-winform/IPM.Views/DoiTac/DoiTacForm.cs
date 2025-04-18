@@ -23,7 +23,7 @@ namespace IPM_winform.IPM.Views.DoiTac
                 HeaderText = "Id",
                 Name = "Id",
                 ReadOnly = true,
-                Visible = false,
+                //Visible = false,
             },
                 new DataGridViewTextBoxColumn()
                 {

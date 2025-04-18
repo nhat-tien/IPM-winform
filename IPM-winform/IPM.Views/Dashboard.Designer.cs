@@ -131,7 +131,6 @@
             // 
             // menu
             // 
-            menu.AutoScroll = true;
             menu.BackColor = Color.FromArgb(15, 16, 46);
             menu.Controls.Add(panel1);
             menu.Controls.Add(home);

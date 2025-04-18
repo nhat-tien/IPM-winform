@@ -1,4 +1,5 @@
 ﻿using IPM_winform.Dtos;
+using IPM_winform.IPM.Views.DuAn;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,7 +80,7 @@ namespace IPM_winform.IPM.Views.GenericForm
 
         public virtual void GoToInsert()
         {
-            SetChildren(new InsertForm(this));
+            SetChildren(new ProjectAddForm(this));
             ChangeLabel("insert");
         }
 

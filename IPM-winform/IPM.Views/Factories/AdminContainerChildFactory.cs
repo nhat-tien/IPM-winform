@@ -7,6 +7,7 @@ using IPM_winform.IPM.Views.DonViTienTe;
 using IPM_winform.IPM.Views.DonViTrucThuoc;
 using IPM_winform.IPM.Views.LoaiVienTro;
 using IPM_winform.IPM.Views.NhaTaiTro;
+using IPM_winform.IPM.Views.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,8 @@ namespace IPM_winform.IPM.Views.Factories
                     return new LoaiVienTroForm();
                 case "nhataitro":
                     return new NhaTaiTroForm();
+                case "user":
+                    return new UserForm();
                 default:
                     throw new ArgumentOutOfRangeException();
 
