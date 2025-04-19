@@ -34,13 +34,10 @@
             coquanpheduyet = new ToolStripMenuItem();
             danhmuc = new ToolStripMenuItem();
             doitac = new ToolStripMenuItem();
-            donvitiente = new ToolStripMenuItem();
             donvitructhuoc = new ToolStripMenuItem();
-            loaivientro = new ToolStripMenuItem();
-            nhataitro = new ToolStripMenuItem();
-            mainPanel = new Panel();
             quảnLíNgườiDùngToolStripMenuItem = new ToolStripMenuItem();
             quảnLíDựÁnToolStripMenuItem = new ToolStripMenuItem();
+            mainPanel = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,7 +52,7 @@
             // 
             // thongtinchung
             // 
-            thongtinchung.DropDownItems.AddRange(new ToolStripItem[] { chucvu, coquanpheduyet, danhmuc, doitac, donvitiente, donvitructhuoc, loaivientro, nhataitro });
+            thongtinchung.DropDownItems.AddRange(new ToolStripItem[] { chucvu, coquanpheduyet, danhmuc, doitac, donvitructhuoc });
             thongtinchung.Name = "thongtinchung";
             thongtinchung.Size = new Size(107, 20);
             thongtinchung.Text = "Thông tin chung";
@@ -63,58 +60,32 @@
             // chucvu
             // 
             chucvu.Name = "chucvu";
-            chucvu.Size = new Size(178, 22);
+            chucvu.Size = new Size(180, 22);
             chucvu.Text = "Chức Vụ";
             // 
             // coquanpheduyet
             // 
             coquanpheduyet.Name = "coquanpheduyet";
-            coquanpheduyet.Size = new Size(178, 22);
+            coquanpheduyet.Size = new Size(180, 22);
             coquanpheduyet.Text = "Cơ Quan Phê Duyệt";
             // 
             // danhmuc
             // 
             danhmuc.Name = "danhmuc";
-            danhmuc.Size = new Size(178, 22);
+            danhmuc.Size = new Size(180, 22);
             danhmuc.Text = "Danh Mục";
             // 
             // doitac
             // 
             doitac.Name = "doitac";
-            doitac.Size = new Size(178, 22);
+            doitac.Size = new Size(180, 22);
             doitac.Text = "Đối tác";
-            // 
-            // donvitiente
-            // 
-            donvitiente.Name = "donvitiente";
-            donvitiente.Size = new Size(178, 22);
-            donvitiente.Text = "Đơn Vị Tiền Tệ";
             // 
             // donvitructhuoc
             // 
             donvitructhuoc.Name = "donvitructhuoc";
-            donvitructhuoc.Size = new Size(178, 22);
+            donvitructhuoc.Size = new Size(180, 22);
             donvitructhuoc.Text = "Đơn Vị Trực Thuộc ";
-            // 
-            // loaivientro
-            // 
-            loaivientro.Name = "loaivientro";
-            loaivientro.Size = new Size(178, 22);
-            loaivientro.Text = "Loại Viện Trợ";
-            // 
-            // nhataitro
-            // 
-            nhataitro.Name = "nhataitro";
-            nhataitro.Size = new Size(178, 22);
-            nhataitro.Text = "Nhà Tài Trợ";
-            // 
-            // mainPanel
-            // 
-            mainPanel.Dock = DockStyle.Fill;
-            mainPanel.Location = new Point(0, 24);
-            mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(634, 364);
-            mainPanel.TabIndex = 1;
             // 
             // quảnLíNgườiDùngToolStripMenuItem
             // 
@@ -128,6 +99,15 @@
             quảnLíDựÁnToolStripMenuItem.Name = "quảnLíDựÁnToolStripMenuItem";
             quảnLíDựÁnToolStripMenuItem.Size = new Size(90, 20);
             quảnLíDựÁnToolStripMenuItem.Text = "Quản lí dự án";
+            quảnLíDựÁnToolStripMenuItem.Click += quảnLíDựÁnToolStripMenuItem_Click;
+            // 
+            // mainPanel
+            // 
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(0, 24);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(634, 364);
+            mainPanel.TabIndex = 1;
             // 
             // AdminContainer
             // 
@@ -154,10 +134,7 @@
         private ToolStripMenuItem coquanpheduyet;
         private ToolStripMenuItem danhmuc;
         private ToolStripMenuItem doitac;
-        private ToolStripMenuItem donvitiente;
         private ToolStripMenuItem donvitructhuoc;
-        private ToolStripMenuItem loaivientro;
-        private ToolStripMenuItem nhataitro;
         private Panel mainPanel;
         private ToolStripMenuItem quảnLíNgườiDùngToolStripMenuItem;
         private ToolStripMenuItem quảnLíDựÁnToolStripMenuItem;

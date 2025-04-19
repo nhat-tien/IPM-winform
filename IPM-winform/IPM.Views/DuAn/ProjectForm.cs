@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
-     public class ProjectForm: FormContainer
+    public class ProjectForm : FormContainer
     {
         private readonly AppDBContext db = AppDbContextSingleton.GetInstance();
         public override DataGridViewTextBoxColumn[] Columns
@@ -29,7 +29,18 @@ namespace IPM_winform.IPM.Views.DuAn
                 {
                     HeaderText = "Tên Dự Án (Tiếng Việt)",
                     Name = "ProjectNameVietnamese",
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    HeaderText = "Tên Dự Án (Tiếng Anh)",
+                    Name = "ProjectNameEnglish",
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    HeaderText = "Ngày bắt đầu",
+                    Name = "StartDate",
                 }
+
         ]; set => base.Columns = value;
         }
         public override string Label => "Dự án";
@@ -55,5 +66,10 @@ namespace IPM_winform.IPM.Views.DuAn
             ChangeLabel("insert"); ;
         }
 
+        public void GoToAdvanceSearch()
+        {
+            SetChildren(new ProjectSearchForm(this, RowsProject()));
+            ChangeLabel("search");
+        }
     }
 }

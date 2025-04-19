@@ -105,6 +105,9 @@ namespace IPM_winform.IPM.Views.GenericForm
                 case "update":
                     label = "Chỉnh sửa";
                     break;
+                case "search":
+                    label = "Tìm kiếm";
+                    break;
             }
             label3.Text = label;
         }

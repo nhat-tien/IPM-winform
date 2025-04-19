@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
-    public partial class ProjectIndexForm : Form
+    public partial class ProjectSearchForm : Form 
     {
         private readonly ProjectForm _parentView;
-
-        private readonly DataGridViewTextBoxColumn[] _columns;
-        public ProjectIndexForm(ProjectForm parentView, IEnumerable<Project> rows)
+       
+        private readonly DataGridViewTextBoxColumn[] _columns; 
+        public ProjectSearchForm(ProjectForm parentView, IEnumerable<Project> rows)
         {
             InitializeComponent();
             _parentView = parentView;
@@ -120,11 +120,6 @@ namespace IPM_winform.IPM.Views.DuAn
                    row.StartDate.ToString("dd/MM/yyyy")
                 );
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _parentView.GoToAdvanceSearch();
         }
     }
 }

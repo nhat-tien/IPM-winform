@@ -31,7 +31,7 @@
             btnBack = new Button();
             btnAdd = new Button();
             label1 = new Label();
-            txtName = new TextBox();
+            txtProjectNameVn = new TextBox();
             groupBox1 = new GroupBox();
             label9 = new Label();
             cbbDoiTac = new ComboBox();
@@ -41,40 +41,39 @@
             cbbDanhMuc = new ComboBox();
             label7 = new Label();
             cbbDonViTrucThuoc = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
+            startedDate = new DateTimePicker();
             label5 = new Label();
-            richTextBox2 = new RichTextBox();
+            txtContent = new RichTextBox();
             label4 = new Label();
-            richTextBox1 = new RichTextBox();
+            txtMucTieu = new RichTextBox();
             label3 = new Label();
-            textBox1 = new TextBox();
+            txtProjectNameEng = new TextBox();
             label2 = new Label();
             groupBox2 = new GroupBox();
             groupBox4 = new GroupBox();
             label11 = new Label();
             dataGridView3 = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridView2 = new DataGridView();
+            UserId = new DataGridViewTextBoxColumn();
+            LastName = new DataGridViewTextBoxColumn();
+            FirstName = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
             button3 = new Button();
-            textBox2 = new TextBox();
+            txtSearch = new TextBox();
             btnMoveOut = new Button();
             btnMoveIn = new Button();
             groupBox3 = new GroupBox();
             dataGridView1 = new DataGridView();
-            FileId = new DataGridViewTextBoxColumn();
             FileName = new DataGridViewTextBoxColumn();
             button5 = new Button();
             button4 = new Button();
             textBox3 = new TextBox();
             label10 = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            UserId = new DataGridViewTextBoxColumn();
-            LastName = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -117,13 +116,13 @@
             label1.TabIndex = 9;
             label1.Text = "Tên Dự Án (Tiếng Việt)";
             // 
-            // txtName
+            // txtProjectNameVn
             // 
-            txtName.Location = new Point(10, 49);
-            txtName.Margin = new Padding(4, 3, 4, 3);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(166, 23);
-            txtName.TabIndex = 8;
+            txtProjectNameVn.Location = new Point(10, 49);
+            txtProjectNameVn.Margin = new Padding(4, 3, 4, 3);
+            txtProjectNameVn.Name = "txtProjectNameVn";
+            txtProjectNameVn.Size = new Size(166, 23);
+            txtProjectNameVn.TabIndex = 8;
             // 
             // groupBox1
             // 
@@ -135,15 +134,15 @@
             groupBox1.Controls.Add(cbbDanhMuc);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(cbbDonViTrucThuoc);
-            groupBox1.Controls.Add(dateTimePicker1);
+            groupBox1.Controls.Add(startedDate);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(richTextBox2);
+            groupBox1.Controls.Add(txtContent);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(richTextBox1);
+            groupBox1.Controls.Add(txtMucTieu);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtProjectNameEng);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(txtName);
+            groupBox1.Controls.Add(txtProjectNameVn);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
@@ -224,13 +223,13 @@
             cbbDonViTrucThuoc.Size = new Size(166, 23);
             cbbDonViTrucThuoc.TabIndex = 24;
             // 
-            // dateTimePicker1
+            // startedDate
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(368, 49);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(166, 23);
-            dateTimePicker1.TabIndex = 19;
+            startedDate.Format = DateTimePickerFormat.Custom;
+            startedDate.Location = new Point(368, 49);
+            startedDate.Name = "startedDate";
+            startedDate.Size = new Size(166, 23);
+            startedDate.TabIndex = 19;
             // 
             // label5
             // 
@@ -242,13 +241,13 @@
             label5.TabIndex = 18;
             label5.Text = "Ngày bắt đầu";
             // 
-            // richTextBox2
+            // txtContent
             // 
-            richTextBox2.Location = new Point(191, 105);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(166, 66);
-            richTextBox2.TabIndex = 16;
-            richTextBox2.Text = "";
+            txtContent.Location = new Point(191, 105);
+            txtContent.Name = "txtContent";
+            txtContent.Size = new Size(166, 66);
+            txtContent.TabIndex = 16;
+            txtContent.Text = "";
             // 
             // label4
             // 
@@ -260,13 +259,13 @@
             label4.TabIndex = 15;
             label4.Text = "Nội dung";
             // 
-            // richTextBox1
+            // txtMucTieu
             // 
-            richTextBox1.Location = new Point(10, 105);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(166, 66);
-            richTextBox1.TabIndex = 14;
-            richTextBox1.Text = "";
+            txtMucTieu.Location = new Point(10, 105);
+            txtMucTieu.Name = "txtMucTieu";
+            txtMucTieu.Size = new Size(166, 66);
+            txtMucTieu.TabIndex = 14;
+            txtMucTieu.Text = "";
             // 
             // label3
             // 
@@ -278,13 +277,13 @@
             label3.TabIndex = 13;
             label3.Text = "Mục tiêu";
             // 
-            // textBox1
+            // txtProjectNameEng
             // 
-            textBox1.Location = new Point(188, 49);
-            textBox1.Margin = new Padding(4, 3, 4, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 23);
-            textBox1.TabIndex = 10;
+            txtProjectNameEng.Location = new Point(188, 49);
+            txtProjectNameEng.Margin = new Padding(4, 3, 4, 3);
+            txtProjectNameEng.Name = "txtProjectNameEng";
+            txtProjectNameEng.Size = new Size(164, 23);
+            txtProjectNameEng.TabIndex = 10;
             // 
             // label2
             // 
@@ -302,7 +301,7 @@
             groupBox2.Controls.Add(btnAdd);
             groupBox2.Location = new Point(3, 858);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(555, 78);
+            groupBox2.Size = new Size(604, 78);
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
@@ -313,7 +312,7 @@
             groupBox4.Controls.Add(dataGridView3);
             groupBox4.Controls.Add(dataGridView2);
             groupBox4.Controls.Add(button3);
-            groupBox4.Controls.Add(textBox2);
+            groupBox4.Controls.Add(txtSearch);
             groupBox4.Controls.Add(btnMoveOut);
             groupBox4.Controls.Add(btnMoveIn);
             groupBox4.Location = new Point(3, 327);
@@ -345,6 +344,31 @@
             dataGridView3.TabIndex = 7;
             dataGridView3.SelectionChanged += dataGridView3_SelectionChanged;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "UserId";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Họ";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Tên";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.HeaderText = "Email";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
             // dataGridView2
             // 
             dataGridView2.AllowUserToAddRows = false;
@@ -358,6 +382,31 @@
             dataGridView2.TabIndex = 6;
             dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
             // 
+            // UserId
+            // 
+            UserId.HeaderText = "UserId";
+            UserId.Name = "UserId";
+            UserId.ReadOnly = true;
+            UserId.Visible = false;
+            // 
+            // LastName
+            // 
+            LastName.HeaderText = "Họ";
+            LastName.Name = "LastName";
+            LastName.ReadOnly = true;
+            // 
+            // FirstName
+            // 
+            FirstName.HeaderText = "Tên";
+            FirstName.Name = "FirstName";
+            FirstName.ReadOnly = true;
+            // 
+            // Email
+            // 
+            Email.HeaderText = "Email";
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            // 
             // button3
             // 
             button3.Location = new Point(160, 52);
@@ -366,13 +415,14 @@
             button3.TabIndex = 5;
             button3.Text = "Tìm";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
-            // textBox2
+            // txtSearch
             // 
-            textBox2.Location = new Point(13, 53);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(141, 23);
-            textBox2.TabIndex = 4;
+            txtSearch.Location = new Point(13, 53);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(141, 23);
+            txtSearch.TabIndex = 4;
             // 
             // btnMoveOut
             // 
@@ -382,6 +432,7 @@
             btnMoveOut.TabIndex = 3;
             btnMoveOut.Text = "<<";
             btnMoveOut.UseVisualStyleBackColor = true;
+            btnMoveOut.Click += btnMoveOut_Click;
             // 
             // btnMoveIn
             // 
@@ -402,7 +453,7 @@
             groupBox3.Controls.Add(label10);
             groupBox3.Location = new Point(3, 585);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(555, 267);
+            groupBox3.Size = new Size(604, 267);
             groupBox3.TabIndex = 14;
             groupBox3.TabStop = false;
             groupBox3.Text = "File";
@@ -412,18 +463,12 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FileId, FileName });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FileName });
             dataGridView1.Location = new Point(36, 107);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(479, 150);
             dataGridView1.TabIndex = 14;
-            // 
-            // FileId
-            // 
-            FileId.HeaderText = "File Id";
-            FileId.Name = "FileId";
-            FileId.ReadOnly = true;
             // 
             // FileName
             // 
@@ -440,6 +485,7 @@
             button5.TabIndex = 13;
             button5.Text = "Thêm file";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -450,6 +496,7 @@
             button4.TabIndex = 12;
             button4.Text = "Browse";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // textBox3
             // 
@@ -482,56 +529,6 @@
             flowLayoutPanel1.Size = new Size(644, 784);
             flowLayoutPanel1.TabIndex = 12;
             // 
-            // UserId
-            // 
-            UserId.HeaderText = "UserId";
-            UserId.Name = "UserId";
-            UserId.ReadOnly = true;
-            UserId.Visible = false;
-            // 
-            // LastName
-            // 
-            LastName.HeaderText = "Họ";
-            LastName.Name = "LastName";
-            LastName.ReadOnly = true;
-            // 
-            // FirstName
-            // 
-            FirstName.HeaderText = "Tên";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "UserId";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Họ";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Tên";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Email";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
             // ProjectAddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -561,19 +558,19 @@
         private Button btnBack;
         private Button btnAdd;
         private Label label1;
-        private TextBox txtName;
+        private TextBox txtProjectNameVn;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private TextBox textBox1;
+        private TextBox txtProjectNameEng;
         private Label label2;
         private GroupBox groupBox3;
         private GroupBox groupBox4;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label3;
-        private RichTextBox richTextBox1;
-        private RichTextBox richTextBox2;
+        private RichTextBox txtMucTieu;
+        private RichTextBox txtContent;
         private Label label4;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker startedDate;
         private Label label5;
         private Label label7;
         private ComboBox cbbDonViTrucThuoc;
@@ -586,14 +583,12 @@
         private Button btnMoveIn;
         private Button btnMoveOut;
         private Button button3;
-        private TextBox textBox2;
+        private TextBox txtSearch;
         private DataGridView dataGridView1;
         private Button button5;
         private Button button4;
         private TextBox textBox3;
         private Label label10;
-        private DataGridViewTextBoxColumn FileId;
-        private DataGridViewTextBoxColumn FileName;
         private DataGridView dataGridView2;
         private DataGridView dataGridView3;
         private Label label11;
@@ -605,5 +600,6 @@
         private DataGridViewTextBoxColumn LastName;
         private DataGridViewTextBoxColumn FirstName;
         private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn FileName;
     }
 }

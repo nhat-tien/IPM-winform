@@ -53,5 +53,10 @@ namespace IPM_winform.IPM.Views.Container
         {
             SetChildren(AdminContainerChildFactory.GetInstance("user"));
         }
+
+        private void quảnLíDựÁnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetChildren(AdminContainerChildFactory.GetInstance("project"));
+        }
     }
 }

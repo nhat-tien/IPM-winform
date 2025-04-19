@@ -5,6 +5,7 @@ using IPM_winform.IPM.Views.DanhMuc;
 using IPM_winform.IPM.Views.DoiTac;
 using IPM_winform.IPM.Views.DonViTienTe;
 using IPM_winform.IPM.Views.DonViTrucThuoc;
+using IPM_winform.IPM.Views.DuAn;
 using IPM_winform.IPM.Views.LoaiVienTro;
 using IPM_winform.IPM.Views.NhaTaiTro;
 using IPM_winform.IPM.Views.User;
@@ -42,6 +43,8 @@ namespace IPM_winform.IPM.Views.Factories
                     return new NhaTaiTroForm();
                 case "user":
                     return new UserForm();
+                case "project":
+                    return new ProjectForm();
                 default:
                     throw new ArgumentOutOfRangeException();
 

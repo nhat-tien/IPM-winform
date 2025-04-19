@@ -1,6 +1,6 @@
-﻿namespace IPM_winform.IPM.Views.GenericForm
+﻿namespace IPM_winform.IPM.Views.DuAn
 {
-    partial class IndexForm
+    partial class ProjectSearchForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,19 +35,15 @@
             btnEdit = new Button();
             btnDelete = new Button();
             btnAdd = new Button();
-            btnExport = new Button();
-            btnImport = new Button();
-            groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
-            btnSearch = new Button();
-            txtSearch = new TextBox();
+            comboBox1 = new ComboBox();
             toolTip1 = new ToolTip(components);
             toolTip2 = new ToolTip(components);
             toolTip3 = new ToolTip(components);
+            checkedListBox1 = new CheckedListBox();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
-            groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -65,15 +61,15 @@
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(flowLayoutPanel2, 0, 1);
-            tableLayoutPanel1.Controls.Add(groupBox1, 0, 2);
+            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 2);
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Size = new Size(669, 425);
             tableLayoutPanel1.TabIndex = 1;
             // 
@@ -82,10 +78,8 @@
             flowLayoutPanel2.Controls.Add(btnEdit);
             flowLayoutPanel2.Controls.Add(btnDelete);
             flowLayoutPanel2.Controls.Add(btnAdd);
-            flowLayoutPanel2.Controls.Add(btnExport);
-            flowLayoutPanel2.Controls.Add(btnImport);
             flowLayoutPanel2.Dock = DockStyle.Fill;
-            flowLayoutPanel2.Location = new Point(3, 45);
+            flowLayoutPanel2.Location = new Point(3, 173);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.RightToLeft = RightToLeft.Yes;
             flowLayoutPanel2.Size = new Size(663, 36);
@@ -146,78 +140,47 @@
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
-            // btnExport
-            // 
-            btnExport.Location = new Point(455, 3);
-            btnExport.Name = "btnExport";
-            btnExport.Size = new Size(75, 23);
-            btnExport.TabIndex = 15;
-            btnExport.Text = "Export";
-            btnExport.UseVisualStyleBackColor = true;
-            btnExport.Click += btnExport_Click;
-            // 
-            // btnImport
-            // 
-            btnImport.Location = new Point(374, 3);
-            btnImport.Name = "btnImport";
-            btnImport.Size = new Size(75, 23);
-            btnImport.TabIndex = 16;
-            btnImport.Text = "Import";
-            btnImport.UseVisualStyleBackColor = true;
-            btnImport.Click += btnImport_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(dataGridView1);
-            groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(3, 87);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(663, 335);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Bảng dữ liệu";
-            // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 19);
+            dataGridView1.Location = new Point(3, 215);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(657, 313);
-            dataGridView1.TabIndex = 0;
+            dataGridView1.Size = new Size(663, 207);
+            dataGridView1.TabIndex = 1;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnSearch);
-            panel1.Controls.Add(txtSearch);
+            panel1.Controls.Add(checkedListBox1);
+            panel1.Controls.Add(comboBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(663, 36);
+            panel1.Size = new Size(663, 164);
             panel1.TabIndex = 2;
             // 
-            // btnSearch
+            // comboBox1
             // 
-            btnSearch.Location = new Point(208, 6);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(75, 23);
-            btnSearch.TabIndex = 1;
-            btnSearch.Text = "Tìm kiếm";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Không", "Và", "Hoặc" });
+            comboBox1.Location = new Point(310, 55);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(55, 23);
+            comboBox1.TabIndex = 0;
             // 
-            // txtSearch
+            // checkedListBox1
             // 
-            txtSearch.Location = new Point(29, 6);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(173, 23);
-            txtSearch.TabIndex = 0;
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Location = new Point(9, 18);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new Size(157, 130);
+            checkedListBox1.TabIndex = 1;
             // 
-            // IndexForm
+            // ProjectSearchForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -225,14 +188,12 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "IndexForm";
+            Name = "ProjectSearchForm";
             Text = "FormIndex";
             tableLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -244,15 +205,12 @@
         private Button btnEdit;
         private Button btnDelete;
         private Button btnAdd;
+        private DataGridView dataGridView1;
         private ToolTip toolTip1;
         private ToolTip toolTip2;
         private ToolTip toolTip3;
-        private GroupBox groupBox1;
-        private DataGridView dataGridView1;
-        private Button btnExport;
-        private Button btnImport;
         private Panel panel1;
-        private TextBox txtSearch;
-        private Button btnSearch;
+        private ComboBox comboBox1;
+        private CheckedListBox checkedListBox1;
     }
 }

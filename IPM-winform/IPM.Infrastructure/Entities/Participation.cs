@@ -3,7 +3,7 @@ namespace IPM_winform.IPM.Infrastructure.Entities;
 public class Participation : BaseEntity
 {
     public int ProjectId { get; set; }
-    public required string UserId { get; set; }
+    public int UserId { get; set; }
     public DateTime JoinDate { get; set; }
     public string? Status { get; set; }
     public string? Note { get; set; }
