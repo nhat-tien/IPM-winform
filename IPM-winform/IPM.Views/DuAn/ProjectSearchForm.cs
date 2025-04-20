@@ -1,10 +1,13 @@
-﻿using IPM_winform.Dtos;
+﻿using IPM.Infrastructure.EntityFrameworkDataAccess;
+using IPM_winform.Dtos;
+using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,18 +16,25 @@ using System.Windows.Forms;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
-    public partial class ProjectSearchForm : Form 
+    public partial class ProjectSearchForm : Form
     {
         private readonly ProjectForm _parentView;
-       
-        private readonly DataGridViewTextBoxColumn[] _columns; 
+
+        private readonly DataGridViewTextBoxColumn[] _columns;
+        private readonly IEnumerable<Project> _initialProjects;
+        private readonly AppDBContext db = AppDbContextSingleton.GetInstance();
         public ProjectSearchForm(ProjectForm parentView, IEnumerable<Project> rows)
         {
             InitializeComponent();
             _parentView = parentView;
             _columns = _parentView.Columns;
+            _initialProjects = rows;
             setUpDataGridViewColumn();
             LoadData(rows);
+            SetDataSourceCoQuanPheDuyet();
+            SetDataSourceDanhMuc();
+            SetDataSourceDoiTac();
+            SetDataSourceDonViTrucThuoc();
         }
 
         public void setUpDataGridViewColumn()
@@ -117,9 +127,99 @@ namespace IPM_winform.IPM.Views.DuAn
                    row.ProjectId,
                    row.ProjectNameVietnamese,
                    row.ProjectNameEnglish,
-                   row.StartDate.ToString("dd/MM/yyyy")
+                   row.StartDate.ToString("dd/MM/yyyy"),
+                   row.AffiliatedUnit?.AffiliatedUnitName,
+                   row.Category?.CategoryName,
+                   row.ApprovingAgency?.ApprovingAgencyName,
+                   row.Counterparty?.CounterpartyName
                 );
             }
+        }
+
+        public void SetDataSourceDonViTrucThuoc()
+        {
+            var entities = db.AffiliatedUnits.ToList();
+            cbbDonViTrucThuoc.ValueMember = null;
+            cbbDonViTrucThuoc.DisplayMember = "AffiliatedUnitName";
+            cbbDonViTrucThuoc.DataSource = entities;
+        }
+        public void SetDataSourceDanhMuc()
+        {
+            var entities = db.Categories.ToList();
+            cbbDanhMuc.ValueMember = null;
+            cbbDanhMuc.DisplayMember = "CategoryName";
+            cbbDanhMuc.DataSource = entities;
+        }
+        public void SetDataSourceCoQuanPheDuyet()
+        {
+            var entities = db.ApprovingAgencies.ToList();
+            cbbCoQuanPheDuyet.ValueMember = null;
+            cbbCoQuanPheDuyet.DisplayMember = "ApprovingAgencyName";
+            cbbCoQuanPheDuyet.DataSource = entities;
+        }
+        public void SetDataSourceDoiTac()
+        {
+            var entities = db.Counterparties.ToList();
+            cbbDoiTac.ValueMember = null;
+            cbbDoiTac.DisplayMember = "CounterpartyName";
+            cbbDoiTac.DataSource = entities;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var projects = _initialProjects;
+            var items = checkedListBox1.CheckedItems;
+
+            if (items.Contains("Tên Tiếng Việt"))
+            {
+                projects = projects.Where(e => e.ProjectNameVietnamese.Contains(txtVn.Text));
+            }
+            if (items.Contains("Tên Tiếng Anh"))
+            {
+                projects = projects.Where(e => e.ProjectNameEnglish.Contains(txtEng.Text));
+            }
+            if (items.Contains("Đơn vị trực thuộc"))
+            {
+                var condition = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem;
+                projects = projects.Where(e => e.AffiliatedUnitId == condition.AffiliatedUnitId);
+            }
+            if (items.Contains("Danh mục"))
+            {
+                var condition = (Category)cbbDanhMuc.SelectedItem;
+                projects = projects.Where(e => e.CategoryId == condition.CategoryId);
+            }
+            if (items.Contains("Cơ quan phê duyệt"))
+            {
+                var condition = (ApprovingAgency)cbbCoQuanPheDuyet.SelectedItem;
+                projects = projects.Where(e => e.ApprovingAgencyId == condition.ApprovingAgencyId);
+            }
+            if (items.Contains("Đối tác"))
+            {
+                var condition = (Counterparty)cbbDoiTac.SelectedItem;
+                projects = projects.Where(e => e.CounterpartyId == condition.CounterpartyId);
+            }
+            if (items.Contains("Ngày bắt đầu"))
+            {
+                DateTime tuNgay = dateTu.Value.Date;
+                DateTime denNgay = dateDen.Value.Date;
+                projects = projects.Where(e =>
+                {
+                    return DateTime.Compare(e.StartDate, tuNgay) >= 0
+                    && DateTime.Compare(e.StartDate, denNgay) <= 0;
+                });
+            }
+
+            LoadData(projects);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            LoadData(_initialProjects);
         }
     }
 }

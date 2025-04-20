@@ -22,7 +22,7 @@ namespace IPM_winform.IPM.Views.Factories
                 case "admin":
                     return new AdminContainer();
                 case "myproject":
-                    return new ProjectForm();
+                    return new MyProjectForm();
                 default:
                     throw new ArgumentOutOfRangeException();
 

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IPM_winform.IPM.Views.Factories;
+using IPM_winform.IPM.Views.TaiKhoan;
+using IPM_winform.Services;
 
 namespace IPM_winform.IPM.Views
 {
@@ -16,11 +18,12 @@ namespace IPM_winform.IPM.Views
 
         Form childrenView;
         bool menuExpand = true;
+        private Infrastructure.Entities.User? _user = Session.getSession();
 
-        public Dashboard(string userInfo)
+        public Dashboard()
         {
             InitializeComponent();
-            SetUserName(userInfo);
+            SetUserName(_user?.FirstName);
             //new DashBoardPresenter(this);
             AddActionListener();
             SetChildren(new Home());
@@ -108,6 +111,7 @@ namespace IPM_winform.IPM.Views
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Session.deleteSession();
             Application.Restart();
         }
 
@@ -124,6 +128,19 @@ namespace IPM_winform.IPM.Views
         private void home_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetChildren(new TaiKhoanForm());
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            //if(_user is not null && _user.Role != "Admin")
+            //{
+            //    admin.Hide();
+            //}
         }
     }
 }

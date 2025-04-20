@@ -1,4 +1,5 @@
 ﻿using IPM_winform.IPM.Views;
+using IPM_winform.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,13 +15,13 @@ namespace IPM_winform.IPM.Views
     public partial class LoginForm : Form
     {
         public bool AuthenticatedSuccess { get; set; }
-        public string UserInfo { get; set; }
         public string UserName { get => txtUserName.Text; }
         public string Password { get => txtPassword.Text; }
         public string Message { get => lbMessage.Text; set => lbMessage.Text = value; }
+        
         public event EventHandler OnLogin;
-
-
+        
+        private readonly UserManager userManager = new UserManager();
         public LoginForm()
         {
             InitializeComponent();
@@ -49,7 +50,17 @@ namespace IPM_winform.IPM.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OnLogin?.Invoke(this, EventArgs.Empty);
+            var user = userManager.Login(txtUserName.Text, txtPassword.Text);
+            if (user != null)
+            {
+                AuthenticatedSuccess = true;
+                Session.setSession(user);
+                Close();
+            }
+            else
+            {
+                Message = "Email hoặc mật khẩu chưa chính xác";
+            }
         }
 
         private void txtUserName_Enter(object sender, EventArgs e)
@@ -65,6 +76,19 @@ namespace IPM_winform.IPM.Views
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+      
+
+
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
         }
     }
 }

@@ -56,7 +56,7 @@ namespace IPM_winform.IPM.Views.DuAn
                 Counterparty = (Counterparty)cbbDoiTac.SelectedItem,
                 Participations = participates.ToList(),
                 Files = _file.ToList(),
-                StartDate = startedDate.Value
+                StartDate = startedDate.Value.Date
             };
             db.Projects.Add(project);
             db.SaveChanges();
@@ -234,9 +234,8 @@ namespace IPM_winform.IPM.Views.DuAn
         {
             string sourceFile = textBox3.Text;
             string destinationDir = @"C:\IPM-winform\Data\files\";
-            string fileName = Path.GetFileName(sourceFile);
+            string fileName = Path.GetFileNameWithoutExtension(sourceFile) + DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetExtension(sourceFile);
             string destinationPath = Path.Combine(destinationDir, fileName);
-
             try
             {
                 if (!Directory.Exists(destinationDir))

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            label5 = new Label();
             lbMessage = new Label();
             button1 = new Button();
             txtPassword = new TextBox();
@@ -36,13 +38,14 @@
             txtUserName = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            label5 = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.None;
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(lbMessage);
             panel1.Controls.Add(button1);
@@ -56,6 +59,28 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(391, 473);
             panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Image = Properties.Resources.icons8_eye_20;
+            pictureBox1.Location = new Point(323, 266);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(22, 20);
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            pictureBox1.MouseDown += pictureBox1_MouseDown;
+            pictureBox1.MouseUp += pictureBox1_MouseUp;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(161, 426);
+            label5.Name = "label5";
+            label5.Size = new Size(186, 15);
+            label5.TabIndex = 7;
+            label5.Text = "Chưa có tài khoản? đi đến đăng kí";
+            label5.Click += label5_Click;
             // 
             // lbMessage
             // 
@@ -83,9 +108,9 @@
             txtPassword.Location = new Point(43, 265);
             txtPassword.Margin = new Padding(4, 3, 4, 3);
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '•';
-            txtPassword.Size = new Size(305, 23);
+            txtPassword.Size = new Size(304, 23);
             txtPassword.TabIndex = 4;
+            txtPassword.UseSystemPasswordChar = true;
             txtPassword.Enter += txtPassword_Enter;
             // 
             // label3
@@ -128,16 +153,6 @@
             label1.TabIndex = 0;
             label1.Text = "Đăng Nhập";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(161, 426);
-            label5.Name = "label5";
-            label5.Size = new Size(186, 15);
-            label5.TabIndex = 7;
-            label5.Text = "Chưa có tài khoản? đi đến đăng kí";
-            label5.Click += label5_Click;
-            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -151,6 +166,7 @@
             Text = "Đăng Nhập";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -165,5 +181,6 @@
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label2;
         private Label label5;
+        private PictureBox pictureBox1;
     }
 }

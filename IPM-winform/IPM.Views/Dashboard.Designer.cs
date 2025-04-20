@@ -34,6 +34,7 @@
             label2 = new Label();
             pictureBox1 = new PictureBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            tàiKhoảnToolStripMenuItem = new ToolStripMenuItem();
             đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
             thoátToolStripMenuItem = new ToolStripMenuItem();
             btnMenu = new PictureBox();
@@ -97,9 +98,16 @@
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { đăngXuấtToolStripMenuItem, thoátToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { tàiKhoảnToolStripMenuItem, đăngXuấtToolStripMenuItem, thoátToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(130, 48);
+            contextMenuStrip1.Size = new Size(130, 70);
+            // 
+            // tàiKhoảnToolStripMenuItem
+            // 
+            tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
+            tàiKhoảnToolStripMenuItem.Size = new Size(129, 22);
+            tàiKhoảnToolStripMenuItem.Text = "Tài Khoản";
+            tàiKhoảnToolStripMenuItem.Click += tàiKhoảnToolStripMenuItem_Click;
             // 
             // đăngXuấtToolStripMenuItem
             // 
@@ -272,6 +280,7 @@
             Margin = new Padding(4, 3, 4, 3);
             Name = "Dashboard";
             Text = "IPM";
+            Load += Dashboard_Load;
             header.ResumeLayout(false);
             header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -302,6 +311,7 @@
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
         private Button myproject;
+        private ToolStripMenuItem tàiKhoảnToolStripMenuItem;
     }
 }
 

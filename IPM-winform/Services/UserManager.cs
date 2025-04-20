@@ -2,6 +2,7 @@
 using IPM.Infrastructure.EntityFrameworkDataAccess;
 using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,11 @@ namespace IPM_winform.Services
 
         public User? Login(string email, string password)
         {
-            User? user = db.Users.FirstOrDefault(e => e.Email == email);
+    
+            User? user = db.Users
+                .Include(e => e.AffiliatedUnit)
+                .Include(e => e.Position)
+                .FirstOrDefault(e => e.Email == email);
             if(user is null || !VerifyPassword(password, user.Password))
             {
                 return null;

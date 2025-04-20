@@ -25,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="IPM.Views\DuAn\ProjectViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="IPM.Views\DuAn\ProjectAddForm.cs">
       <SubType>Form</SubType>
     </Compile>

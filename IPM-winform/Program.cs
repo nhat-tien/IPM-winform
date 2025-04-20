@@ -13,7 +13,15 @@ namespace IPM_winform
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Dashboard("Tien"));
+
+            //Application.Run(new Dashboard("Tien"));
+
+            LoginForm loginForm = new LoginForm();
+            Application.Run(loginForm);
+            if (loginForm.AuthenticatedSuccess)
+            {
+                Application.Run(new Dashboard());
+            }
         }
     }
 }

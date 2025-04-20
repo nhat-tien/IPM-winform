@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using IPM_winform.Services;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
@@ -39,6 +40,26 @@ namespace IPM_winform.IPM.Views.DuAn
                 {
                     HeaderText = "Ngày bắt đầu",
                     Name = "StartDate",
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    HeaderText = "Đơn vị trực thuộc",
+                    Name = "AffiliatedUnitName",
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    HeaderText = "Danh mục",
+                    Name = "Category",
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    HeaderText = "Cơ quan phê duyệt",
+                    Name = "ApprovingAgencyName",
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    HeaderText = "Đối tác",
+                    Name = "CounterpartyName",
                 }
 
         ]; set => base.Columns = value;
@@ -50,9 +71,13 @@ namespace IPM_winform.IPM.Views.DuAn
 
         }
 
-        public IEnumerable<Project> RowsProject()
+        public virtual IEnumerable<Project> RowsProject()
         {
-            return db.Projects.ToList();
+            return db.Projects.Include(e => e.AffiliatedUnit)
+                .Include(e => e.Category)
+                .Include(e => e.ApprovingAgency)
+                .Include(e => e.Counterparty)
+                .ToList();
         }
 
         public override void GoToIndex()

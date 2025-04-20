@@ -1,4 +1,5 @@
-﻿using IPM_winform.Dtos;
+﻿using ClosedXML.Excel;
+using IPM_winform.Dtos;
 using IPM_winform.IPM.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -62,6 +63,17 @@ namespace IPM_winform.IPM.Views.DuAn
             btnEdit.BackColor = Color.FromArgb(247, 155, 56);
         }
 
+        private void DisableViewBtn()
+        {
+            btnView.Enabled = false;
+            btnView.BackColor = Color.FromArgb(40, 247, 155, 56);
+        }
+        private void EnableViewBtn()
+        {
+            btnView.Enabled = true;
+            btnView.BackColor = Color.FromArgb(27, 161, 22);
+        }
+
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int numOfRowSelected = dataGridView1.SelectedRows.Count;
@@ -69,16 +81,19 @@ namespace IPM_winform.IPM.Views.DuAn
             {
                 EnableDeleteBtn();
                 DisableEditBtn();
+                DisableViewBtn();
             }
             else if (numOfRowSelected == 1)
             {
                 EnableDeleteBtn();
                 EnableEditBtn();
+                EnableViewBtn();
             }
             else
             {
                 DisableEditBtn();
                 DisableDeleteBtn();
+                DisableViewBtn();
             }
         }
         public string GetSelectedRowId()
@@ -117,7 +132,11 @@ namespace IPM_winform.IPM.Views.DuAn
                    row.ProjectId,
                    row.ProjectNameVietnamese,
                    row.ProjectNameEnglish,
-                   row.StartDate.ToString("dd/MM/yyyy")
+                   row.StartDate.ToString("dd/MM/yyyy"),
+                   row.AffiliatedUnit?.AffiliatedUnitName,
+                   row.Category?.CategoryName,
+                   row.ApprovingAgency?.ApprovingAgencyName,
+                   row.Counterparty?.CounterpartyName
                 );
             }
         }
@@ -125,6 +144,73 @@ namespace IPM_winform.IPM.Views.DuAn
         private void button1_Click(object sender, EventArgs e)
         {
             _parentView.GoToAdvanceSearch();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Xuất dữ liệu ra tập tin Excel";
+            saveFileDialog.Filter = "Tập tin Excel|*.xls;*.xlsx";
+            saveFileDialog.FileName = _parentView.Label + "_" + DateTime.Now.ToShortDateString().Replace("/", "_") + ".xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    DataTable table = new DataTable();
+                    table.Columns.AddRange(new DataColumn[] {
+                        new DataColumn("Id", typeof(int)),
+                        new DataColumn("Tên Tiếng Việt", typeof(string)),
+                        new DataColumn("Tên Tiếng Anh", typeof(string)),
+                        new DataColumn("Mục tiêu", typeof(string)),
+                        new DataColumn("Nội dung", typeof(string)),
+                        new DataColumn("Đơn vị trực thuộc", typeof(string)),
+                        new DataColumn("Danh mục", typeof(string)),
+                        new DataColumn("Cơ quan phê duyệt", typeof(string)),
+                        new DataColumn("Đối tác", typeof(string)),
+                        new DataColumn("Ngày bắt đầu", typeof(string)),
+                        new DataColumn("Ngày kết thúc", typeof(string)),
+                    });
+                    var loaiSanPham = _parentView.RowsProject();
+                    if (loaiSanPham != null)
+                    {
+                        foreach (var p in loaiSanPham)
+                            table.Rows.Add(
+                                p.ProjectId,
+                                p.ProjectNameVietnamese,
+                                p.ProjectNameEnglish,
+                                p.ProjectPurpose,
+                                p.Content,
+                                p.AffiliatedUnit?.AffiliatedUnitName,
+                                p.Category?.CategoryName,
+                                p.ApprovingAgency?.ApprovingAgencyName,
+                                p.Counterparty?.CounterpartyName,
+                                p.StartDate.ToString("dd/MM/yyyy"),
+                                p.EndDate.ToString("dd/MM/yyyy")
+                            );
+                    }
+                    using (XLWorkbook wb = new XLWorkbook())
+                    {
+                        var sheet = wb.Worksheets.Add(table, _parentView.Label);
+                        sheet.Columns().AdjustToContents();
+                        wb.SaveAs(saveFileDialog.FileName);
+                        MessageBox.Show("Đã xuất dữ liệu ra tập tin Excel thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _parentView.SetChildren(new ProjectViewForm(_parentView, Int32.Parse(GetSelectedRowId())));
         }
     }
 }
