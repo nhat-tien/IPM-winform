@@ -1,4 +1,6 @@
+using DocumentFormat.OpenXml.Bibliography;
 using IPM_winform.IPM.Views;
+using IPM_winform.Services;
 
 namespace IPM_winform
 {
@@ -16,11 +18,17 @@ namespace IPM_winform
 
             //Application.Run(new Dashboard("Tien"));
 
-            LoginForm loginForm = new LoginForm();
-            Application.Run(loginForm);
-            if (loginForm.AuthenticatedSuccess)
+            if(Services.Author.isDevelopment)
             {
                 Application.Run(new Dashboard());
+            } else
+            {
+                LoginForm loginForm = new LoginForm();
+                Application.Run(loginForm);
+                if (loginForm.AuthenticatedSuccess)
+                {
+                    Application.Run(new Dashboard());
+                }
             }
         }
     }

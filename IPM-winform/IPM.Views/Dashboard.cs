@@ -132,15 +132,15 @@ namespace IPM_winform.IPM.Views
 
         private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetChildren(new TaiKhoanForm());
+            SetChildren(new TaiKhoanForm(this));
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            //if(_user is not null && _user.Role != "Admin")
-            //{
-            //    admin.Hide();
-            //}
+            if (!Author.IsAdmin())
+            {
+                admin.Hide();
+            }
         }
     }
 }

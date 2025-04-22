@@ -1,6 +1,6 @@
 ﻿namespace IPM_winform.IPM.Views.DuAn
 {
-    partial class ProjectViewForm
+    partial class ProjectUpdateUserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,46 +31,37 @@
             btnBack = new Button();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            label17 = new Label();
             label16 = new Label();
             label15 = new Label();
             label14 = new Label();
             label13 = new Label();
-            richTextBox2 = new RichTextBox();
-            richTextBox1 = new RichTextBox();
             label12 = new Label();
             label11 = new Label();
-            label10 = new Label();
             label9 = new Label();
             label8 = new Label();
             label6 = new Label();
             label7 = new Label();
             label5 = new Label();
+            txtContent = new RichTextBox();
             label4 = new Label();
+            txtMucTieu = new RichTextBox();
             label3 = new Label();
             label2 = new Label();
             groupBox2 = new GroupBox();
-            btnUpdate = new Button();
-            button1 = new Button();
-            groupBox4 = new GroupBox();
-            dataGridView3 = new DataGridView();
-            LastName = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
             groupBox3 = new GroupBox();
+            label10 = new Label();
+            listBox1 = new ListBox();
             dataGridView1 = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
+            FileId = new DataGridViewTextBoxColumn();
             FileName = new DataGridViewTextBoxColumn();
-            Url = new DataGridViewTextBoxColumn();
-            UserName = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
-            Confirm = new DataGridViewButtonColumn();
-            Action = new DataGridViewButtonColumn();
             Remove = new DataGridViewButtonColumn();
+            button5 = new Button();
+            button4 = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
@@ -100,21 +91,21 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label17);
             groupBox1.Controls.Add(label16);
             groupBox1.Controls.Add(label15);
             groupBox1.Controls.Add(label14);
             groupBox1.Controls.Add(label13);
-            groupBox1.Controls.Add(richTextBox2);
-            groupBox1.Controls.Add(richTextBox1);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(label11);
-            groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(txtContent);
             groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(txtMucTieu);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
@@ -125,86 +116,68 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin chung";
             // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(192, 266);
+            label17.Name = "label17";
+            label17.Size = new Size(44, 15);
+            label17.TabIndex = 38;
+            label17.Text = "label17";
+            // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(192, 268);
+            label16.Location = new Point(11, 266);
             label16.Name = "label16";
             label16.Size = new Size(44, 15);
-            label16.TabIndex = 40;
+            label16.TabIndex = 37;
             label16.Text = "label16";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(11, 268);
+            label15.Location = new Point(192, 203);
             label15.Name = "label15";
             label15.Size = new Size(44, 15);
-            label15.TabIndex = 39;
+            label15.TabIndex = 36;
             label15.Text = "label15";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(192, 206);
+            label14.Location = new Point(12, 205);
             label14.Name = "label14";
             label14.Size = new Size(44, 15);
-            label14.TabIndex = 38;
+            label14.TabIndex = 35;
             label14.Text = "label14";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(11, 206);
+            label13.Location = new Point(365, 50);
             label13.Name = "label13";
             label13.Size = new Size(44, 15);
-            label13.TabIndex = 37;
+            label13.TabIndex = 34;
             label13.Text = "label13";
-            // 
-            // richTextBox2
-            // 
-            richTextBox2.Enabled = false;
-            richTextBox2.Location = new Point(191, 105);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(133, 61);
-            richTextBox2.TabIndex = 36;
-            richTextBox2.Text = "";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Enabled = false;
-            richTextBox1.Location = new Point(10, 105);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(133, 61);
-            richTextBox1.TabIndex = 35;
-            richTextBox1.Text = "";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(365, 52);
+            label12.Location = new Point(190, 50);
             label12.Name = "label12";
             label12.Size = new Size(44, 15);
-            label12.TabIndex = 34;
+            label12.TabIndex = 33;
             label12.Text = "label12";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(191, 52);
+            label11.Location = new Point(9, 50);
             label11.Name = "label11";
             label11.Size = new Size(44, 15);
-            label11.TabIndex = 33;
+            label11.TabIndex = 32;
             label11.Text = "label11";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(9, 52);
-            label10.Name = "label10";
-            label10.Size = new Size(44, 15);
-            label10.TabIndex = 32;
-            label10.Text = "label10";
             // 
             // label9
             // 
@@ -261,6 +234,14 @@
             label5.TabIndex = 18;
             label5.Text = "Ngày bắt đầu";
             // 
+            // txtContent
+            // 
+            txtContent.Location = new Point(191, 105);
+            txtContent.Name = "txtContent";
+            txtContent.Size = new Size(166, 66);
+            txtContent.TabIndex = 16;
+            txtContent.Text = "";
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -271,6 +252,14 @@
             label4.Size = new Size(57, 15);
             label4.TabIndex = 15;
             label4.Text = "Nội dung";
+            // 
+            // txtMucTieu
+            // 
+            txtMucTieu.Location = new Point(10, 105);
+            txtMucTieu.Name = "txtMucTieu";
+            txtMucTieu.Size = new Size(166, 66);
+            txtMucTieu.TabIndex = 14;
+            txtMucTieu.Text = "";
             // 
             // label3
             // 
@@ -296,105 +285,65 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btnUpdate);
-            groupBox2.Controls.Add(button1);
             groupBox2.Controls.Add(btnBack);
-            groupBox2.Location = new Point(3, 858);
+            groupBox2.Location = new Point(3, 715);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(604, 78);
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
             // 
-            // btnUpdate
-            // 
-            btnUpdate.Location = new Point(108, 22);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(102, 27);
-            btnUpdate.TabIndex = 15;
-            btnUpdate.Text = "Cập nhật";
-            btnUpdate.UseVisualStyleBackColor = true;
-            btnUpdate.Click += btnUpdate_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(216, 22);
-            button1.Name = "button1";
-            button1.Size = new Size(102, 27);
-            button1.TabIndex = 14;
-            button1.Text = "Kết thúc dự án";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(dataGridView3);
-            groupBox4.Location = new Point(3, 327);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(604, 252);
-            groupBox4.TabIndex = 15;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Thành viên";
-            // 
-            // dataGridView3
-            // 
-            dataGridView3.AllowUserToAddRows = false;
-            dataGridView3.AllowUserToDeleteRows = false;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { LastName, FirstName, Email });
-            dataGridView3.Location = new Point(6, 67);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.ReadOnly = true;
-            dataGridView3.Size = new Size(592, 179);
-            dataGridView3.TabIndex = 7;
-            // 
-            // LastName
-            // 
-            LastName.HeaderText = "Họ";
-            LastName.Name = "LastName";
-            LastName.ReadOnly = true;
-            // 
-            // FirstName
-            // 
-            FirstName.HeaderText = "Tên";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(label10);
+            groupBox3.Controls.Add(listBox1);
             groupBox3.Controls.Add(dataGridView1);
-            groupBox3.Location = new Point(3, 585);
+            groupBox3.Controls.Add(button5);
+            groupBox3.Controls.Add(button4);
+            groupBox3.Location = new Point(3, 327);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(604, 267);
+            groupBox3.Size = new Size(604, 382);
             groupBox3.TabIndex = 14;
             groupBox3.TabStop = false;
-            groupBox3.Text = "file";
+            groupBox3.Text = "File";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(49, 29);
+            label10.Name = "label10";
+            label10.Size = new Size(65, 15);
+            label10.TabIndex = 16;
+            label10.Text = "File upload";
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(52, 49);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(491, 124);
+            listBox1.TabIndex = 15;
             // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, FileName, Url, UserName, Status, Confirm, Action, Remove });
-            dataGridView1.Location = new Point(6, 50);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FileId, FileName, Status, Remove });
+            dataGridView1.Location = new Point(25, 216);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(592, 211);
-            dataGridView1.TabIndex = 15;
+            dataGridView1.Size = new Size(560, 150);
+            dataGridView1.TabIndex = 14;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // Id
+            // FileId
             // 
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
+            FileId.HeaderText = "Id";
+            FileId.Name = "FileId";
+            FileId.ReadOnly = true;
+            FileId.Visible = false;
             // 
             // FileName
             // 
@@ -402,81 +351,70 @@
             FileName.Name = "FileName";
             FileName.ReadOnly = true;
             // 
-            // Url
-            // 
-            Url.HeaderText = "Url";
-            Url.Name = "Url";
-            Url.ReadOnly = true;
-            Url.Visible = false;
-            // 
-            // UserName
-            // 
-            UserName.HeaderText = "Tên người dùng";
-            UserName.MinimumWidth = 10;
-            UserName.Name = "UserName";
-            UserName.ReadOnly = true;
-            // 
             // Status
             // 
             Status.HeaderText = "Trạng thái";
             Status.Name = "Status";
             Status.ReadOnly = true;
             // 
-            // Confirm
-            // 
-            Confirm.HeaderText = "Xác nhận";
-            Confirm.Name = "Confirm";
-            Confirm.ReadOnly = true;
-            Confirm.Text = "Xác nhận";
-            Confirm.UseColumnTextForButtonValue = true;
-            // 
-            // Action
-            // 
-            Action.HeaderText = "Tải xuống";
-            Action.Name = "Action";
-            Action.ReadOnly = true;
-            Action.Text = "Tải xuống";
-            Action.UseColumnTextForButtonValue = true;
-            // 
             // Remove
             // 
             Remove.HeaderText = "Xóa";
             Remove.Name = "Remove";
             Remove.ReadOnly = true;
-            Remove.Resizable = DataGridViewTriState.True;
             Remove.Text = "Xóa";
             Remove.UseColumnTextForButtonValue = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(148, 182);
+            button5.Margin = new Padding(4, 3, 4, 3);
+            button5.Name = "button5";
+            button5.Size = new Size(88, 30);
+            button5.TabIndex = 13;
+            button5.Text = "Thêm file";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(52, 182);
+            button4.Margin = new Padding(4, 3, 4, 3);
+            button4.Name = "button4";
+            button4.Size = new Size(88, 30);
+            button4.TabIndex = 12;
+            button4.Text = "Browse";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Controls.Add(groupBox1);
-            flowLayoutPanel1.Controls.Add(groupBox4);
             flowLayoutPanel1.Controls.Add(groupBox3);
             flowLayoutPanel1.Controls.Add(groupBox2);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(644, 788);
+            flowLayoutPanel1.Size = new Size(644, 693);
             flowLayoutPanel1.TabIndex = 12;
             // 
-            // ProjectViewForm
+            // ProjectUpdateUserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(644, 788);
+            ClientSize = new Size(644, 693);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ProjectViewForm";
+            Name = "ProjectUpdateUserForm";
             Text = "doc";
-            Load += ProjectViewForm_Load;
+            Load += ProjectUpdateUserForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -490,38 +428,31 @@
         private GroupBox groupBox2;
         private Label label2;
         private GroupBox groupBox3;
-        private GroupBox groupBox4;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label3;
+        private RichTextBox txtContent;
         private Label label4;
         private Label label5;
         private Label label7;
         private Label label6;
         private Label label8;
         private Label label9;
-        private Label label11;
-        private Label label10;
+        private DataGridView dataGridView1;
+        private Button button5;
+        private Button button4;
+        private RichTextBox txtMucTieu;
+        private Label label17;
+        private Label label16;
         private Label label15;
         private Label label14;
         private Label label13;
-        private RichTextBox richTextBox2;
-        private RichTextBox richTextBox1;
         private Label label12;
-        private Label label16;
-        private DataGridView dataGridView3;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn FirstName;
-        private DataGridViewTextBoxColumn Email;
-        private Button button1;
-        private DataGridViewTextBoxColumn Id;
+        private Label label11;
+        private Label label10;
+        private ListBox listBox1;
+        private DataGridViewTextBoxColumn FileId;
         private DataGridViewTextBoxColumn FileName;
-        private DataGridViewTextBoxColumn Url;
-        private DataGridViewTextBoxColumn UserName;
         private DataGridViewTextBoxColumn Status;
-        private DataGridViewButtonColumn Confirm;
-        private DataGridViewButtonColumn Action;
         private DataGridViewButtonColumn Remove;
-        private Button btnUpdate;
     }
 }

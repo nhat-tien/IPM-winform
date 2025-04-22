@@ -25,5 +25,11 @@ namespace IPM_winform.IPM.Views.DuAn
                 .FirstOrDefault();
             return userFromDb.Participations.Select(e => e.Project);
         }
+
+        public override void GoToIndex()
+        {
+            SetChildren(new ProjectIndexFriendlyUI(this, RowsProject()));
+            ChangeLabel("index");
+        }
     }
 }

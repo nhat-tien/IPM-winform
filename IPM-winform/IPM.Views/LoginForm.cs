@@ -43,12 +43,12 @@ namespace IPM_winform.IPM.Views
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    OnLogin?.Invoke(this, EventArgs.Empty);
+                    Login();
                 }
             };
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Login()
         {
             var user = userManager.Login(txtUserName.Text, txtPassword.Text);
             if (user != null)
@@ -61,6 +61,11 @@ namespace IPM_winform.IPM.Views
             {
                 Message = "Email hoặc mật khẩu chưa chính xác";
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login();
         }
 
         private void txtUserName_Enter(object sender, EventArgs e)

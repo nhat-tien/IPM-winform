@@ -38,16 +38,23 @@ namespace IPM_winform.IPM.Views.DuAn
 
         private void ProjectViewForm_Load(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             var project = db.Projects
-                .Include(e => e.ApprovingAgency)
-                .Include(e => e.AffiliatedUnit)
-                .Include(e => e.Category)
-                .Include(e => e.Counterparty)
-                .Include(e => e.Files)
-                .Include(e => e.Participations)
-                .ThenInclude(e => e.User)
-                .Where(e => e.ProjectId == _id)
-                .FirstOrDefault();
+                .AsNoTracking()
+               .Include(e => e.ApprovingAgency)
+               .Include(e => e.AffiliatedUnit)
+               .Include(e => e.Category)
+               .Include(e => e.Counterparty)
+               .Include(e => e.Files)
+               .ThenInclude(e => e.User)
+               .Include(e => e.Participations)
+               .ThenInclude(e => e.User)
+               .Where(e => e.ProjectId == _id)
+               .FirstOrDefault();
 
             if (project is null)
             {
@@ -64,7 +71,7 @@ namespace IPM_winform.IPM.Views.DuAn
             label15.Text = project.ApprovingAgency?.ApprovingAgencyName;
             label16.Text = project.Counterparty?.CounterpartyName;
 
-            
+            dataGridView3.Rows.Clear();
             foreach (var part in project.Participations)
             {
                 var user = part.User;
@@ -75,16 +82,63 @@ namespace IPM_winform.IPM.Views.DuAn
                  );
             };
 
+            dataGridView1.Rows.Clear();
             foreach (var file in project.Files)
             {
                 dataGridView1.Rows.Add(
                     file.FileId,
                     file.FileName,
-                    file.ObjectName
-                    
+                    file.ObjectName,
+                    file.User.LastName + " " + file.User.FirstName,
+                    file.Status == "wait" ? "Chờ xác nhận" : "Đã xác nhận"
                  );
             };
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteFile(int id)
+        {
+            db.Files.Where(e => e.FileId == id).ExecuteDelete();
+            LoadData();
+        }
+
+        private void ConfirmFile(int id)
+        {
+            db.Files.Where(e => e.FileId == id).ExecuteUpdate(e => e.SetProperty(r => r.Status, "done"));
+            LoadData();
+        }
+
+        private void DownloadFile(int id)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Confirm
+            if (e.ColumnIndex == 5)
+            {
+                ConfirmFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            }
+            //Download
+            else if (e.ColumnIndex == 6)
+            {
+                DownloadFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            }
+            //Delete
+            else if (e.ColumnIndex == 7)
+            {
+                DeleteFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            };
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            _parentView.GoToUpdateManager(_id);
         }
     }
 

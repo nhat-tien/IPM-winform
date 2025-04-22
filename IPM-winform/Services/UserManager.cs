@@ -27,6 +27,28 @@ namespace IPM_winform.Services
             return user;
         }
 
+        public User UpdateUser(User user)
+        {
+            var userDb = db.Users.Single(e => e.UserId == user.UserId);
+            if(!String.IsNullOrEmpty(user.Password))
+            {
+              userDb.Password = HashPassword(user.Password);
+            }
+            userDb.LastName = user.LastName;
+            userDb.FirstName = user.FirstName;
+            userDb.PhoneNumber = user.PhoneNumber;
+            userDb.Email = user.Email;
+            userDb.AffiliatedUnitId = user.AffiliatedUnit.AffiliatedUnitId;
+            userDb.Address = user.Address;
+            userDb.PositionId = user.Position.PositionId;
+            userDb.Sex = user.Sex;
+            userDb.Role = user.Role;
+
+            db.Users.Update(userDb);
+            db.SaveChanges();  
+            return userDb;
+        }
+
         public User? Login(string email, string password)
         {
     

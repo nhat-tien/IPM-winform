@@ -48,7 +48,6 @@
             label10 = new Label();
             button1 = new Button();
             button2 = new Button();
-            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -261,28 +260,19 @@
             // 
             // button2
             // 
-            button2.Location = new Point(264, 395);
+            button2.Location = new Point(368, 395);
             button2.Name = "button2";
             button2.Size = new Size(127, 23);
             button2.TabIndex = 11;
             button2.Text = "Cập nhật thông tin";
             button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(397, 395);
-            button3.Name = "button3";
-            button3.Size = new Size(98, 23);
-            button3.TabIndex = 12;
-            button3.Text = "Đổi mật khẩu";
-            button3.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // TaiKhoanForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(519, 430);
-            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(groupBox1);
@@ -311,7 +301,6 @@
         private GroupBox groupBox1;
         private Button button1;
         private Button button2;
-        private Button button3;
         private Label label9;
         private Label label10;
         private Label label13;

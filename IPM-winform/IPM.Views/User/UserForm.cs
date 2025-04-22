@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace IPM_winform.IPM.Views.User
 {
@@ -60,7 +61,10 @@ namespace IPM_winform.IPM.Views.User
 
         public IEnumerable<Infrastructure.Entities.User> RowsUser()
         {
-            return db.Users.ToList();
+            return db.Users
+                .Include(e => e.Position)
+                .Include(e => e.AffiliatedUnit)
+                .ToList();
         }
         public override void GoToIndex()
         {
@@ -70,7 +74,19 @@ namespace IPM_winform.IPM.Views.User
         public override void GoToInsert()
         {
             SetChildren(new UserInsertForm(this));
-            ChangeLabel("insert"); ;
+            ChangeLabel("insert");
+        }
+
+        public void GoToAdvanceSearch()
+        {
+            SetChildren(new UserSearchForm(this, RowsUser()));
+            ChangeLabel("search"); ;
+        }
+
+        public void GoToUpdateUser(int id)
+        {
+            SetChildren(new UserUpdateForm(this, id));
+            ChangeLabel("update");
         }
     }
 }

@@ -12,15 +12,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IPM_winform.IPM.Views.GenericForm
+namespace IPM_winform.IPM.Views.User
 {
     public partial class UserInsertForm : Form
     {
         private readonly UserManager userManager = new UserManager();
         private readonly AppDBContext db = AppDbContextSingleton.GetInstance();
 
-        private readonly FormContainer _parentView;
-        public UserInsertForm(FormContainer parentView)
+        private readonly UserForm _parentView;
+        public UserInsertForm(UserForm parentView)
         {
             InitializeComponent();
             _parentView = parentView;

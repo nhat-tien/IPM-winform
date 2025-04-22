@@ -1,7 +1,10 @@
-﻿using IPM.Infrastructure.EntityFrameworkDataAccess;
+﻿using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using IPM.Infrastructure.EntityFrameworkDataAccess;
 using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
 using IPM_winform.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,23 +19,23 @@ using System.Windows.Forms;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
-    public partial class ProjectAddForm : Form
+    public partial class ProjectUpdateManagerForm : Form
     {
 
         private readonly ProjectForm _parentView;
+        private readonly int _id;
         private List<Infrastructure.Entities.User> _users = [];
         private List<Infrastructure.Entities.User> _participate = [];
-        private List<Infrastructure.Entities.File> _file = [];
+        private List<Infrastructure.Entities.User> _addParticipate = [];
+        private List<Infrastructure.Entities.User> _deleteParticipate = [];
+        private int _ownerId;
         private readonly AppDBContext db = AppDbContextSingleton.GetInstance();
-        public ProjectAddForm(ProjectForm parentView)
+        public ProjectUpdateManagerForm(ProjectForm parentView, int id)
         {
             InitializeComponent();
             _parentView = parentView;
-            SetDataSourceCoQuanPheDuyet();
-            SetDataSourceDanhMuc();
-            SetDataSourceDoiTac();
-            SetDataSourceDonViTrucThuoc();
-            SetDataSourceUser();
+            _id = id;
+            SetData();
             LoadDataUser();
             btnMoveIn.Enabled = false;
             btnMoveOut.Enabled = false;
@@ -40,17 +43,20 @@ namespace IPM_winform.IPM.Views.DuAn
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var currentUser = Session.getSession();
-            var participates = _participate.Select(e =>
-            {
-                if(e.UserId == currentUser.UserId)
+            var addParticipates = _addParticipate.Select(e =>
+            {             
                 {
                     return new Participation()
                     {
+                        ProjectId = _id,
                         UserId = e.UserId,
-                        Owner = true
+                        Owner = false
                     };
-                } else
+                }
+            });
+
+            var deleteParticipates = _deleteParticipate.Select(e =>
+            {
                 {
                     return new Participation()
                     {
@@ -58,24 +64,36 @@ namespace IPM_winform.IPM.Views.DuAn
                         Owner = false
                     };
                 }
-            } 
-             );
-        
-            var project = new Infrastructure.Entities.Project()
+            });
+
+            var project = db.Projects.Single(e => e.ProjectId == _id);
+            if (project is null)
             {
-                ProjectNameVietnamese = txtProjectNameVn.Text,
-                ProjectNameEnglish = txtProjectNameEng.Text,
-                ProjectPurpose = txtMucTieu.Text,
-                Content = txtContent.Text,
-                AffiliatedUnit = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem,
-                Category = (Category)cbbDanhMuc.SelectedItem,
-                ApprovingAgency = (ApprovingAgency)cbbCoQuanPheDuyet.SelectedItem,
-                Counterparty = (Counterparty)cbbDoiTac.SelectedItem,
-                Participations = participates.ToList(),
-                Files = _file.ToList(),
-                StartDate = startedDate.Value.Date
+                return;
             };
-            db.Projects.Add(project);
+
+            project.ProjectNameVietnamese = txtProjectNameVn.Text;
+            project.ProjectNameEnglish = txtProjectNameEng.Text;
+            project.ProjectPurpose = txtMucTieu.Text;
+            project.Content = txtContent.Text;
+            project.AffiliatedUnit = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem;
+            project.Category = (Category)cbbDanhMuc.SelectedItem;
+            project.ApprovingAgency = (ApprovingAgency)cbbCoQuanPheDuyet.SelectedItem;
+            project.Counterparty = (Counterparty)cbbDoiTac.SelectedItem;
+            project.StartDate = startedDate.Value.Date;
+            
+            db.Projects.Update(project);
+
+            db.Participations.AddRange(addParticipates);
+
+            foreach(var participation in deleteParticipates)
+            {
+                db.Participations
+                    .Where(e => e.UserId == participation.UserId)
+                    .Where(e => e.ProjectId == _id)
+                    .ExecuteDelete();
+            }
+
             db.SaveChanges();
         }
 
@@ -84,40 +102,64 @@ namespace IPM_winform.IPM.Views.DuAn
             _parentView.GoToIndex();
         }
 
-        public void SetDataSourceDonViTrucThuoc()
+     
+
+        public void SetData()
         {
-            var entities = db.AffiliatedUnits.ToList();
+            var dvtt = db.AffiliatedUnits.ToList();
             cbbDonViTrucThuoc.ValueMember = null;
             cbbDonViTrucThuoc.DisplayMember = "AffiliatedUnitName";
-            cbbDonViTrucThuoc.DataSource = entities;
-        }
-        public void SetDataSourceDanhMuc()
-        {
-            var entities = db.Categories.ToList();
+            cbbDonViTrucThuoc.DataSource = dvtt;
+
+            var dm = db.Categories.ToList();
             cbbDanhMuc.ValueMember = null;
             cbbDanhMuc.DisplayMember = "CategoryName";
-            cbbDanhMuc.DataSource = entities;
-        }
-        public void SetDataSourceCoQuanPheDuyet()
-        {
-            var entities = db.ApprovingAgencies.ToList();
+            cbbDanhMuc.DataSource = dm;
+      
+            var cqpd = db.ApprovingAgencies.ToList();
             cbbCoQuanPheDuyet.ValueMember = null;
             cbbCoQuanPheDuyet.DisplayMember = "ApprovingAgencyName";
-            cbbCoQuanPheDuyet.DataSource = entities;
-        }
-        public void SetDataSourceDoiTac()
-        {
-            var entities = db.Counterparties.ToList();
+            cbbCoQuanPheDuyet.DataSource = cqpd;
+        
+     
+            var dt = db.Counterparties.ToList();
             cbbDoiTac.ValueMember = null;
             cbbDoiTac.DisplayMember = "CounterpartyName";
-            cbbDoiTac.DataSource = entities;
-        }
+            cbbDoiTac.DataSource = dt;
 
-        public void SetDataSourceUser()
-        {
-            var currentUser = Session.getSession();
-            _users = db.Users.Where(e => e.UserId != currentUser.UserId).ToList();
-            _participate.Add(currentUser);
+            var project = db.Projects
+               .AsNoTracking()
+              .Include(e => e.ApprovingAgency)
+              .Include(e => e.AffiliatedUnit)
+              .Include(e => e.Category)
+              .Include(e => e.Counterparty)
+              .Include(e => e.Files)
+              .ThenInclude(e => e.User)
+              .Include(e => e.Participations)
+              .ThenInclude(e => e.User)
+              .Where(e => e.ProjectId == _id)
+              .FirstOrDefault();
+
+            if (project is null)
+            {
+                return;
+            }
+
+            txtProjectNameVn.Text = project.ProjectNameVietnamese;
+            txtProjectNameEng.Text = project.ProjectNameEnglish;
+            startedDate.Value = project.StartDate;
+            txtMucTieu.Text = project.ProjectPurpose;
+            txtContent.Text = project.Content;
+            cbbDonViTrucThuoc.SelectedItem = dvtt.FirstOrDefault(e => e.AffiliatedUnitId == project.AffiliatedUnitId);
+            cbbDanhMuc.SelectedItem = dm.FirstOrDefault(e => e.CategoryId == project.CategoryId);
+            cbbCoQuanPheDuyet.SelectedItem = cqpd.FirstOrDefault(e => e.ApprovingAgencyId == project.ApprovingAgencyId); ;
+            cbbDoiTac.SelectedItem = dt.FirstOrDefault(e => e.CounterpartyId == project.CounterpartyId);
+
+            _ownerId = project.Participations.FirstOrDefault(e => e.Owner).UserId;
+            var user = project.Participations.Select(e => e.User).ToList();
+            var userIds = user.Select(e => e.UserId).ToList();
+            _users = db.Users.Where(e => !userIds.Contains(e.UserId)).ToList();
+            _participate = user;
         }
 
         public void LoadDataUser()
@@ -189,6 +231,7 @@ namespace IPM_winform.IPM.Views.DuAn
         {
             var user = _users.Find(e => e.UserId == Int32.Parse(GetSelectedRowId2()));
             _users = _users.Where(e => e.UserId != user.UserId).ToList();
+            _addParticipate.Add(user);
             _participate.Add(user);
             LoadDataUser();
         }
@@ -204,6 +247,15 @@ namespace IPM_winform.IPM.Views.DuAn
             }
             var user = _participate.Find(e => e.UserId == selectUserId);
             _participate = _participate.Where(e => e.UserId != user.UserId).ToList();
+
+            if(_addParticipate.Any(e => e.UserId == user.UserId))
+            {
+                _addParticipate = _addParticipate.Where(e => e.UserId != user.UserId).ToList();
+            } else
+            {
+                _deleteParticipate.Add(user);
+            };
+
             _users.Add(user);
             LoadDataUser();
         }
@@ -233,58 +285,9 @@ namespace IPM_winform.IPM.Views.DuAn
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    string sourceFile = ofd.FileName;
-                    textBox3.Text = sourceFile;                 
-               }
-            }
-        }
+        
+      
 
-        private void ReloadFile()
-        {
-            dataGridView1.Rows.Clear();
-            foreach (var row in _file)
-            {
-                dataGridView1.Rows.Add(
-                   row.FileName
-                );
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            var currentUser = Session.getSession();
-            string sourceFile = textBox3.Text;
-            string destinationDir = @"C:\IPM-winform\Data\files\";
-            string fileName = Path.GetFileNameWithoutExtension(sourceFile) + DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetExtension(sourceFile);
-            string destinationPath = Path.Combine(destinationDir, fileName);
-            try
-            {
-                if (!Directory.Exists(destinationDir))
-                {
-                    Directory.CreateDirectory(destinationDir);
-                }
-                System.IO.File.Copy(sourceFile, destinationPath, true);
-                textBox3.Text = "";
-
-                _file.Add(new Infrastructure.Entities.File()
-                {
-                    FileName = fileName,
-                    ObjectName = destinationPath,
-                    User = currentUser,
-                    Status = "done"
-                });
-                ReloadFile();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.ToString());
-            }
-        }
+        
     }
 }

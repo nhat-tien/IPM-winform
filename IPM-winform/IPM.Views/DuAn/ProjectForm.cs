@@ -96,5 +96,24 @@ namespace IPM_winform.IPM.Views.DuAn
             SetChildren(new ProjectSearchForm(this, RowsProject()));
             ChangeLabel("search");
         }
+
+        public new void GoToUpdate(int id)
+        {
+            if(Services.Author.IsUser())
+            {
+                SetChildren(new ProjectUpdateUserForm(this, id));
+                ChangeLabel("update");
+            } else
+            {
+                SetChildren(new ProjectViewForm(this, id));
+                ChangeLabel("update");
+            }
+        }
+
+        public void GoToUpdateManager(int id)
+        {
+            SetChildren(new ProjectUpdateManagerForm(this, id));
+            ChangeLabel("update");
+        }
     }
 }

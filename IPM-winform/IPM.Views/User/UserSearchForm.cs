@@ -1,9 +1,13 @@
-﻿using IPM_winform.Dtos;
+﻿using IPM.Infrastructure.EntityFrameworkDataAccess;
+using IPM_winform.Dtos;
+using IPM_winform.IPM.Infrastructure;
+using IPM_winform.IPM.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,20 +16,23 @@ using System.Windows.Forms;
 
 namespace IPM_winform.IPM.Views.User
 {
-    public partial class UserIndexForm : Form
+    public partial class UserSearchForm : Form
     {
         private readonly UserForm _parentView;
 
         private readonly DataGridViewTextBoxColumn[] _columns;
-        public UserIndexForm(UserForm parentView, IEnumerable<Infrastructure.Entities.User> rows)
+        private readonly IEnumerable<Infrastructure.Entities.User> _initialUsers;
+        private readonly AppDBContext db = AppDbContextSingleton.GetInstance();
+        public UserSearchForm(UserForm parentView, IEnumerable<Infrastructure.Entities.User> rows)
         {
             InitializeComponent();
             _parentView = parentView;
             _columns = _parentView.Columns;
+            _initialUsers = rows;
             setUpDataGridViewColumn();
             LoadData(rows);
-            DisableDeleteBtn();
-            DisableEditBtn();
+            SetDataSourceChucVu();
+            SetDataSourceDonViTrucThuoc();
         }
 
         public void setUpDataGridViewColumn()
@@ -100,7 +107,8 @@ namespace IPM_winform.IPM.Views.User
         private void btnEdit_Click(object sender, EventArgs e)
         {
             var row = dataGridView1.SelectedRows;
-            _parentView.GoToUpdateUser(Int32.Parse(GetSelectedRowId()));
+            var name = row[0].Cells[1].Value.ToString() ?? "";
+            _parentView.GoToUpdate(GetSelectedRowId(), name);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -110,6 +118,7 @@ namespace IPM_winform.IPM.Views.User
 
         public void LoadData(IEnumerable<Infrastructure.Entities.User> rows)
         {
+            
             dataGridView1.Rows.Clear();
             foreach (var row in rows)
             {
@@ -124,9 +133,72 @@ namespace IPM_winform.IPM.Views.User
             }
         }
 
+        public void SetDataSourceDonViTrucThuoc()
+        {
+            var entities = db.AffiliatedUnits.ToList();
+            cbbDonViTrucThuoc.ValueMember = null;
+            cbbDonViTrucThuoc.DisplayMember = "AffiliatedUnitName";
+            cbbDonViTrucThuoc.DataSource = entities;
+        }
+        
+        
+        public void SetDataSourceChucVu()
+        {
+            var entities = db.Positions.ToList();
+            cbbChucVu.ValueMember = null;
+            cbbChucVu.DisplayMember = "PositionName";
+            cbbChucVu.DataSource = entities;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            _parentView.GoToAdvanceSearch();
+            var users = _initialUsers;
+            var items = checkedListBox1.CheckedItems;
+
+            if (items.Contains("Họ lót"))
+            {
+                users = users.Where(e => e.LastName.Contains(txtHoLot.Text));
+            }
+            if (items.Contains("Tên"))
+            {
+                users = users.Where(e => e.FirstName.Contains(Ten.Text));
+            }
+            if (items.Contains("Email"))
+            {
+                users = users.Where(e => e.Email.Contains(txtEmail.Text));
+            }
+            if (items.Contains("Số điện thoại"))
+            {
+                users = users.Where(e => e.PhoneNumber.Contains(txtSoDienThoai.Text));
+            }
+            if (items.Contains("Đơn vị trực thuộc"))
+            {
+                var condition = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem;
+                users = users.Where(e => e.AffiliatedUnitId == condition.AffiliatedUnitId);
+            }
+            if (items.Contains("Chức vụ"))
+            {
+                var condition = (Position)cbbChucVu.SelectedItem;
+                users = users.Where(e => e.PositionId == condition.PositionId);
+            }
+
+            if (items.Contains("Vai trò"))
+            {
+                var condition = (string) cbbRole.SelectedItem;
+                users = users.Where(e => e.Role == condition);
+            }
+
+            LoadData(users);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            LoadData(_initialUsers);
         }
     }
 }

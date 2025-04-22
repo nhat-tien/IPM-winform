@@ -1,6 +1,6 @@
 ﻿namespace IPM_winform.IPM.Views.User
 {
-    partial class UserInsertForm
+    partial class UserUpdateForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btnBack = new Button();
-            btnAdd = new Button();
+            btnUpdate = new Button();
             label = new Label();
             txtHoLot = new TextBox();
             s = new GroupBox();
@@ -69,16 +69,16 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
-            // btnAdd
+            // btnUpdate
             // 
-            btnAdd.Location = new Point(109, 33);
-            btnAdd.Margin = new Padding(4, 3, 4, 3);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(88, 27);
-            btnAdd.TabIndex = 10;
-            btnAdd.Text = "Thêm";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            btnUpdate.Location = new Point(109, 33);
+            btnUpdate.Margin = new Padding(4, 3, 4, 3);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(88, 27);
+            btnUpdate.TabIndex = 10;
+            btnUpdate.Text = "Cập nhật";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnAdd_Click;
             // 
             // label
             // 
@@ -125,7 +125,7 @@
             s.Size = new Size(570, 353);
             s.TabIndex = 12;
             s.TabStop = false;
-            s.Text = "Nhập nội dung";
+            s.Text = "Chỉnh sửa nội dung";
             // 
             // label9
             // 
@@ -308,7 +308,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(btnBack);
-            groupBox2.Controls.Add(btnAdd);
+            groupBox2.Controls.Add(btnUpdate);
             groupBox2.Dock = DockStyle.Bottom;
             groupBox2.Location = new Point(0, 361);
             groupBox2.Name = "groupBox2";
@@ -317,7 +317,7 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
             // 
-            // UserInsertForm
+            // UserUpdateForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -325,8 +325,9 @@
             Controls.Add(groupBox2);
             Controls.Add(s);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "UserInsertForm";
+            Name = "UserUpdateForm";
             Text = "InsertForm";
+            Load += UserUpdateForm_Load;
             s.ResumeLayout(false);
             s.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -338,7 +339,7 @@
         #endregion
 
         private Button btnBack;
-        private Button btnAdd;
+        private Button btnUpdate;
         private Label label;
         private TextBox txtHoLot;
         private GroupBox s;

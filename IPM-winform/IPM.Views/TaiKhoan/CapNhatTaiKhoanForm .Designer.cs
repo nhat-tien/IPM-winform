@@ -1,6 +1,6 @@
-﻿namespace IPM_winform.IPM.Views.User
+﻿namespace IPM_winform.IPM.Views.TaiKhoan
 {
-    partial class UserInsertForm
+    partial class CapNhatTaiKhoanForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBack = new Button();
-            btnAdd = new Button();
+            btnUpdate = new Button();
             label = new Label();
             txtHoLot = new TextBox();
             s = new GroupBox();
@@ -37,8 +36,6 @@
             cbbRole = new ComboBox();
             label8 = new Label();
             label7 = new Label();
-            txtMatKhau = new TextBox();
-            label6 = new Label();
             cbbDonViTrucThuoc = new ComboBox();
             cbbChucVu = new ComboBox();
             label5 = new Label();
@@ -53,32 +50,23 @@
             txtTen = new TextBox();
             label2 = new Label();
             groupBox2 = new GroupBox();
+            txtMatKhau = new TextBox();
+            label6 = new Label();
             s.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // btnBack
+            // btnUpdate
             // 
-            btnBack.Location = new Point(13, 33);
-            btnBack.Margin = new Padding(4, 3, 4, 3);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(88, 27);
-            btnBack.TabIndex = 11;
-            btnBack.Text = "Trở về";
-            btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
-            // 
-            // btnAdd
-            // 
-            btnAdd.Location = new Point(109, 33);
-            btnAdd.Margin = new Padding(4, 3, 4, 3);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(88, 27);
-            btnAdd.TabIndex = 10;
-            btnAdd.Text = "Thêm";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            btnUpdate.Location = new Point(13, 33);
+            btnUpdate.Margin = new Padding(4, 3, 4, 3);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(88, 27);
+            btnUpdate.TabIndex = 10;
+            btnUpdate.Text = "Cập nhật";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnAdd_Click;
             // 
             // label
             // 
@@ -100,12 +88,12 @@
             // 
             // s
             // 
+            s.Controls.Add(txtMatKhau);
+            s.Controls.Add(label6);
             s.Controls.Add(label9);
             s.Controls.Add(cbbRole);
             s.Controls.Add(label8);
             s.Controls.Add(label7);
-            s.Controls.Add(txtMatKhau);
-            s.Controls.Add(label6);
             s.Controls.Add(cbbDonViTrucThuoc);
             s.Controls.Add(cbbChucVu);
             s.Controls.Add(label5);
@@ -125,12 +113,12 @@
             s.Size = new Size(570, 353);
             s.TabIndex = 12;
             s.TabStop = false;
-            s.Text = "Nhập nội dung";
+            s.Text = "Chỉnh sửa nội dung";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(165, 243);
+            label9.Location = new Point(165, 249);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(30, 15);
@@ -141,7 +129,7 @@
             // 
             cbbRole.FormattingEnabled = true;
             cbbRole.Items.AddRange(new object[] { "Admin", "Manager", "User" });
-            cbbRole.Location = new Point(165, 261);
+            cbbRole.Location = new Point(165, 267);
             cbbRole.Name = "cbbRole";
             cbbRole.Size = new Size(150, 23);
             cbbRole.TabIndex = 25;
@@ -165,24 +153,6 @@
             label7.Size = new Size(51, 15);
             label7.TabIndex = 23;
             label7.Text = "Chức vụ";
-            // 
-            // txtMatKhau
-            // 
-            txtMatKhau.Location = new Point(7, 261);
-            txtMatKhau.Margin = new Padding(4, 3, 4, 3);
-            txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(150, 23);
-            txtMatKhau.TabIndex = 21;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(7, 243);
-            label6.Margin = new Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(57, 15);
-            label6.TabIndex = 22;
-            label6.Text = "Mật khẩu";
             // 
             // cbbDonViTrucThuoc
             // 
@@ -307,8 +277,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btnBack);
-            groupBox2.Controls.Add(btnAdd);
+            groupBox2.Controls.Add(btnUpdate);
             groupBox2.Dock = DockStyle.Bottom;
             groupBox2.Location = new Point(0, 361);
             groupBox2.Name = "groupBox2";
@@ -317,7 +286,25 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
             // 
-            // UserInsertForm
+            // txtMatKhau
+            // 
+            txtMatKhau.Location = new Point(7, 267);
+            txtMatKhau.Margin = new Padding(4, 3, 4, 3);
+            txtMatKhau.Name = "txtMatKhau";
+            txtMatKhau.Size = new Size(150, 23);
+            txtMatKhau.TabIndex = 27;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(7, 249);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(57, 15);
+            label6.TabIndex = 28;
+            label6.Text = "Mật khẩu";
+            // 
+            // CapNhatTaiKhoanForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -325,8 +312,9 @@
             Controls.Add(groupBox2);
             Controls.Add(s);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "UserInsertForm";
+            Name = "CapNhatTaiKhoanForm";
             Text = "InsertForm";
+            Load += UserUpdateForm_Load;
             s.ResumeLayout(false);
             s.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -336,9 +324,7 @@
         }
 
         #endregion
-
-        private Button btnBack;
-        private Button btnAdd;
+        private Button btnUpdate;
         private Label label;
         private TextBox txtHoLot;
         private GroupBox s;
@@ -356,11 +342,11 @@
         private RichTextBox txtDiaChi;
         private ComboBox cbbChucVu;
         private ComboBox cbbDonViTrucThuoc;
-        private TextBox txtMatKhau;
-        private Label label6;
         private Label label7;
         private Label label8;
         private Label label9;
         private ComboBox cbbRole;
+        private TextBox txtMatKhau;
+        private Label label6;
     }
 }

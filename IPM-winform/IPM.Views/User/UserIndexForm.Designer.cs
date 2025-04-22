@@ -40,6 +40,7 @@
             toolTip1 = new ToolTip(components);
             toolTip2 = new ToolTip(components);
             toolTip3 = new ToolTip(components);
+            button1 = new Button();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -75,6 +76,7 @@
             flowLayoutPanel2.Controls.Add(btnEdit);
             flowLayoutPanel2.Controls.Add(btnDelete);
             flowLayoutPanel2.Controls.Add(btnAdd);
+            flowLayoutPanel2.Controls.Add(button1);
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -161,7 +163,17 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
-            // IndexForm
+            // button1
+            // 
+            button1.Location = new Point(405, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(125, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Tìm kiếm nâng cao";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // UserIndexForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -169,7 +181,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "IndexForm";
+            Name = "UserIndexForm";
             Text = "FormIndex";
             tableLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
@@ -191,5 +203,6 @@
         private ToolTip toolTip3;
         private GroupBox groupBox1;
         private DataGridView dataGridView1;
+        private Button button1;
     }
 }
