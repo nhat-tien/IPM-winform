@@ -10,6 +10,8 @@ public class Project : BaseEntity
 
     public string? ProjectPurpose { get; set; }
 
+    public string? Description { get; set; }
+
     public string? Content { get; set; }
 
     public string? FundedEquipment { get; set; }

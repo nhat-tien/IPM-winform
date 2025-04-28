@@ -63,10 +63,9 @@ namespace IPM_winform.IPM.Views.DoiTac
             return affiliated;
         }
 
-        public override void OnDelete(string id)
+        public override void OnDelete(int id)
         {
-            int idNum = Int32.Parse(id);
-            db.Counterparties.Where(r => r.CounterpartyId == idNum).ExecuteDelete();
+            db.Counterparties.Where(r => r.CounterpartyId == id).ExecuteDelete();
             Reload();
         }
 

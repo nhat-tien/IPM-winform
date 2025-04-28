@@ -19,6 +19,13 @@ namespace IPM_winform.IPM.Views.GenericForm
             InitializeComponent();
             _parentView = parentView;
             label1.Text = _parentView.InsertLabel;
+            txtName.KeyDown += (o, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    _parentView.OnCreate(txtName.Text);
+                }
+            };
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

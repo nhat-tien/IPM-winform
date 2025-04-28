@@ -52,27 +52,14 @@
             btnUpdate = new Button();
             button1 = new Button();
             groupBox4 = new GroupBox();
-            dataGridView3 = new DataGridView();
-            LastName = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
+            flowLayoutPanel2 = new FlowLayoutPanel();
             groupBox3 = new GroupBox();
-            dataGridView1 = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            FileName = new DataGridViewTextBoxColumn();
-            Url = new DataGridViewTextBoxColumn();
-            UserName = new DataGridViewTextBoxColumn();
-            Status = new DataGridViewTextBoxColumn();
-            Confirm = new DataGridViewButtonColumn();
-            Action = new DataGridViewButtonColumn();
-            Remove = new DataGridViewButtonColumn();
+            flowLayoutPanel3 = new FlowLayoutPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -328,7 +315,7 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(dataGridView3);
+            groupBox4.Controls.Add(flowLayoutPanel2);
             groupBox4.Location = new Point(3, 327);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(604, 252);
@@ -336,39 +323,17 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Thành viên";
             // 
-            // dataGridView3
+            // flowLayoutPanel2
             // 
-            dataGridView3.AllowUserToAddRows = false;
-            dataGridView3.AllowUserToDeleteRows = false;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { LastName, FirstName, Email });
-            dataGridView3.Location = new Point(6, 67);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.ReadOnly = true;
-            dataGridView3.Size = new Size(592, 179);
-            dataGridView3.TabIndex = 7;
-            // 
-            // LastName
-            // 
-            LastName.HeaderText = "Họ";
-            LastName.Name = "LastName";
-            LastName.ReadOnly = true;
-            // 
-            // FirstName
-            // 
-            FirstName.HeaderText = "Tên";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            Email.ReadOnly = true;
+            flowLayoutPanel2.AutoScroll = true;
+            flowLayoutPanel2.Location = new Point(13, 42);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(442, 204);
+            flowLayoutPanel2.TabIndex = 0;
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(dataGridView1);
+            groupBox3.Controls.Add(flowLayoutPanel3);
             groupBox3.Location = new Point(3, 585);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(604, 267);
@@ -376,76 +341,13 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "file";
             // 
-            // dataGridView1
+            // flowLayoutPanel3
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, FileName, Url, UserName, Status, Confirm, Action, Remove });
-            dataGridView1.Location = new Point(6, 50);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(592, 211);
-            dataGridView1.TabIndex = 15;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // Id
-            // 
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
-            // FileName
-            // 
-            FileName.HeaderText = "File Name";
-            FileName.Name = "FileName";
-            FileName.ReadOnly = true;
-            // 
-            // Url
-            // 
-            Url.HeaderText = "Url";
-            Url.Name = "Url";
-            Url.ReadOnly = true;
-            Url.Visible = false;
-            // 
-            // UserName
-            // 
-            UserName.HeaderText = "Tên người dùng";
-            UserName.MinimumWidth = 10;
-            UserName.Name = "UserName";
-            UserName.ReadOnly = true;
-            // 
-            // Status
-            // 
-            Status.HeaderText = "Trạng thái";
-            Status.Name = "Status";
-            Status.ReadOnly = true;
-            // 
-            // Confirm
-            // 
-            Confirm.HeaderText = "Xác nhận";
-            Confirm.Name = "Confirm";
-            Confirm.ReadOnly = true;
-            Confirm.Text = "Xác nhận";
-            Confirm.UseColumnTextForButtonValue = true;
-            // 
-            // Action
-            // 
-            Action.HeaderText = "Tải xuống";
-            Action.Name = "Action";
-            Action.ReadOnly = true;
-            Action.Text = "Tải xuống";
-            Action.UseColumnTextForButtonValue = true;
-            // 
-            // Remove
-            // 
-            Remove.HeaderText = "Xóa";
-            Remove.Name = "Remove";
-            Remove.ReadOnly = true;
-            Remove.Resizable = DataGridViewTriState.True;
-            Remove.Text = "Xóa";
-            Remove.UseColumnTextForButtonValue = true;
+            flowLayoutPanel3.AutoScroll = true;
+            flowLayoutPanel3.Location = new Point(13, 57);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(442, 204);
+            flowLayoutPanel3.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -475,9 +377,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -508,20 +408,9 @@
         private RichTextBox richTextBox1;
         private Label label12;
         private Label label16;
-        private DataGridView dataGridView3;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn FirstName;
-        private DataGridViewTextBoxColumn Email;
         private Button button1;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn FileName;
-        private DataGridViewTextBoxColumn Url;
-        private DataGridViewTextBoxColumn UserName;
-        private DataGridViewTextBoxColumn Status;
-        private DataGridViewButtonColumn Confirm;
-        private DataGridViewButtonColumn Action;
-        private DataGridViewButtonColumn Remove;
         private Button btnUpdate;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel3;
     }
 }

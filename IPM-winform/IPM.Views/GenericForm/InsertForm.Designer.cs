@@ -102,15 +102,16 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
             // 
-            // InsertForm
+            // ProjectAddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(570, 306);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "InsertForm";
+            Name = "ProjectAddForm";
             Text = "InsertForm";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

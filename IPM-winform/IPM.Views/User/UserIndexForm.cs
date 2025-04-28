@@ -105,7 +105,7 @@ namespace IPM_winform.IPM.Views.User
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _parentView.OnDelete(GetSelectedRowId());
+            _parentView.OnDelete(Int32.Parse(GetSelectedRowId()));
         }
 
         public void LoadData(IEnumerable<Infrastructure.Entities.User> rows)

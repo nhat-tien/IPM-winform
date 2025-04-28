@@ -62,10 +62,9 @@ namespace IPM_winform.IPM.Views.DonViTienTe
             return affiliated;
         }
 
-        public override void OnDelete(string id)
+        public override void OnDelete(int id)
         {
-            int idNum = Int32.Parse(id);
-            db.CurrencyUnits.Where(r => r.CurrencyUnitId == idNum).ExecuteDelete();
+            db.CurrencyUnits.Where(r => r.CurrencyUnitId == id).ExecuteDelete();
             Reload();
         }
 

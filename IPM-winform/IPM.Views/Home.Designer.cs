@@ -39,6 +39,9 @@
             panel2 = new Panel();
             label4 = new Label();
             label2 = new Label();
+            elipseControl2 = new Controls.ElipseControl();
+            elipseControl3 = new Controls.ElipseControl();
+            elipseControl1 = new Controls.ElipseControl();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -48,6 +51,7 @@
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.BackColor = Color.White;
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 23F));
@@ -86,10 +90,10 @@
             panel3.Controls.Add(label5);
             panel3.Controls.Add(label6);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(224, 6);
-            panel3.Margin = new Padding(6);
+            panel3.Location = new Point(218, 6);
+            panel3.Margin = new Padding(0, 6, 0, 6);
             panel3.Name = "panel3";
-            panel3.Size = new Size(211, 119);
+            panel3.Size = new Size(223, 119);
             panel3.TabIndex = 2;
             // 
             // label5
@@ -203,6 +207,21 @@
             label2.TabIndex = 1;
             label2.Text = "Tổng số người dùng";
             // 
+            // elipseControl2
+            // 
+            elipseControl2.CornerRadius = 20;
+            elipseControl2.TargetControl = panel2;
+            // 
+            // elipseControl3
+            // 
+            elipseControl3.CornerRadius = 20;
+            elipseControl3.TargetControl = panel3;
+            // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 20;
+            elipseControl1.TargetControl = panel1;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -237,5 +256,8 @@
         private Panel panel3;
         private Label label5;
         private Label label6;
+        private Controls.ElipseControl elipseControl2;
+        private Controls.ElipseControl elipseControl3;
+        private Controls.ElipseControl elipseControl1;
     }
 }

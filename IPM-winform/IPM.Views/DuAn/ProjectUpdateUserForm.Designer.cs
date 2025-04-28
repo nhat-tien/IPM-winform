@@ -50,20 +50,16 @@
             label2 = new Label();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
-            label10 = new Label();
-            listBox1 = new ListBox();
-            dataGridView1 = new DataGridView();
-            FileId = new DataGridViewTextBoxColumn();
-            FileName = new DataGridViewTextBoxColumn();
-            Status = new DataGridViewTextBoxColumn();
-            Remove = new DataGridViewButtonColumn();
-            button5 = new Button();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             button4 = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -111,7 +107,7 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(604, 318);
+            groupBox1.Size = new Size(755, 318);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin chung";
@@ -286,106 +282,66 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(btnBack);
-            groupBox2.Location = new Point(3, 715);
+            groupBox2.Location = new Point(3, 602);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(604, 78);
+            groupBox2.Size = new Size(755, 78);
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(label10);
-            groupBox3.Controls.Add(listBox1);
-            groupBox3.Controls.Add(dataGridView1);
-            groupBox3.Controls.Add(button5);
+            groupBox3.Controls.Add(flowLayoutPanel2);
+            groupBox3.Controls.Add(panel1);
             groupBox3.Controls.Add(button4);
             groupBox3.Location = new Point(3, 327);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(604, 382);
+            groupBox3.Size = new Size(755, 269);
             groupBox3.TabIndex = 14;
             groupBox3.TabStop = false;
             groupBox3.Text = "File";
             // 
-            // label10
+            // flowLayoutPanel2
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(49, 29);
-            label10.Name = "label10";
-            label10.Size = new Size(65, 15);
-            label10.TabIndex = 16;
-            label10.Text = "File upload";
+            flowLayoutPanel2.AutoScroll = true;
+            flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel2.Location = new Point(256, 38);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(493, 206);
+            flowLayoutPanel2.TabIndex = 18;
             // 
-            // listBox1
+            // panel1
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(52, 49);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(491, 124);
-            listBox1.TabIndex = 15;
+            panel1.AllowDrop = true;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(23, 38);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(217, 163);
+            panel1.TabIndex = 19;
+            panel1.DragDrop += panel1_DragDrop;
+            panel1.DragEnter += panel1_DragEnter;
             // 
-            // dataGridView1
+            // pictureBox1
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FileId, FileName, Status, Remove });
-            dataGridView1.Location = new Point(25, 216);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(560, 150);
-            dataGridView1.TabIndex = 14;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // FileId
-            // 
-            FileId.HeaderText = "Id";
-            FileId.Name = "FileId";
-            FileId.ReadOnly = true;
-            FileId.Visible = false;
-            // 
-            // FileName
-            // 
-            FileName.HeaderText = "File Name";
-            FileName.Name = "FileName";
-            FileName.ReadOnly = true;
-            // 
-            // Status
-            // 
-            Status.HeaderText = "Trạng thái";
-            Status.Name = "Status";
-            Status.ReadOnly = true;
-            // 
-            // Remove
-            // 
-            Remove.HeaderText = "Xóa";
-            Remove.Name = "Remove";
-            Remove.ReadOnly = true;
-            Remove.Text = "Xóa";
-            Remove.UseColumnTextForButtonValue = true;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(148, 182);
-            button5.Margin = new Padding(4, 3, 4, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(88, 30);
-            button5.TabIndex = 13;
-            button5.Text = "Thêm file";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.Untitled_2025_04_21_1003;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(217, 163);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
             // 
             // button4
             // 
-            button4.Location = new Point(52, 182);
+            button4.Location = new Point(89, 207);
             button4.Margin = new Padding(4, 3, 4, 3);
             button4.Name = "button4";
-            button4.Size = new Size(88, 30);
-            button4.TabIndex = 12;
+            button4.Size = new Size(88, 27);
+            button4.TabIndex = 17;
             button4.Text = "Browse";
             button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            button4.Click += button4_Click_1;
             // 
             // flowLayoutPanel1
             // 
@@ -396,7 +352,7 @@
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(644, 693);
+            flowLayoutPanel1.Size = new Size(770, 693);
             flowLayoutPanel1.TabIndex = 12;
             // 
             // ProjectUpdateUserForm
@@ -404,7 +360,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(644, 693);
+            ClientSize = new Size(770, 693);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProjectUpdateUserForm";
@@ -414,8 +370,8 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -437,9 +393,6 @@
         private Label label6;
         private Label label8;
         private Label label9;
-        private DataGridView dataGridView1;
-        private Button button5;
-        private Button button4;
         private RichTextBox txtMucTieu;
         private Label label17;
         private Label label16;
@@ -448,11 +401,9 @@
         private Label label13;
         private Label label12;
         private Label label11;
-        private Label label10;
-        private ListBox listBox1;
-        private DataGridViewTextBoxColumn FileId;
-        private DataGridViewTextBoxColumn FileName;
-        private DataGridViewTextBoxColumn Status;
-        private DataGridViewButtonColumn Remove;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Button button4;
     }
 }

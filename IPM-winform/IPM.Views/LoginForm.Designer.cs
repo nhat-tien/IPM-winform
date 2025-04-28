@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
-            label5 = new Label();
             lbMessage = new Label();
             button1 = new Button();
             txtPassword = new TextBox();
@@ -38,6 +37,7 @@
             txtUserName = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            elipseControl1 = new Controls.ElipseControl();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -46,7 +46,6 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(label5);
             panel1.Controls.Add(lbMessage);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(txtPassword);
@@ -64,23 +63,14 @@
             // 
             pictureBox1.BackColor = Color.White;
             pictureBox1.Image = Properties.Resources.icons8_eye_20;
-            pictureBox1.Location = new Point(323, 266);
+            pictureBox1.Location = new Point(314, 251);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(22, 20);
+            pictureBox1.Size = new Size(31, 30);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             pictureBox1.MouseDown += pictureBox1_MouseDown;
             pictureBox1.MouseUp += pictureBox1_MouseUp;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(161, 426);
-            label5.Name = "label5";
-            label5.Size = new Size(186, 15);
-            label5.TabIndex = 7;
-            label5.Text = "Chưa có tài khoản? đi đến đăng kí";
-            label5.Click += label5_Click;
             // 
             // lbMessage
             // 
@@ -94,21 +84,26 @@
             // 
             // button1
             // 
-            button1.Location = new Point(43, 317);
+            button1.BackColor = SystemColors.ActiveCaption;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button1.Location = new Point(42, 325);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
-            button1.Size = new Size(304, 32);
+            button1.Size = new Size(305, 40);
             button1.TabIndex = 5;
             button1.Text = "Đăng Nhập";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(43, 265);
+            txtPassword.Font = new Font("Segoe UI", 15F);
+            txtPassword.Location = new Point(43, 249);
             txtPassword.Margin = new Padding(4, 3, 4, 3);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(304, 23);
+            txtPassword.Size = new Size(304, 34);
             txtPassword.TabIndex = 4;
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.Enter += txtPassword_Enter;
@@ -116,31 +111,34 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(40, 247);
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(39, 226);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(57, 15);
+            label3.Size = new Size(76, 21);
             label3.TabIndex = 3;
             label3.Text = "Password";
             // 
             // txtUserName
             // 
-            txtUserName.Location = new Point(43, 212);
+            txtUserName.Font = new Font("Segoe UI", 15F);
+            txtUserName.Location = new Point(43, 183);
             txtUserName.Margin = new Padding(4, 3, 4, 3);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(305, 23);
+            txtUserName.Size = new Size(305, 34);
             txtUserName.TabIndex = 2;
             txtUserName.Enter += txtUserName_Enter;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 194);
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(40, 159);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(60, 15);
+            label2.Size = new Size(48, 21);
             label2.TabIndex = 1;
-            label2.Text = "Username";
+            label2.Text = "Email";
             // 
             // label1
             // 
@@ -152,6 +150,11 @@
             label1.Size = new Size(170, 33);
             label1.TabIndex = 0;
             label1.Text = "Đăng Nhập";
+            // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 30;
+            elipseControl1.TargetControl = panel1;
             // 
             // LoginForm
             // 
@@ -180,7 +183,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label2;
-        private Label label5;
         private PictureBox pictureBox1;
+        private Controls.ElipseControl elipseControl1;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using IPM.Infrastructure.EntityFrameworkDataAccess;
+using IPM_winform.Controls;
 using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
 using IPM_winform.Services;
@@ -37,14 +38,12 @@ namespace IPM_winform.IPM.Views.DuAn
             _id = id;
             SetData();
             LoadDataUser();
-            btnMoveIn.Enabled = false;
-            btnMoveOut.Enabled = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var addParticipates = _addParticipate.Select(e =>
-            {             
+            {
                 {
                     return new Participation()
                     {
@@ -76,17 +75,18 @@ namespace IPM_winform.IPM.Views.DuAn
             project.ProjectNameEnglish = txtProjectNameEng.Text;
             project.ProjectPurpose = txtMucTieu.Text;
             project.Content = txtContent.Text;
+            project.Description = txtDesc.Text;
             project.AffiliatedUnit = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem;
             project.Category = (Category)cbbDanhMuc.SelectedItem;
             project.ApprovingAgency = (ApprovingAgency)cbbCoQuanPheDuyet.SelectedItem;
             project.Counterparty = (Counterparty)cbbDoiTac.SelectedItem;
             project.StartDate = startedDate.Value.Date;
-            
+
             db.Projects.Update(project);
 
             db.Participations.AddRange(addParticipates);
 
-            foreach(var participation in deleteParticipates)
+            foreach (var participation in deleteParticipates)
             {
                 db.Participations
                     .Where(e => e.UserId == participation.UserId)
@@ -102,7 +102,7 @@ namespace IPM_winform.IPM.Views.DuAn
             _parentView.GoToIndex();
         }
 
-     
+
 
         public void SetData()
         {
@@ -115,13 +115,13 @@ namespace IPM_winform.IPM.Views.DuAn
             cbbDanhMuc.ValueMember = null;
             cbbDanhMuc.DisplayMember = "CategoryName";
             cbbDanhMuc.DataSource = dm;
-      
+
             var cqpd = db.ApprovingAgencies.ToList();
             cbbCoQuanPheDuyet.ValueMember = null;
             cbbCoQuanPheDuyet.DisplayMember = "ApprovingAgencyName";
             cbbCoQuanPheDuyet.DataSource = cqpd;
-        
-     
+
+
             var dt = db.Counterparties.ToList();
             cbbDoiTac.ValueMember = null;
             cbbDoiTac.DisplayMember = "CounterpartyName";
@@ -150,6 +150,7 @@ namespace IPM_winform.IPM.Views.DuAn
             startedDate.Value = project.StartDate;
             txtMucTieu.Text = project.ProjectPurpose;
             txtContent.Text = project.Content;
+            txtDesc.Text = project.Description;
             cbbDonViTrucThuoc.SelectedItem = dvtt.FirstOrDefault(e => e.AffiliatedUnitId == project.AffiliatedUnitId);
             cbbDanhMuc.SelectedItem = dm.FirstOrDefault(e => e.CategoryId == project.CategoryId);
             cbbCoQuanPheDuyet.SelectedItem = cqpd.FirstOrDefault(e => e.ApprovingAgencyId == project.ApprovingAgencyId); ;
@@ -164,101 +165,72 @@ namespace IPM_winform.IPM.Views.DuAn
 
         public void LoadDataUser()
         {
-            dataGridView2.Rows.Clear();
+            flowLayoutPanel3.Controls.Clear();
             foreach (var row in _users)
             {
-                dataGridView2.Rows.Add(
-                   row.UserId,
-                   row.LastName,
-                   row.FirstName,
-                   row.Email
+                flowLayoutPanel3.Controls.Add(
+                   new UserBlock()
+                   {
+                       Id = row.UserId,
+                       Name = row.LastName + " " + row.FirstName,
+                       Email = row.Email,
+                       AvatarUrl = row.AvatarUrl
+                   }
+
                 );
             }
-            dataGridView3.Rows.Clear();
+
+            flowLayoutPanel4.Controls.Clear();
             foreach (var row in _participate)
             {
-                dataGridView3.Rows.Add(
-                   row.UserId,
-                   row.LastName,
-                   row.FirstName,
-                   row.Email
+                flowLayoutPanel4.Controls.Add(
+                   new UserBlock()
+                   {
+                       Id = row.UserId,
+                       Name = row.LastName + " " + row.FirstName,
+                       Email = row.Email,
+                       AvatarUrl = row.AvatarUrl
+                   }
+
                 );
             }
         }
 
-        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
-        {
-            int numOfRowSelected = dataGridView2.SelectedRows.Count;
-
-            if (numOfRowSelected == 1)
-            {
-                btnMoveIn.Enabled = true;
-            }
-            else
-            {
-                btnMoveIn.Enabled = false;
-            }
-        }
-
-        private void dataGridView3_SelectionChanged(object sender, EventArgs e)
-        {
-            int numOfRowSelected = dataGridView3.SelectedRows.Count;
-
-            if (numOfRowSelected == 1)
-            {
-                btnMoveOut.Enabled = true;
-            }
-            else
-            {
-                btnMoveOut.Enabled = false;
-            }
-        }
-
-        public string GetSelectedRowId2()
-        {
-            var row = dataGridView2.SelectedRows;
-            return row[0].Cells[0].Value.ToString() ?? "";
-        }
-
-        public string GetSelectedRowId3()
-        {
-            var row = dataGridView3.SelectedRows;
-            return row[0].Cells[0].Value.ToString() ?? "";
-        }
 
 
-        private void btnMoveIn_Click(object sender, EventArgs e)
-        {
-            var user = _users.Find(e => e.UserId == Int32.Parse(GetSelectedRowId2()));
-            _users = _users.Where(e => e.UserId != user.UserId).ToList();
-            _addParticipate.Add(user);
-            _participate.Add(user);
-            LoadDataUser();
-        }
 
-        private void btnMoveOut_Click(object sender, EventArgs e)
-        {
-            var currentUser = Session.getSession();
-            var selectUserId = Int32.Parse(GetSelectedRowId3());
-            if (selectUserId == currentUser.UserId)
-            {
-                MessageBox.Show("Không thể loại bỏ chủ dự án", "Thao tác không thành công", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            var user = _participate.Find(e => e.UserId == selectUserId);
-            _participate = _participate.Where(e => e.UserId != user.UserId).ToList();
+        //private void btnMoveIn_Click(object sender, EventArgs e)
+        //{
+        //    var user = _users.Find(e => e.UserId == Int32.Parse(GetSelectedRowId2()));
+        //    _users = _users.Where(e => e.UserId != user.UserId).ToList();
+        //    _addParticipate.Add(user);
+        //    _participate.Add(user);
+        //    LoadDataUser();
+        //}
 
-            if(_addParticipate.Any(e => e.UserId == user.UserId))
-            {
-                _addParticipate = _addParticipate.Where(e => e.UserId != user.UserId).ToList();
-            } else
-            {
-                _deleteParticipate.Add(user);
-            };
+        //private void btnMoveOut_Click(object sender, EventArgs e)
+        //{
+        //    var currentUser = Session.getSession();
+        //    var selectUserId = Int32.Parse(GetSelectedRowId3());
+        //    if (selectUserId == currentUser.UserId)
+        //    {
+        //        MessageBox.Show("Không thể loại bỏ chủ dự án", "Thao tác không thành công", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+        //    var user = _participate.Find(e => e.UserId == selectUserId);
+        //    _participate = _participate.Where(e => e.UserId != user.UserId).ToList();
 
-            _users.Add(user);
-            LoadDataUser();
-        }
+        //    if(_addParticipate.Any(e => e.UserId == user.UserId))
+        //    {
+        //        _addParticipate = _addParticipate.Where(e => e.UserId != user.UserId).ToList();
+        //    } else
+        //    {
+        //        _deleteParticipate.Add(user);
+        //    };
+
+        //    _users.Add(user);
+        //    LoadDataUser();
+        //}
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -273,21 +245,91 @@ namespace IPM_winform.IPM.Views.DuAn
             {
                 return e.FirstName.Contains(searchText) || e.LastName.Contains(searchText) || e.Email.Contains(searchText);
             });
-            dataGridView2.Rows.Clear();
+            flowLayoutPanel3.Controls.Clear();
             foreach (var row in filterUser)
             {
-                dataGridView2.Rows.Add(
-                   row.UserId,
-                   row.LastName,
-                   row.FirstName,
-                   row.Email
+                flowLayoutPanel3.Controls.Add(
+                   new UserBlock()
+                   {
+                       Id = row.UserId,
+                       Name = row.LastName + " " + row.FirstName,
+                       Email = row.Email,
+                       AvatarUrl = row.AvatarUrl
+                   }
+
                 );
             }
         }
+        private void flowLayoutPanel4_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(UserBlock)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
 
-        
-      
+        }
 
-        
+        private void flowLayoutPanel4_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(UserBlock)))
+            {
+
+                UserBlock control = (UserBlock)e.Data.GetData(typeof(UserBlock));
+
+                var user = _users.Find(e => e.UserId == control.Id);
+
+                if (user == null)
+                {
+                    return;
+                }
+
+                _users = _users.Where(e => e.UserId != user.UserId).ToList();
+                _participate.Add(user);
+                LoadDataUser();
+
+            }
+        }
+
+        private void flowLayoutPanel3_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(UserBlock)))
+            {
+
+                UserBlock control = (UserBlock)e.Data.GetData(typeof(UserBlock));
+
+                var currentUser = Session.getSession();
+                var selectUserId = control.Id;
+                if (selectUserId == currentUser.UserId)
+                {
+                    MessageBox.Show("Không thể loại bỏ chủ dự án", "Thao tác không thành công", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var user = _participate.Find(e => e.UserId == selectUserId);
+
+                if (user == null)
+                {
+                    return;
+                }
+
+                _participate = _participate.Where(e => e.UserId != user.UserId).ToList();
+                _users.Add(user);
+                LoadDataUser();
+            }
+        }
+
+        private void flowLayoutPanel3_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(UserBlock)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+
+
+
+
+
+        }
     }
+
 }

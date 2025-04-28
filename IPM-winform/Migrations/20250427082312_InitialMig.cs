@@ -223,6 +223,7 @@ namespace IPM_winform.Migrations
                     ProjectNameEnglish = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProjectNameVietnamese = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProjectPurpose = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FundedEquipment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProjectBudget = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -346,6 +347,11 @@ namespace IPM_winform.Migrations
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Address", "AffiliatedUnitId", "AvatarUrl", "CreatedAt", "Email", "FirstName", "LastName", "Password", "PhoneNumber", "PositionId", "Role", "Sex", "Status", "UpdatedAt", "VerificationValidTime", "VerifiedCodeEmail", "VerifiedStatus" },
+                values: new object[] { 1, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", null, null, "$2a$11$8xfjLfbXdKX9wr2jv23FNuHYPkRUV6VOmQFl/3/dlgGUtpl.zMw.2", null, null, "Admin", 0, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Files_FileTypeId",

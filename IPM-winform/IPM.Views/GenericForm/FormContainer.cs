@@ -30,7 +30,7 @@ namespace IPM_winform.IPM.Views.GenericForm
             Console.Write(name);
         }
 
-        public virtual void OnDelete(string id)
+        public virtual void OnDelete(int id)
         {
             Console.Write(id);
         }

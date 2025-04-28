@@ -19,16 +19,31 @@ namespace IPM_winform.IPM.Views.DuAn
         {
 
             var user = Session.getSession();
-            var userFromDb = db.Users.Include(e => e.Participations)
+            var userFromDb = db.Users
+                .Include(e => e.Participations)
                 .ThenInclude(e => e.Project)
+                .ThenInclude(e => e.AffiliatedUnit)
                 .Where(e => e.UserId == user.UserId)
                 .FirstOrDefault();
             return userFromDb.Participations.Select(e => e.Project);
         }
 
+        public IEnumerable<Participation> RowsParticipation()
+        {
+
+            var user = Session.getSession();
+            var userFromDb = db.Users
+                .Include(e => e.Participations)
+                .ThenInclude(e => e.Project)
+                .ThenInclude(e => e.AffiliatedUnit)
+                .Where(e => e.UserId == user.UserId)
+                .FirstOrDefault();
+            return userFromDb.Participations;
+        }
+
         public override void GoToIndex()
         {
-            SetChildren(new ProjectIndexFriendlyUI(this, RowsProject()));
+            SetChildren(new ProjectIndexFriendlyUI(this, RowsParticipation()));
             ChangeLabel("index");
         }
     }

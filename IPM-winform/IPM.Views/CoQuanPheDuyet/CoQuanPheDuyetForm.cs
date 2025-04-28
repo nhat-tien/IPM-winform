@@ -63,10 +63,10 @@ namespace IPM_winform.IPM.Views.CoQuanPheDuyet
             return affiliated;
         }
 
-        public override void OnDelete(string id)
+        public override void OnDelete(int id)
         {
-            int idNum = Int32.Parse(id);
-            db.ApprovingAgencies.Where(r => r.ApprovingAgencyId == idNum).ExecuteDelete();
+           
+            db.ApprovingAgencies.Where(r => r.ApprovingAgencyId == id).ExecuteDelete();
             Reload();
         }
 

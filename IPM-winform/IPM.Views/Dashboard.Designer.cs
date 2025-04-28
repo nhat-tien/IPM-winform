@@ -67,7 +67,7 @@
             header.Location = new Point(0, 0);
             header.Margin = new Padding(4, 3, 4, 3);
             header.Name = "header";
-            header.Size = new Size(654, 46);
+            header.Size = new Size(695, 46);
             header.TabIndex = 0;
             // 
             // label2
@@ -76,7 +76,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(474, 16);
+            label2.Location = new Point(515, 16);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(74, 16);
@@ -88,7 +88,7 @@
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox1.ContextMenuStrip = contextMenuStrip1;
             pictureBox1.Image = Properties.Resources.user;
-            pictureBox1.Location = new Point(601, 7);
+            pictureBox1.Location = new Point(642, 7);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(31, 32);
@@ -254,7 +254,7 @@
             rightPanel.Location = new Point(209, 0);
             rightPanel.Margin = new Padding(4, 3, 4, 3);
             rightPanel.Name = "rightPanel";
-            rightPanel.Size = new Size(654, 554);
+            rightPanel.Size = new Size(695, 554);
             rightPanel.TabIndex = 1;
             // 
             // mainPanel
@@ -263,7 +263,7 @@
             mainPanel.Location = new Point(0, 46);
             mainPanel.Margin = new Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(654, 508);
+            mainPanel.Size = new Size(695, 508);
             mainPanel.TabIndex = 1;
             // 
             // Dashboard
@@ -271,11 +271,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
-            ClientSize = new Size(863, 554);
+            ClientSize = new Size(904, 554);
             Controls.Add(rightPanel);
             Controls.Add(menu);
             ForeColor = SystemColors.ControlText;
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "Dashboard";

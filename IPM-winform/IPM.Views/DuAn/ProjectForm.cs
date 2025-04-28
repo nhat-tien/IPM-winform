@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using IPM_winform.Services;
+using System.Diagnostics;
+using DocumentFormat.OpenXml.InkML;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
@@ -114,6 +116,18 @@ namespace IPM_winform.IPM.Views.DuAn
         {
             SetChildren(new ProjectUpdateManagerForm(this, id));
             ChangeLabel("update");
+        }
+        public override void OnDelete(int id)
+        {
+            var result = MessageBox.Show("Bạn có chắc muốn xóa dự án, điều này không thể khôi phục", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if(result == DialogResult.OK)
+            {
+                db.Projects.Where(r => r.ProjectId == id).ExecuteDelete();
+                foreach (var entry in db.ChangeTracker.Entries())
+                {
+                    entry.State = EntityState.Detached;
+                }
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IPM_winform.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250421145338_InitialMig")]
+    [Migration("20250427082312_InitialMig")]
     partial class InitialMig
     {
         /// <inheritdoc />
@@ -309,6 +309,9 @@ namespace IPM_winform.Migrations
                     b.Property<int?>("CurrencyUnitId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -496,6 +499,22 @@ namespace IPM_winform.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@gmail.com",
+                            Password = "$2a$11$8xfjLfbXdKX9wr2jv23FNuHYPkRUV6VOmQFl/3/dlgGUtpl.zMw.2",
+                            Role = "Admin",
+                            Sex = 0,
+                            Status = 0,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            VerificationValidTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            VerifiedCodeEmail = 0,
+                            VerifiedStatus = 0
+                        });
                 });
 
             modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.File", b =>

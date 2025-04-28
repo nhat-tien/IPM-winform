@@ -21,6 +21,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\FileBlockWithUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\UserBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\FileBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="IPM.Views\DuAn\ProjectUpdateManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>

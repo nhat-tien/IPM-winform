@@ -51,27 +51,17 @@
             label2 = new Label();
             groupBox2 = new GroupBox();
             groupBox4 = new GroupBox();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            flowLayoutPanel3 = new FlowLayoutPanel();
             label11 = new Label();
-            dataGridView3 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridView2 = new DataGridView();
-            UserId = new DataGridViewTextBoxColumn();
-            LastName = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
             button3 = new Button();
             txtSearch = new TextBox();
-            btnMoveOut = new Button();
-            btnMoveIn = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            txtDesc = new RichTextBox();
+            label12 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -117,6 +107,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtDesc);
+            groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(cbbDoiTac);
             groupBox1.Controls.Add(label8);
@@ -137,7 +129,7 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(604, 318);
+            groupBox1.Size = new Size(683, 318);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin chung";
@@ -292,115 +284,59 @@
             groupBox2.Controls.Add(btnUpdate);
             groupBox2.Location = new Point(3, 585);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(604, 78);
+            groupBox2.Size = new Size(683, 78);
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(flowLayoutPanel4);
+            groupBox4.Controls.Add(flowLayoutPanel3);
             groupBox4.Controls.Add(label11);
-            groupBox4.Controls.Add(dataGridView3);
-            groupBox4.Controls.Add(dataGridView2);
             groupBox4.Controls.Add(button3);
             groupBox4.Controls.Add(txtSearch);
-            groupBox4.Controls.Add(btnMoveOut);
-            groupBox4.Controls.Add(btnMoveIn);
             groupBox4.Location = new Point(3, 327);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(604, 252);
+            groupBox4.Size = new Size(683, 252);
             groupBox4.TabIndex = 15;
             groupBox4.TabStop = false;
             groupBox4.Text = "Thành viên";
             // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.AllowDrop = true;
+            flowLayoutPanel4.AutoScroll = true;
+            flowLayoutPanel4.Location = new Point(338, 82);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new Size(299, 150);
+            flowLayoutPanel4.TabIndex = 12;
+            flowLayoutPanel4.DragDrop += flowLayoutPanel4_DragDrop;
+            flowLayoutPanel4.DragEnter += flowLayoutPanel4_DragEnter;
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.AllowDrop = true;
+            flowLayoutPanel3.AutoScroll = true;
+            flowLayoutPanel3.Location = new Point(15, 82);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(299, 150);
+            flowLayoutPanel3.TabIndex = 11;
+            flowLayoutPanel3.DragDrop += flowLayoutPanel3_DragDrop;
+            flowLayoutPanel3.DragEnter += flowLayoutPanel3_DragEnter;
+            // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(324, 61);
+            label11.Location = new Point(338, 36);
             label11.Name = "label11";
             label11.Size = new Size(98, 15);
             label11.TabIndex = 8;
             label11.Text = "Thành viên dự án";
             // 
-            // dataGridView3
-            // 
-            dataGridView3.AllowUserToAddRows = false;
-            dataGridView3.AllowUserToDeleteRows = false;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn4 });
-            dataGridView3.Location = new Point(342, 90);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.ReadOnly = true;
-            dataGridView3.Size = new Size(243, 150);
-            dataGridView3.TabIndex = 7;
-            dataGridView3.SelectionChanged += dataGridView3_SelectionChanged;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "UserId";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Họ";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Tên";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Email";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView2.AllowUserToDeleteRows = false;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { UserId, LastName, FirstName, Email });
-            dataGridView2.Location = new Point(10, 90);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.ReadOnly = true;
-            dataGridView2.Size = new Size(243, 150);
-            dataGridView2.TabIndex = 6;
-            dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
-            // 
-            // UserId
-            // 
-            UserId.HeaderText = "UserId";
-            UserId.Name = "UserId";
-            UserId.ReadOnly = true;
-            UserId.Visible = false;
-            // 
-            // LastName
-            // 
-            LastName.HeaderText = "Họ";
-            LastName.Name = "LastName";
-            LastName.ReadOnly = true;
-            // 
-            // FirstName
-            // 
-            FirstName.HeaderText = "Tên";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            // 
             // button3
             // 
-            button3.Location = new Point(160, 52);
+            button3.Location = new Point(160, 36);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 5;
@@ -410,30 +346,10 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(13, 53);
+            txtSearch.Location = new Point(13, 37);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(141, 23);
             txtSearch.TabIndex = 4;
-            // 
-            // btnMoveOut
-            // 
-            btnMoveOut.Location = new Point(261, 119);
-            btnMoveOut.Name = "btnMoveOut";
-            btnMoveOut.Size = new Size(75, 23);
-            btnMoveOut.TabIndex = 3;
-            btnMoveOut.Text = "<<";
-            btnMoveOut.UseVisualStyleBackColor = true;
-            btnMoveOut.Click += btnMoveOut_Click;
-            // 
-            // btnMoveIn
-            // 
-            btnMoveIn.Location = new Point(261, 90);
-            btnMoveIn.Name = "btnMoveIn";
-            btnMoveIn.Size = new Size(75, 23);
-            btnMoveIn.TabIndex = 2;
-            btnMoveIn.Text = ">>";
-            btnMoveIn.UseVisualStyleBackColor = true;
-            btnMoveIn.Click += btnMoveIn_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -444,15 +360,33 @@
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(644, 784);
+            flowLayoutPanel1.Size = new Size(698, 784);
             flowLayoutPanel1.TabIndex = 12;
+            // 
+            // txtDesc
+            // 
+            txtDesc.Location = new Point(367, 105);
+            txtDesc.Name = "txtDesc";
+            txtDesc.Size = new Size(166, 66);
+            txtDesc.TabIndex = 35;
+            txtDesc.Text = "";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(364, 87);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(38, 15);
+            label12.TabIndex = 34;
+            label12.Text = "Mô tả";
             // 
             // ProjectUpdateManagerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(644, 784);
+            ClientSize = new Size(698, 784);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProjectUpdateManagerForm";
@@ -462,8 +396,6 @@
             groupBox2.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -494,20 +426,12 @@
         private ComboBox cbbCoQuanPheDuyet;
         private Label label9;
         private ComboBox cbbDoiTac;
-        private Button btnMoveIn;
-        private Button btnMoveOut;
         private Button button3;
         private TextBox txtSearch;
-        private DataGridView dataGridView2;
-        private DataGridView dataGridView3;
         private Label label11;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn UserId;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn FirstName;
-        private DataGridViewTextBoxColumn Email;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private RichTextBox txtDesc;
+        private Label label12;
     }
 }

@@ -63,10 +63,9 @@ namespace IPM_winform.IPM.Views.ChucVu
             return affiliated;
         }
 
-        public override void OnDelete(string id)
+        public override void OnDelete(int id)
         {
-            int idNum = Int32.Parse(id);
-            db.Positions.Where(r => r.PositionId == idNum).ExecuteDelete();
+            db.Positions.Where(r => r.PositionId == id).ExecuteDelete();
             Reload();
         }
 

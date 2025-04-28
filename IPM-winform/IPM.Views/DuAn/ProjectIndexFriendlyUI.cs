@@ -14,26 +14,72 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IPM_winform.Services;
 using System.Diagnostics;
+using IPM_winform.Controls;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
     public partial class ProjectIndexFriendlyUI : Form
     {
-        private readonly ProjectForm _parentView;
-        private readonly IEnumerable<Project> _rows;
-        public ProjectIndexFriendlyUI(ProjectForm parentView, IEnumerable<Project> rows)
+        private readonly MyProjectForm _parentView;
+        private IEnumerable<Participation> _rows;
+        public ProjectIndexFriendlyUI(MyProjectForm parentView, IEnumerable<Participation> rows)
         {
             InitializeComponent();
             _parentView = parentView;
             _rows = rows;
         }
 
+        public void Reload()
+        {
+            _rows = _parentView.RowsParticipation();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var part in _rows)
+            {
+                var row = part.Project;
+                flowLayoutPanel1.Controls.Add(new ProjectBlock()
+                {
+                    ProjectName = row.ProjectNameVietnamese,
+                    Description = row.Description,
+                    AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
+                    Memeber = "0",
+                    File = "0",
+                    OnView = () =>
+                    {
+                        _parentView.GoToUpdate(row.ProjectId);
+                    },
+                    OnDelete = () =>
+                    {
+                        _parentView.OnDelete(row.ProjectId);
+                        Reload();
+                    },
+                    Owner = part.Owner,
+                });
+            }
+        }
+
         private void ProjectIndexFriendlyUI_Load(object sender, EventArgs e)
         {
-            int i = 0;
-            foreach (var row in _rows)
+            foreach (var part in _rows)
             {
-                flowLayoutPanel1.Controls.Add(FolderBuilder(i++, row));
+                var row = part.Project;
+                flowLayoutPanel1.Controls.Add(new ProjectBlock()
+                {
+                    ProjectName = row.ProjectNameVietnamese,
+                    Description = row.Description,
+                    AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
+                    Memeber = "0",
+                    File = "0",
+                    OnView = () =>
+                    {
+                        _parentView.GoToUpdate(row.ProjectId);
+                    },
+                    OnDelete = () =>
+                    {
+                        _parentView.OnDelete(row.ProjectId);
+                        Reload();
+                    },
+                    Owner = part.Owner
+                });
             }
 
             if(Services.Author.IsUser())

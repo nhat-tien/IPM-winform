@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using IPM.Infrastructure.EntityFrameworkDataAccess;
+using IPM_winform.Controls;
 using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
 using IPM_winform.Services;
@@ -39,63 +40,11 @@ namespace IPM_winform.IPM.Views.DuAn
             _parentView.GoToIndex();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    string sourceFile = ofd.FileName;
-                    listBox1.Items.Add(sourceFile);
-                }
-            }
-        }
+        
 
-        private void ReloadFile()
-        {
-            dataGridView1.Rows.Clear();
-            foreach (var row in _file)
-            {
-                dataGridView1.Rows.Add(
-                   row.FileName
-                );
-            }
-        }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            string destinationDir = @"C:\IPM-winform\Data\files\";
-            foreach (string item in listBox1.Items)
-            {
-                string fileName = Path.GetFileNameWithoutExtension(item) + DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetExtension(item);
-                string destinationPath = Path.Combine(destinationDir, fileName);
-                try
-                {
-                    if (!Directory.Exists(destinationDir))
-                    {
-                        Directory.CreateDirectory(destinationDir);
-                    }
-                    System.IO.File.Copy(item, destinationPath, true);
 
-                    db.Files.Add(new Infrastructure.Entities.File()
-                    {
-                        FileName = fileName,
-                        ObjectName = destinationPath,
-                        ProjectId = _id,
-                        UserId = Session.getSession().UserId,
-                        Status = "wait"
-                    });
-                    db.SaveChanges();
-
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.ToString());
-                }
-            }
-            listBox1.Items.Clear();
-            LoadData();
-        }
+    
 
         private void ProjectUpdateUserForm_Load(object sender, EventArgs e)
         {
@@ -131,19 +80,77 @@ namespace IPM_winform.IPM.Views.DuAn
             label16.Text = project.ApprovingAgency?.ApprovingAgencyName;
             label17.Text = project.Counterparty?.CounterpartyName;
 
-            dataGridView1.Rows.Clear();
+            flowLayoutPanel2.Controls.Clear();
             foreach (var file in project.Files)
             {
                 if (file.User.UserId == currentUser.UserId)
                 {
-                    dataGridView1.Rows.Add(
-                        file.FileId,
-                        file.FileName,
-                        file.Status == "wait" ? "Chờ xác nhận" : "Đã xác nhận"
-                     );
+                    flowLayoutPanel2.Controls.Add(
+                        new FileBlockWithUser()
+                        {
+                            Id = file.FileId,
+                            FileName = file.FileName,
+                            UserName = file.User.LastName + " " + file.User.FirstName,
+                            Status = file.Status,
+                            OnDelete = DeleteFile
+                        }
+                        );
                 }
             };
 
+        }
+
+        private void panel1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                foreach (string file in files)
+                {
+                    string sourceFile = file;
+                    string destinationDir = @"C:\IPM-winform\Data\files\";
+                    string fileName = Path.GetFileNameWithoutExtension(sourceFile) + DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetExtension(sourceFile);
+                    string destinationPath = Path.Combine(destinationDir, fileName);
+                    try
+                    {
+                        if (!Directory.Exists(destinationDir))
+                        {
+                            Directory.CreateDirectory(destinationDir);
+                        }
+                        System.IO.File.Copy(sourceFile, destinationPath, true);
+
+                        db.Files.Add(new Infrastructure.Entities.File()
+                        {
+                            FileName = fileName,
+                            ObjectName = destinationPath,
+                            ProjectId = _id,
+                            UserId = Session.getSession().UserId,
+                            Status = "wait"
+                        });
+                        db.SaveChanges();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.ToString());
+                    }
+
+                }
+                LoadData();
+            }
         }
 
         private void DeleteFile(int id)
@@ -152,13 +159,53 @@ namespace IPM_winform.IPM.Views.DuAn
             LoadData();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
         {
-            //Delete
-            if (e.ColumnIndex == 3)
+            using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                DeleteFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
-            };
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string sourceFile = ofd.FileName;
+                    string destinationDir = @"C:\IPM-winform\Data\files\";
+                    string fileName = Path.GetFileNameWithoutExtension(sourceFile) + DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetExtension(sourceFile);
+                    string destinationPath = Path.Combine(destinationDir, fileName);
+                        try
+                        {
+                            if (!Directory.Exists(destinationDir))
+                            {
+                                Directory.CreateDirectory(destinationDir);
+                            }
+                            System.IO.File.Copy(sourceFile, destinationPath, true);
+
+                            db.Files.Add(new Infrastructure.Entities.File()
+                            {
+                                FileName = fileName,
+                                ObjectName = destinationPath,
+                                ProjectId = _id,
+                                UserId = Session.getSession().UserId,
+                                Status = "wait"
+                            });
+                            db.SaveChanges();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex.ToString());
+                        }
+                    }
+                    flowLayoutPanel2.Controls.Clear();
+                    LoadData();
+                }
+            }
         }
-    }
+
+        //private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    //Delete
+        //    if (e.ColumnIndex == 3)
+        //    {
+        //        DeleteFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+        //    };
+        //}
+    
 }

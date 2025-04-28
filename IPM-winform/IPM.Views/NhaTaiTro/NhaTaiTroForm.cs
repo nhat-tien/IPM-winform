@@ -63,10 +63,9 @@ namespace IPM_winform.IPM.Views.NhaTaiTro
             return affiliated;
         }
 
-        public override void OnDelete(string id)
+        public override void OnDelete(int id)
         {
-            int idNum = Int32.Parse(id);
-            db.Sponsors.Where(r => r.SponsorId == idNum).ExecuteDelete();
+            db.Sponsors.Where(r => r.SponsorId == id).ExecuteDelete();
             Reload();
         }
 

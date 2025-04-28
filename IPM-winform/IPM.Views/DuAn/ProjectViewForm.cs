@@ -1,4 +1,5 @@
 ﻿using IPM.Infrastructure.EntityFrameworkDataAccess;
+using IPM_winform.Controls;
 using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -71,33 +72,39 @@ namespace IPM_winform.IPM.Views.DuAn
             label15.Text = project.ApprovingAgency?.ApprovingAgencyName;
             label16.Text = project.Counterparty?.CounterpartyName;
 
-            dataGridView3.Rows.Clear();
+            flowLayoutPanel2.Controls.Clear();
             foreach (var part in project.Participations)
             {
                 var user = part.User;
-                dataGridView3.Rows.Add(
-                    user.LastName,
-                    user.FirstName,
-                    user.Email
+                flowLayoutPanel2.Controls.Add(
+                    new UserBlock()
+                    {
+                     Name = user.LastName + " " + user.LastName,
+                     Email = user.Email,
+                     AvatarUrl = user.AvatarUrl,
+                    }
                  );
             };
 
-            dataGridView1.Rows.Clear();
+             flowLayoutPanel3.Controls.Clear();
             foreach (var file in project.Files)
             {
-                dataGridView1.Rows.Add(
-                    file.FileId,
-                    file.FileName,
-                    file.ObjectName,
-                    file.User.LastName + " " + file.User.FirstName,
-                    file.Status == "wait" ? "Chờ xác nhận" : "Đã xác nhận"
+                flowLayoutPanel3.Controls.Add(new FileBlockWithUser()
+                {
+                    Id = file.FileId,
+                    FileName = file.FileName,
+                    UserName = file.User.LastName + " " + file.User.FirstName,
+                    Status = file.Status,
+                    OnCheck = ConfirmFile,
+                    OnDelete = DeleteFile
+                }
                  );
             };
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            db.Projects.Where(e => e.ProjectId == _id).ExecuteDelete();
         }
 
         private void DeleteFile(int id)
@@ -117,24 +124,24 @@ namespace IPM_winform.IPM.Views.DuAn
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //Confirm
-            if (e.ColumnIndex == 5)
-            {
-                ConfirmFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
-            }
-            //Download
-            else if (e.ColumnIndex == 6)
-            {
-                DownloadFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
-            }
-            //Delete
-            else if (e.ColumnIndex == 7)
-            {
-                DeleteFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
-            };
-        }
+        //private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    //Confirm
+        //    if (e.ColumnIndex == 5)
+        //    {
+        //        ConfirmFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+        //    }
+        //    //Download
+        //    else if (e.ColumnIndex == 6)
+        //    {
+        //        DownloadFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+        //    }
+        //    //Delete
+        //    else if (e.ColumnIndex == 7)
+        //    {
+        //        DeleteFile(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+        //    };
+        //}
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {

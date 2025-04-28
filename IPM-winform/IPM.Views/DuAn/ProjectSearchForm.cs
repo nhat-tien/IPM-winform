@@ -115,7 +115,7 @@ namespace IPM_winform.IPM.Views.DuAn
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _parentView.OnDelete(GetSelectedRowId());
+            _parentView.OnDelete(Int32.Parse(GetSelectedRowId()));
         }
 
         public void LoadData(IEnumerable<Project> rows)

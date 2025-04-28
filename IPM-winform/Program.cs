@@ -1,6 +1,7 @@
 using DocumentFormat.OpenXml.Bibliography;
 using IPM_winform.IPM.Views;
 using IPM_winform.Services;
+using System.Diagnostics;
 
 namespace IPM_winform
 {
@@ -18,7 +19,8 @@ namespace IPM_winform
 
             //Application.Run(new Dashboard("Tien"));
 
-            if(Services.Author.isDevelopment)
+
+            if (Services.Author.isDevelopment)
             {
                 Application.Run(new Dashboard());
             } else
