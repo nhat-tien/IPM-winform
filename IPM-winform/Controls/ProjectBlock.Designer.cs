@@ -38,8 +38,9 @@
             lbdvtt = new Label();
             lbFile = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            xóaToolStripMenuItem = new ToolStripMenuItem();
             xemToolStripMenuItem = new ToolStripMenuItem();
+            kếtThúcDựÁnToolStripMenuItem = new ToolStripMenuItem();
+            xóaToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -121,27 +122,35 @@
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { xóaToolStripMenuItem, xemToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { xemToolStripMenuItem, kếtThúcDựÁnToolStripMenuItem, xóaToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(99, 48);
-            // 
-            // xóaToolStripMenuItem
-            // 
-            xóaToolStripMenuItem.ForeColor = Color.Red;
-            xóaToolStripMenuItem.Image = Properties.Resources.icons8_trash_20;
-            xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            xóaToolStripMenuItem.Size = new Size(98, 22);
-            xóaToolStripMenuItem.Text = "Xóa";
-            xóaToolStripMenuItem.Click += xóaToolStripMenuItem_Click;
+            contextMenuStrip1.Size = new Size(181, 92);
             // 
             // xemToolStripMenuItem
             // 
             xemToolStripMenuItem.ForeColor = SystemColors.ControlText;
             xemToolStripMenuItem.Image = Properties.Resources.icons8_eye_20;
             xemToolStripMenuItem.Name = "xemToolStripMenuItem";
-            xemToolStripMenuItem.Size = new Size(98, 22);
+            xemToolStripMenuItem.Size = new Size(180, 22);
             xemToolStripMenuItem.Text = "Xem";
             xemToolStripMenuItem.Click += xemToolStripMenuItem_Click;
+            // 
+            // kếtThúcDựÁnToolStripMenuItem
+            // 
+            kếtThúcDựÁnToolStripMenuItem.Image = Properties.Resources.icons8_check_48;
+            kếtThúcDựÁnToolStripMenuItem.Name = "kếtThúcDựÁnToolStripMenuItem";
+            kếtThúcDựÁnToolStripMenuItem.Size = new Size(180, 22);
+            kếtThúcDựÁnToolStripMenuItem.Text = "Kết thúc dự án";
+            kếtThúcDựÁnToolStripMenuItem.Click += kếtThúcDựÁnToolStripMenuItem_Click;
+            // 
+            // xóaToolStripMenuItem
+            // 
+            xóaToolStripMenuItem.ForeColor = Color.Red;
+            xóaToolStripMenuItem.Image = Properties.Resources.icons8_trash_20;
+            xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            xóaToolStripMenuItem.Size = new Size(180, 22);
+            xóaToolStripMenuItem.Text = "Xóa";
+            xóaToolStripMenuItem.Click += xóaToolStripMenuItem_Click;
             // 
             // ProjectBlock
             // 
@@ -180,5 +189,6 @@
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem xóaToolStripMenuItem;
         private ToolStripMenuItem xemToolStripMenuItem;
+        private ToolStripMenuItem kếtThúcDựÁnToolStripMenuItem;
     }
 }

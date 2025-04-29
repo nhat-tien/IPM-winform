@@ -27,21 +27,6 @@ namespace IPM_winform.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AidTypes",
-                columns: table => new
-                {
-                    AidTypeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AidTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AidTypes", x => x.AidTypeId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ApprovingAgencies",
                 columns: table => new
                 {
@@ -87,21 +72,6 @@ namespace IPM_winform.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CurrencyUnits",
-                columns: table => new
-                {
-                    CurrencyUnitId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CurrencyUnitName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CurrencyUnits", x => x.CurrencyUnitId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "FileType",
                 columns: table => new
                 {
@@ -132,47 +102,49 @@ namespace IPM_winform.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectUpdateLogs",
+                name: "Projects",
                 columns: table => new
                 {
-                    ProjectUpdateLogId = table.Column<int>(type: "int", nullable: false)
+                    ProjectId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectUpdateLogs", x => x.ProjectUpdateLogId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ReportedProjects",
-                columns: table => new
-                {
-                    ReportedProjectId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectNameEnglish = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProjectNameVietnamese = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProjectPurpose = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsEnd = table.Column<bool>(type: "bit", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AffiliatedUnitId = table.Column<int>(type: "int", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: true),
+                    ApprovingAgencyId = table.Column<int>(type: "int", nullable: true),
+                    CounterpartyId = table.Column<int>(type: "int", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReportedProjects", x => x.ReportedProjectId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Sponsors",
-                columns: table => new
-                {
-                    SponsorId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SponsorName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sponsors", x => x.SponsorId);
+                    table.PrimaryKey("PK_Projects", x => x.ProjectId);
+                    table.ForeignKey(
+                        name: "FK_Projects_AffiliatedUnits_AffiliatedUnitId",
+                        column: x => x.AffiliatedUnitId,
+                        principalTable: "AffiliatedUnits",
+                        principalColumn: "AffiliatedUnitId");
+                    table.ForeignKey(
+                        name: "FK_Projects_ApprovingAgencies_ApprovingAgencyId",
+                        column: x => x.ApprovingAgencyId,
+                        principalTable: "ApprovingAgencies",
+                        principalColumn: "ApprovingAgencyId");
+                    table.ForeignKey(
+                        name: "FK_Projects_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId");
+                    table.ForeignKey(
+                        name: "FK_Projects_Counterparties_CounterpartyId",
+                        column: x => x.CounterpartyId,
+                        principalTable: "Counterparties",
+                        principalColumn: "CounterpartyId");
                 });
 
             migrationBuilder.CreateTable(
@@ -212,73 +184,6 @@ namespace IPM_winform.Migrations
                         column: x => x.PositionId,
                         principalTable: "Positions",
                         principalColumn: "PositionId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Projects",
-                columns: table => new
-                {
-                    ProjectId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectNameEnglish = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProjectNameVietnamese = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProjectPurpose = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FundedEquipment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProjectBudget = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProjectProgress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PercentageOfProgress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AffiliatedUnitId = table.Column<int>(type: "int", nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: true),
-                    SponsorId = table.Column<int>(type: "int", nullable: true),
-                    AidTypeId = table.Column<int>(type: "int", nullable: true),
-                    ApprovingAgencyId = table.Column<int>(type: "int", nullable: true),
-                    CounterpartyId = table.Column<int>(type: "int", nullable: true),
-                    CurrencyUnitId = table.Column<int>(type: "int", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.ProjectId);
-                    table.ForeignKey(
-                        name: "FK_Projects_AffiliatedUnits_AffiliatedUnitId",
-                        column: x => x.AffiliatedUnitId,
-                        principalTable: "AffiliatedUnits",
-                        principalColumn: "AffiliatedUnitId");
-                    table.ForeignKey(
-                        name: "FK_Projects_AidTypes_AidTypeId",
-                        column: x => x.AidTypeId,
-                        principalTable: "AidTypes",
-                        principalColumn: "AidTypeId");
-                    table.ForeignKey(
-                        name: "FK_Projects_ApprovingAgencies_ApprovingAgencyId",
-                        column: x => x.ApprovingAgencyId,
-                        principalTable: "ApprovingAgencies",
-                        principalColumn: "ApprovingAgencyId");
-                    table.ForeignKey(
-                        name: "FK_Projects_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "CategoryId");
-                    table.ForeignKey(
-                        name: "FK_Projects_Counterparties_CounterpartyId",
-                        column: x => x.CounterpartyId,
-                        principalTable: "Counterparties",
-                        principalColumn: "CounterpartyId");
-                    table.ForeignKey(
-                        name: "FK_Projects_CurrencyUnits_CurrencyUnitId",
-                        column: x => x.CurrencyUnitId,
-                        principalTable: "CurrencyUnits",
-                        principalColumn: "CurrencyUnitId");
-                    table.ForeignKey(
-                        name: "FK_Projects_Sponsors_SponsorId",
-                        column: x => x.SponsorId,
-                        principalTable: "Sponsors",
-                        principalColumn: "SponsorId");
                 });
 
             migrationBuilder.CreateTable(
@@ -379,11 +284,6 @@ namespace IPM_winform.Migrations
                 column: "AffiliatedUnitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_AidTypeId",
-                table: "Projects",
-                column: "AidTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Projects_ApprovingAgencyId",
                 table: "Projects",
                 column: "ApprovingAgencyId");
@@ -397,16 +297,6 @@ namespace IPM_winform.Migrations
                 name: "IX_Projects_CounterpartyId",
                 table: "Projects",
                 column: "CounterpartyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_CurrencyUnitId",
-                table: "Projects",
-                column: "CurrencyUnitId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_SponsorId",
-                table: "Projects",
-                column: "SponsorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_AffiliatedUnitId",
@@ -436,12 +326,6 @@ namespace IPM_winform.Migrations
                 name: "Participations");
 
             migrationBuilder.DropTable(
-                name: "ProjectUpdateLogs");
-
-            migrationBuilder.DropTable(
-                name: "ReportedProjects");
-
-            migrationBuilder.DropTable(
                 name: "FileType");
 
             migrationBuilder.DropTable(
@@ -451,9 +335,6 @@ namespace IPM_winform.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "AidTypes");
-
-            migrationBuilder.DropTable(
                 name: "ApprovingAgencies");
 
             migrationBuilder.DropTable(
@@ -461,12 +342,6 @@ namespace IPM_winform.Migrations
 
             migrationBuilder.DropTable(
                 name: "Counterparties");
-
-            migrationBuilder.DropTable(
-                name: "CurrencyUnits");
-
-            migrationBuilder.DropTable(
-                name: "Sponsors");
 
             migrationBuilder.DropTable(
                 name: "AffiliatedUnits");

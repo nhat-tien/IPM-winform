@@ -35,11 +35,15 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             flowLayoutPanel3 = new FlowLayoutPanel();
             btnAdd = new Button();
+            groupBox1 = new GroupBox();
+            rdEnd = new RadioButton();
+            rdActive = new RadioButton();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -105,6 +109,7 @@
             // flowLayoutPanel3
             // 
             flowLayoutPanel3.Controls.Add(btnAdd);
+            flowLayoutPanel3.Controls.Add(groupBox1);
             flowLayoutPanel3.Dock = DockStyle.Fill;
             flowLayoutPanel3.FlowDirection = FlowDirection.RightToLeft;
             flowLayoutPanel3.Location = new Point(3, 3);
@@ -130,6 +135,42 @@
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(rdEnd);
+            groupBox1.Controls.Add(rdActive);
+            groupBox1.Location = new Point(358, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.RightToLeft = RightToLeft.No;
+            groupBox1.Size = new Size(207, 49);
+            groupBox1.TabIndex = 14;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Trạng thái";
+            // 
+            // rdEnd
+            // 
+            rdEnd.AutoSize = true;
+            rdEnd.Location = new Point(121, 18);
+            rdEnd.Name = "rdEnd";
+            rdEnd.Size = new Size(85, 19);
+            rdEnd.TabIndex = 1;
+            rdEnd.Text = "Đã kết thúc";
+            rdEnd.UseVisualStyleBackColor = true;
+            rdEnd.CheckedChanged += OnChange;
+            // 
+            // rdActive
+            // 
+            rdActive.AutoSize = true;
+            rdActive.Checked = true;
+            rdActive.Location = new Point(7, 19);
+            rdActive.Name = "rdActive";
+            rdActive.Size = new Size(111, 19);
+            rdActive.TabIndex = 0;
+            rdActive.TabStop = true;
+            rdActive.Text = "Đang hoạt động";
+            rdActive.UseVisualStyleBackColor = true;
+            rdActive.CheckedChanged += OnChange;
+            // 
             // ProjectIndexFriendlyUI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -147,6 +188,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -159,5 +202,8 @@
         private TableLayoutPanel tableLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel3;
         private Button btnAdd;
+        private GroupBox groupBox1;
+        private RadioButton rdEnd;
+        private RadioButton rdActive;
     }
 }

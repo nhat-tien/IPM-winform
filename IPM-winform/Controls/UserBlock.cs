@@ -24,6 +24,8 @@ namespace IPM_winform.Controls
 
         public int Id { get; set; }
 
+        public bool Owner { get; set; } = false;
+
         public string Name
         {
             get => lbName.Text;

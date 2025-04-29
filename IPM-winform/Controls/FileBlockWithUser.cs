@@ -15,6 +15,7 @@ namespace IPM_winform.Controls
     public partial class FileBlockWithUser : UserControl
     {
         public Action<int> OnCheck { get; set; }
+        public Action<int> OnReject { get; set; }
         public Action<int> OnDelete { get; set; }
         public FileBlockWithUser()
         {
@@ -33,6 +34,11 @@ namespace IPM_winform.Controls
             {
                 lbFileName.Text = value;
             }
+        }
+
+        public string FileUrl
+        {
+            get; set;
         }
 
         public string UserName
@@ -58,6 +64,10 @@ namespace IPM_winform.Controls
                 {
                     lbStatus.Text = "Đã xác nhận";
                 }
+                else if(status == "reject")
+                {
+                    lbStatus.Text = "Từ chối";
+                }
                 else
                 {
                     lbStatus.Text = "Chờ xác nhận";
@@ -71,7 +81,10 @@ namespace IPM_winform.Controls
             {
                 pictureBox2.Image = Properties.Resources.icons8_check_48;
             }
-            else
+             else if (status == "reject")
+            {
+                pictureBox2.Image = Properties.Resources.icons8_x_64;
+            } else
             {
                 pictureBox2.Image = Properties.Resources.icons8_historical_48;
             }
@@ -99,9 +112,9 @@ namespace IPM_winform.Controls
         {
             pictureBox1.Image = GetImageFile();
             setIconStatus();
-            if(Author.IsUser())
+            if (Author.IsUser())
             {
-                contextMenuStrip2.Enabled = false;
+                contextMenuStrip2.Visible = false;
             }
         }
 
@@ -112,7 +125,34 @@ namespace IPM_winform.Controls
 
         private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(FileUrl) && System.IO.File.Exists(FileUrl))
+            {
+                System.IO.File.Delete(FileUrl);
+            }
             OnDelete(Id);
+        }
+
+        private void tảiXuốngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Choose where to save the file";
+                saveFileDialog.FileName = FileName; // Suggest default filename
+                saveFileDialog.Filter = "All Files (*.*)|*.*";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                  
+                 File.Copy(FileUrl, saveFileDialog.FileName, overwrite: true);
+                        //MessageBox.Show("File downloaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
+                }
+            }
+        }
+
+        private void từChốiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OnReject(Id);
         }
     }
 }

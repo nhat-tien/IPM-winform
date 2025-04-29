@@ -92,6 +92,7 @@ namespace IPM_winform.IPM.Views.DuAn
                             FileName = file.FileName,
                             UserName = file.User.LastName + " " + file.User.FirstName,
                             Status = file.Status,
+                            FileUrl = file.ObjectName,
                             OnDelete = DeleteFile
                         }
                         );

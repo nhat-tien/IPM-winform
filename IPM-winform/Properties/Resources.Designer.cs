@@ -113,6 +113,16 @@ namespace IPM_winform.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_download_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-download-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_eye_20 {
             get {
                 object obj = ResourceManager.GetObject("icons8-eye-20", resourceCulture);
@@ -206,6 +216,16 @@ namespace IPM_winform.Properties {
         internal static System.Drawing.Bitmap icons8_word_file_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-word-file-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_x_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-x-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

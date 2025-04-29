@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using IPM_winform.Services;
 using System.Diagnostics;
 using IPM_winform.Controls;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
@@ -36,6 +37,46 @@ namespace IPM_winform.IPM.Views.DuAn
             foreach (var part in _rows)
             {
                 var row = part.Project;
+                if (row.IsEnd)
+                {
+                    continue;
+                }
+                flowLayoutPanel1.Controls.Add(new ProjectBlock()
+                {
+                    ProjectName = row.ProjectNameVietnamese,
+                    Description = row.Description,
+                    AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
+                    Memeber = "0",
+                    File = "0",
+                    OnView = () =>
+                    {
+                        _parentView.GoToUpdate(row.ProjectId);
+                    },
+                    OnDelete = () =>
+                    {
+                        _parentView.OnDelete(row.ProjectId);
+                        Reload();
+                    },
+                    OnEnd = () =>
+                    {
+                        _parentView.OnEndProject(row.ProjectId);
+                        Reload();
+                    },
+                    Owner = part.Owner,
+                    IsEnd = row.IsEnd,
+                });
+            }
+        }
+
+        private void ProjectIndexFriendlyUI_Load(object sender, EventArgs e)
+        {
+            foreach (var part in _rows)
+            {
+                var row = part.Project;
+                if(row.IsEnd)
+                {
+                    continue;
+                }
                 flowLayoutPanel1.Controls.Add(new ProjectBlock()
                 {
                     ProjectName = row.ProjectNameVietnamese,
@@ -53,38 +94,64 @@ namespace IPM_winform.IPM.Views.DuAn
                         Reload();
                     },
                     Owner = part.Owner,
-                });
-            }
-        }
-
-        private void ProjectIndexFriendlyUI_Load(object sender, EventArgs e)
-        {
-            foreach (var part in _rows)
-            {
-                var row = part.Project;
-                flowLayoutPanel1.Controls.Add(new ProjectBlock()
-                {
-                    ProjectName = row.ProjectNameVietnamese,
-                    Description = row.Description,
-                    AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
-                    Memeber = "0",
-                    File = "0",
-                    OnView = () =>
-                    {
-                        _parentView.GoToUpdate(row.ProjectId);
-                    },
-                    OnDelete = () =>
-                    {
-                        _parentView.OnDelete(row.ProjectId);
-                        Reload();
-                    },
-                    Owner = part.Owner
+                    IsEnd = row.IsEnd,
                 });
             }
 
             if(Services.Author.IsUser())
             {
-                btnAdd.Enabled = false;
+                btnAdd.Visible = false;
+                groupBox1.Visible = false;
+            }
+        }
+
+        private void OnChange(object sender, EventArgs e)
+        {
+            bool sortEnd = rdEnd.Checked;
+            _rows = _parentView.RowsParticipation();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var part in _rows)
+            {
+                
+                var row = part.Project;
+
+                if (sortEnd)
+                {
+                    if (!row.IsEnd)
+                    {
+                        continue;
+                    };
+                }
+                else
+                {
+                    if (row.IsEnd)
+                    {
+                        continue;
+                    };
+                }
+
+          
+                 flowLayoutPanel1.Controls.Add(new ProjectBlock()
+                    {
+                        ProjectName = row.ProjectNameVietnamese,
+                        Description = row.Description,
+                        AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
+                        Memeber = "0",
+                        File = "0",
+                        OnView = () =>
+                        {
+                            _parentView.GoToUpdate(row.ProjectId);
+                        },
+                        OnDelete = () =>
+                        {
+                            _parentView.OnDelete(row.ProjectId);
+                            Reload();
+                        },
+                        Owner = part.Owner,
+                        IsEnd = row.IsEnd,
+                 });
+      
+               
             }
         }
 
@@ -92,51 +159,7 @@ namespace IPM_winform.IPM.Views.DuAn
         {
 
         }
-
-        private FlowLayoutPanel FolderBuilder(int id, Project project)
-        {
-
-            FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
-            Label label = new Label();
-            PictureBox pictureBox = new PictureBox();
-
-            pictureBox.Image = Properties.Resources.icons8_folder_96;
-            pictureBox.Location = new Point(3, 3);
-            pictureBox.Name = "pic" + id;
-            pictureBox.Size = new Size(126, 106);
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox.TabIndex = 1;
-            pictureBox.TabStop = false;
-            pictureBox.Click += (object sender, EventArgs e) =>
-            { 
-                _parentView.GoToUpdate(project.ProjectId);
-            };
-
-            label.Anchor = AnchorStyles.None;
-            label.AutoSize = true;
-            label.Font = new Font("Segoe UI", 10F);
-            label.Location = new Point(43, 112);
-            label.Name = "lab" + id;
-            label.Size = new Size(45, 19);
-            label.TabIndex = 0;
-            label.Text = project.ProjectNameVietnamese;
-            label.TextAlign = ContentAlignment.MiddleCenter;
-
-            flowLayoutPanel.Anchor = AnchorStyles.None;
-            flowLayoutPanel.BackColor = Color.Transparent;
-            flowLayoutPanel.Controls.Add(pictureBox);
-            flowLayoutPanel.Controls.Add(label);
-            flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel.Location = new Point(3, 3);
-            flowLayoutPanel.Name = "pa" + id;
-            flowLayoutPanel.Size = new Size(132, 151);
-            flowLayoutPanel.TabIndex = 1;
-            flowLayoutPanel.Cursor = Cursors.Hand;
-            
-
-
-            return flowLayoutPanel;
-        }
+       
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

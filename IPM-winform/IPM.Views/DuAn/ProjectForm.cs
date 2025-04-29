@@ -129,5 +129,18 @@ namespace IPM_winform.IPM.Views.DuAn
                 }
             }
         }
+
+        public void OnEndProject(int id)
+        {
+            var result = MessageBox.Show("Bạn có chắc muốn kết thúc dự án, điều này không thể khôi phục", "Xác nhận kết thúc", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.OK)
+            {
+                db.Projects.Where(e => e.ProjectId == id).ExecuteUpdate(r => r.SetProperty(e => e.EndDate, DateTime.Now.Date));
+                foreach (var entry in db.ChangeTracker.Entries())
+                {
+                    entry.State = EntityState.Detached;
+                }
+            }
+        }
     }
 }

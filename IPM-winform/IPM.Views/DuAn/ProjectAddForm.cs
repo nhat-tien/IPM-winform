@@ -74,7 +74,8 @@ namespace IPM_winform.IPM.Views.DuAn
                 Participations = participates.ToList(),
                 Files = UploadFile(),
                 Description = txtDesc.Text,
-                StartDate = startedDate.Value.Date
+                StartDate = startedDate.Value.Date,
+                IsEnd = false
             };
             db.Projects.Add(project);
             db.SaveChanges();

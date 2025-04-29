@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IPM_winform.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250427082312_InitialMig")]
+    [Migration("20250429074825_InitialMig")]
     partial class InitialMig
     {
         /// <inheritdoc />
@@ -45,28 +45,6 @@ namespace IPM_winform.Migrations
                     b.HasKey("AffiliatedUnitId");
 
                     b.ToTable("AffiliatedUnits");
-                });
-
-            modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.AidType", b =>
-                {
-                    b.Property<int>("AidTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AidTypeId"));
-
-                    b.Property<string>("AidTypeName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("AidTypeId");
-
-                    b.ToTable("AidTypes");
                 });
 
             modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.ApprovingAgency", b =>
@@ -133,28 +111,6 @@ namespace IPM_winform.Migrations
                     b.HasKey("CounterpartyId");
 
                     b.ToTable("Counterparties");
-                });
-
-            modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.CurrencyUnit", b =>
-                {
-                    b.Property<int>("CurrencyUnitId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CurrencyUnitId"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CurrencyUnitName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("CurrencyUnitId");
-
-                    b.ToTable("CurrencyUnits");
                 });
 
             modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.File", b =>
@@ -288,9 +244,6 @@ namespace IPM_winform.Migrations
                     b.Property<int?>("AffiliatedUnitId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AidTypeId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ApprovingAgencyId")
                         .HasColumnType("int");
 
@@ -306,23 +259,14 @@ namespace IPM_winform.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CurrencyUnitId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FundedEquipment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PercentageOfProgress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProjectBudget")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsEnd")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ProjectNameEnglish")
                         .HasColumnType("nvarchar(max)");
@@ -330,14 +274,8 @@ namespace IPM_winform.Migrations
                     b.Property<string>("ProjectNameVietnamese")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProjectProgress")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ProjectPurpose")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SponsorId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -349,82 +287,13 @@ namespace IPM_winform.Migrations
 
                     b.HasIndex("AffiliatedUnitId");
 
-                    b.HasIndex("AidTypeId");
-
                     b.HasIndex("ApprovingAgencyId");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("CounterpartyId");
 
-                    b.HasIndex("CurrencyUnitId");
-
-                    b.HasIndex("SponsorId");
-
                     b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.ProjectUpdateLog", b =>
-                {
-                    b.Property<int>("ProjectUpdateLogId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectUpdateLogId"));
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProjectUpdateLogId");
-
-                    b.ToTable("ProjectUpdateLogs");
-                });
-
-            modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.ReportedProject", b =>
-                {
-                    b.Property<int>("ReportedProjectId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReportedProjectId"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ReportedProjectId");
-
-                    b.ToTable("ReportedProjects");
-                });
-
-            modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.Sponsor", b =>
-                {
-                    b.Property<int>("SponsorId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SponsorId"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SponsorName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("SponsorId");
-
-                    b.ToTable("Sponsors");
                 });
 
             modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.User", b =>
@@ -567,10 +436,6 @@ namespace IPM_winform.Migrations
                         .WithMany()
                         .HasForeignKey("AffiliatedUnitId");
 
-                    b.HasOne("IPM_winform.IPM.Infrastructure.Entities.AidType", "AidType")
-                        .WithMany()
-                        .HasForeignKey("AidTypeId");
-
                     b.HasOne("IPM_winform.IPM.Infrastructure.Entities.ApprovingAgency", "ApprovingAgency")
                         .WithMany()
                         .HasForeignKey("ApprovingAgencyId");
@@ -583,27 +448,13 @@ namespace IPM_winform.Migrations
                         .WithMany()
                         .HasForeignKey("CounterpartyId");
 
-                    b.HasOne("IPM_winform.IPM.Infrastructure.Entities.CurrencyUnit", "CurrencyUnit")
-                        .WithMany()
-                        .HasForeignKey("CurrencyUnitId");
-
-                    b.HasOne("IPM_winform.IPM.Infrastructure.Entities.Sponsor", "Sponsor")
-                        .WithMany()
-                        .HasForeignKey("SponsorId");
-
                     b.Navigation("AffiliatedUnit");
-
-                    b.Navigation("AidType");
 
                     b.Navigation("ApprovingAgency");
 
                     b.Navigation("Category");
 
                     b.Navigation("Counterparty");
-
-                    b.Navigation("CurrencyUnit");
-
-                    b.Navigation("Sponsor");
                 });
 
             modelBuilder.Entity("IPM_winform.IPM.Infrastructure.Entities.User", b =>

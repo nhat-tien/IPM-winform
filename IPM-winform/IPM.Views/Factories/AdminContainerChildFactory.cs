@@ -3,11 +3,8 @@ using IPM_winform.IPM.Views.Container;
 using IPM_winform.IPM.Views.CoQuanPheDuyet;
 using IPM_winform.IPM.Views.DanhMuc;
 using IPM_winform.IPM.Views.DoiTac;
-using IPM_winform.IPM.Views.DonViTienTe;
 using IPM_winform.IPM.Views.DonViTrucThuoc;
 using IPM_winform.IPM.Views.DuAn;
-using IPM_winform.IPM.Views.LoaiVienTro;
-using IPM_winform.IPM.Views.NhaTaiTro;
 using IPM_winform.IPM.Views.User;
 using System;
 using System.Collections.Generic;
@@ -33,14 +30,8 @@ namespace IPM_winform.IPM.Views.Factories
                     return new DanhMucForm();
                 case "doitac":
                     return new DoiTacForm();
-                case "donvitiente":
-                    return new DonViTienTeForm();
                 case "donvitructhuoc":
                     return new DonViTrucThuocForm();
-                case "loaivientro":
-                    return new LoaiVienTroForm();
-                case "nhataitro":
-                    return new NhaTaiTroForm();
                 case "user":
                     return new UserForm();
                 case "project":

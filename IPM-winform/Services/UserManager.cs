@@ -38,9 +38,9 @@ namespace IPM_winform.Services
             userDb.FirstName = user.FirstName;
             userDb.PhoneNumber = user.PhoneNumber;
             userDb.Email = user.Email;
-            userDb.AffiliatedUnitId = user.AffiliatedUnit.AffiliatedUnitId;
+            userDb.AffiliatedUnitId = user.AffiliatedUnit is not null ? user.AffiliatedUnit.AffiliatedUnitId : null;
             userDb.Address = user.Address;
-            userDb.PositionId = user.Position.PositionId;
+            userDb.PositionId = user.Position is not null ? user.Position.PositionId : null;
             userDb.Sex = user.Sex;
             userDb.Role = user.Role;
 

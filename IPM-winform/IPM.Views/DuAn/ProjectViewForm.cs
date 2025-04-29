@@ -79,14 +79,14 @@ namespace IPM_winform.IPM.Views.DuAn
                 flowLayoutPanel2.Controls.Add(
                     new UserBlock()
                     {
-                     Name = user.LastName + " " + user.LastName,
-                     Email = user.Email,
-                     AvatarUrl = user.AvatarUrl,
+                        Name = user.LastName + " " + user.LastName,
+                        Email = user.Email,
+                        AvatarUrl = user.AvatarUrl,
                     }
                  );
             };
 
-             flowLayoutPanel3.Controls.Clear();
+            flowLayoutPanel3.Controls.Clear();
             foreach (var file in project.Files)
             {
                 flowLayoutPanel3.Controls.Add(new FileBlockWithUser()
@@ -96,15 +96,25 @@ namespace IPM_winform.IPM.Views.DuAn
                     UserName = file.User.LastName + " " + file.User.FirstName,
                     Status = file.Status,
                     OnCheck = ConfirmFile,
-                    OnDelete = DeleteFile
+                    OnDelete = DeleteFile,
+                    OnReject = RejectFile
                 }
                  );
             };
+
+            if(project.IsEnd)
+            {
+                btnUpdate.Visible = false;
+                button1.Visible = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            db.Projects.Where(e => e.ProjectId == _id).ExecuteDelete();
+            db.Projects.Where(e => e.ProjectId == _id).ExecuteUpdate(r =>
+            r
+            .SetProperty(e => e.EndDate, DateTime.Now.Date)
+            .SetProperty(e => e.IsEnd, true));
         }
 
         private void DeleteFile(int id)
@@ -116,6 +126,12 @@ namespace IPM_winform.IPM.Views.DuAn
         private void ConfirmFile(int id)
         {
             db.Files.Where(e => e.FileId == id).ExecuteUpdate(e => e.SetProperty(r => r.Status, "done"));
+            LoadData();
+        }
+
+        private void RejectFile(int id)
+        {
+            db.Files.Where(e => e.FileId == id).ExecuteUpdate(e => e.SetProperty(r => r.Status, "reject"));
             LoadData();
         }
 

@@ -8,17 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace IPM_winform.Controls
 {
     public partial class FileBlock : UserControl
     {
+
+        public Action<int> OnDelete { get; set; }
         public FileBlock()
         {
             InitializeComponent();
 
         }
 
+        public int Id { get; set; }
         public string FileName
         {
             get => lbFileName.Text;
@@ -27,6 +31,8 @@ namespace IPM_winform.Controls
                 lbFileName.Text = value;
             }
         }
+
+       
 
         private Image GetImageFile()
         {
@@ -46,9 +52,17 @@ namespace IPM_winform.Controls
             };
         }
 
+
+
         private void FileBlock_Load(object sender, EventArgs e)
         {
             pictureBox1.Image = GetImageFile();
         }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OnDelete(Id);
+        }
+
     }
 }

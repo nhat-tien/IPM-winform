@@ -232,6 +232,7 @@
             // 
             // txtContent
             // 
+            txtContent.Enabled = false;
             txtContent.Location = new Point(191, 105);
             txtContent.Name = "txtContent";
             txtContent.Size = new Size(166, 66);
@@ -251,6 +252,7 @@
             // 
             // txtMucTieu
             // 
+            txtMucTieu.Enabled = false;
             txtMucTieu.Location = new Point(10, 105);
             txtMucTieu.Name = "txtMucTieu";
             txtMucTieu.Size = new Size(166, 66);

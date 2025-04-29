@@ -66,13 +66,14 @@
             xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
             xóaToolStripMenuItem.Size = new Size(94, 22);
             xóaToolStripMenuItem.Text = "Xóa";
+            xóaToolStripMenuItem.Click += xóaToolStripMenuItem_Click;
             // 
             // lbFileName
             // 
             lbFileName.AutoEllipsis = true;
             lbFileName.Location = new Point(46, 13);
             lbFileName.Name = "lbFileName";
-            lbFileName.Size = new Size(258, 16);
+            lbFileName.Size = new Size(213, 16);
             lbFileName.TabIndex = 1;
             lbFileName.Text = "label1";
             // 
@@ -85,8 +86,8 @@
             Controls.Add(lbFileName);
             Controls.Add(pictureBox1);
             Name = "FileBlock";
-            Size = new Size(340, 41);
-            Load += this.FileBlock_Load;
+            Size = new Size(385, 41);
+            Load += FileBlock_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);

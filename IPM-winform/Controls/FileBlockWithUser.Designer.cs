@@ -33,11 +33,13 @@
             pictureBox1 = new PictureBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             xóaToolStripMenuItem = new ToolStripMenuItem();
+            tảiXuốngToolStripMenuItem = new ToolStripMenuItem();
             lbFileName = new Label();
             lbUserName = new Label();
             lbStatus = new Label();
             contextMenuStrip2 = new ContextMenuStrip(components);
             xácNhậnToolStripMenuItem = new ToolStripMenuItem();
+            từChốiToolStripMenuItem = new ToolStripMenuItem();
             pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -63,17 +65,25 @@
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { xóaToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { xóaToolStripMenuItem, tảiXuốngToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(181, 48);
+            contextMenuStrip1.Size = new Size(127, 48);
             // 
             // xóaToolStripMenuItem
             // 
             xóaToolStripMenuItem.Image = Properties.Resources.icons8_trash_20;
             xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            xóaToolStripMenuItem.Size = new Size(180, 22);
+            xóaToolStripMenuItem.Size = new Size(126, 22);
             xóaToolStripMenuItem.Text = "Xóa";
             xóaToolStripMenuItem.Click += xóaToolStripMenuItem_Click;
+            // 
+            // tảiXuốngToolStripMenuItem
+            // 
+            tảiXuốngToolStripMenuItem.Image = Properties.Resources.icons8_download_48;
+            tảiXuốngToolStripMenuItem.Name = "tảiXuốngToolStripMenuItem";
+            tảiXuốngToolStripMenuItem.Size = new Size(126, 22);
+            tảiXuốngToolStripMenuItem.Text = "Tải xuống";
+            tảiXuốngToolStripMenuItem.Click += tảiXuốngToolStripMenuItem_Click;
             // 
             // lbFileName
             // 
@@ -105,9 +115,9 @@
             // 
             // contextMenuStrip2
             // 
-            contextMenuStrip2.Items.AddRange(new ToolStripItem[] { xácNhậnToolStripMenuItem });
+            contextMenuStrip2.Items.AddRange(new ToolStripItem[] { xácNhậnToolStripMenuItem, từChốiToolStripMenuItem });
             contextMenuStrip2.Name = "contextMenuStrip2";
-            contextMenuStrip2.Size = new Size(124, 26);
+            contextMenuStrip2.Size = new Size(124, 48);
             // 
             // xácNhậnToolStripMenuItem
             // 
@@ -116,6 +126,14 @@
             xácNhậnToolStripMenuItem.Size = new Size(123, 22);
             xácNhậnToolStripMenuItem.Text = "Xác nhận";
             xácNhậnToolStripMenuItem.Click += xácNhậnToolStripMenuItem_Click;
+            // 
+            // từChốiToolStripMenuItem
+            // 
+            từChốiToolStripMenuItem.Image = Properties.Resources.icons8_x_64;
+            từChốiToolStripMenuItem.Name = "từChốiToolStripMenuItem";
+            từChốiToolStripMenuItem.Size = new Size(123, 22);
+            từChốiToolStripMenuItem.Text = "Từ chối";
+            từChốiToolStripMenuItem.Click += từChốiToolStripMenuItem_Click;
             // 
             // pictureBox2
             // 
@@ -159,5 +177,7 @@
         private PictureBox pictureBox2;
         private ContextMenuStrip contextMenuStrip2;
         private ToolStripMenuItem xácNhậnToolStripMenuItem;
+        private ToolStripMenuItem tảiXuốngToolStripMenuItem;
+        private ToolStripMenuItem từChốiToolStripMenuItem;
     }
 }

@@ -189,7 +189,8 @@ namespace IPM_winform.IPM.Views.DuAn
                        Id = row.UserId,
                        Name = row.LastName + " " + row.FirstName,
                        Email = row.Email,
-                       AvatarUrl = row.AvatarUrl
+                       AvatarUrl = row.AvatarUrl,
+                       Owner = _ownerId == row.UserId
                    }
 
                 );
@@ -284,6 +285,7 @@ namespace IPM_winform.IPM.Views.DuAn
                 }
 
                 _users = _users.Where(e => e.UserId != user.UserId).ToList();
+                _addParticipate.Add(user);
                 _participate.Add(user);
                 LoadDataUser();
 
@@ -297,9 +299,9 @@ namespace IPM_winform.IPM.Views.DuAn
 
                 UserBlock control = (UserBlock)e.Data.GetData(typeof(UserBlock));
 
-                var currentUser = Session.getSession();
                 var selectUserId = control.Id;
-                if (selectUserId == currentUser.UserId)
+
+                if (control.Owner)
                 {
                     MessageBox.Show("Không thể loại bỏ chủ dự án", "Thao tác không thành công", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -313,6 +315,16 @@ namespace IPM_winform.IPM.Views.DuAn
                 }
 
                 _participate = _participate.Where(e => e.UserId != user.UserId).ToList();
+
+                if (_addParticipate.Any(e => e.UserId == user.UserId))
+                {
+                    _addParticipate = _addParticipate.Where(e => e.UserId != user.UserId).ToList();
+                }
+                else
+                {
+                    _deleteParticipate.Add(user);
+                };
+
                 _users.Add(user);
                 LoadDataUser();
             }

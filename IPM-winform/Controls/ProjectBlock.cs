@@ -16,8 +16,10 @@ namespace IPM_winform.Controls
     {
         public Action OnView { get; set; }
         public Action OnDelete { get; set; }
+        public Action OnEnd { get; set; }
 
         public bool Owner { get; set; } = false;
+        public bool IsEnd { get; set; } = false;
         public ProjectBlock()
         {
             InitializeComponent();
@@ -86,9 +88,22 @@ namespace IPM_winform.Controls
 
         private void ProjectBlock_Load(object sender, EventArgs e)
         {
-            if(!Owner)
+            if (!Owner)
             {
-                xóaToolStripMenuItem.Enabled = false;
+                xóaToolStripMenuItem.Visible = false;
+            }
+
+            if(IsEnd)
+            {
+                kếtThúcDựÁnToolStripMenuItem.Visible = false;
+            }
+        }
+
+        private void kếtThúcDựÁnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (OnDelete != null)
+            {
+                OnDelete();
             }
         }
     }
