@@ -37,13 +37,14 @@
             donvitructhuoc = new ToolStripMenuItem();
             quảnLíNgườiDùngToolStripMenuItem = new ToolStripMenuItem();
             quảnLíDựÁnToolStripMenuItem = new ToolStripMenuItem();
+            báoCáoDựÁnToolStripMenuItem = new ToolStripMenuItem();
             mainPanel = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { thongtinchung, quảnLíNgườiDùngToolStripMenuItem, quảnLíDựÁnToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { thongtinchung, quảnLíNgườiDùngToolStripMenuItem, quảnLíDựÁnToolStripMenuItem, báoCáoDựÁnToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(634, 24);
@@ -60,31 +61,31 @@
             // chucvu
             // 
             chucvu.Name = "chucvu";
-            chucvu.Size = new Size(180, 22);
+            chucvu.Size = new Size(178, 22);
             chucvu.Text = "Chức Vụ";
             // 
             // coquanpheduyet
             // 
             coquanpheduyet.Name = "coquanpheduyet";
-            coquanpheduyet.Size = new Size(180, 22);
+            coquanpheduyet.Size = new Size(178, 22);
             coquanpheduyet.Text = "Cơ Quan Phê Duyệt";
             // 
             // danhmuc
             // 
             danhmuc.Name = "danhmuc";
-            danhmuc.Size = new Size(180, 22);
+            danhmuc.Size = new Size(178, 22);
             danhmuc.Text = "Danh Mục";
             // 
             // doitac
             // 
             doitac.Name = "doitac";
-            doitac.Size = new Size(180, 22);
+            doitac.Size = new Size(178, 22);
             doitac.Text = "Đối tác";
             // 
             // donvitructhuoc
             // 
             donvitructhuoc.Name = "donvitructhuoc";
-            donvitructhuoc.Size = new Size(180, 22);
+            donvitructhuoc.Size = new Size(178, 22);
             donvitructhuoc.Text = "Đơn Vị Trực Thuộc ";
             // 
             // quảnLíNgườiDùngToolStripMenuItem
@@ -100,6 +101,13 @@
             quảnLíDựÁnToolStripMenuItem.Size = new Size(90, 20);
             quảnLíDựÁnToolStripMenuItem.Text = "Quản lí dự án";
             quảnLíDựÁnToolStripMenuItem.Click += quảnLíDựÁnToolStripMenuItem_Click;
+            // 
+            // báoCáoDựÁnToolStripMenuItem
+            // 
+            báoCáoDựÁnToolStripMenuItem.Name = "báoCáoDựÁnToolStripMenuItem";
+            báoCáoDựÁnToolStripMenuItem.Size = new Size(94, 20);
+            báoCáoDựÁnToolStripMenuItem.Text = "Báo cáo dự án";
+            báoCáoDựÁnToolStripMenuItem.Click += báoCáoDựÁnToolStripMenuItem_Click;
             // 
             // mainPanel
             // 
@@ -138,5 +146,6 @@
         private Panel mainPanel;
         private ToolStripMenuItem quảnLíNgườiDùngToolStripMenuItem;
         private ToolStripMenuItem quảnLíDựÁnToolStripMenuItem;
+        private ToolStripMenuItem báoCáoDựÁnToolStripMenuItem;
     }
 }

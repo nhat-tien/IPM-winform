@@ -37,6 +37,14 @@
             btnAdd = new Button();
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
+            chStartDate = new CheckBox();
+            chEngName = new CheckBox();
+            chVietName = new CheckBox();
+            chDt = new CheckBox();
+            chDm = new CheckBox();
+            chCqpd = new CheckBox();
+            chDvtt = new CheckBox();
+            btnCancel = new Button();
             button1 = new Button();
             dateDen = new DateTimePicker();
             label4 = new Label();
@@ -55,11 +63,9 @@
             label2 = new Label();
             txtVn = new TextBox();
             label1 = new Label();
-            checkedListBox1 = new CheckedListBox();
             toolTip1 = new ToolTip(components);
             toolTip2 = new ToolTip(components);
             toolTip3 = new ToolTip(components);
-            btnCancel = new Button();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -173,6 +179,13 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(chStartDate);
+            panel1.Controls.Add(chEngName);
+            panel1.Controls.Add(chVietName);
+            panel1.Controls.Add(chDt);
+            panel1.Controls.Add(chDm);
+            panel1.Controls.Add(chCqpd);
+            panel1.Controls.Add(chDvtt);
             panel1.Controls.Add(btnCancel);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(dateDen);
@@ -192,13 +205,85 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(txtVn);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(checkedListBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(663, 213);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
+            // 
+            // chStartDate
+            // 
+            chStartDate.AutoSize = true;
+            chStartDate.Location = new Point(33, 173);
+            chStartDate.Name = "chStartDate";
+            chStartDate.Size = new Size(15, 14);
+            chStartDate.TabIndex = 79;
+            chStartDate.UseVisualStyleBackColor = true;
+            // 
+            // chEngName
+            // 
+            chEngName.AutoSize = true;
+            chEngName.Location = new Point(232, 40);
+            chEngName.Name = "chEngName";
+            chEngName.Size = new Size(15, 14);
+            chEngName.TabIndex = 78;
+            chEngName.UseVisualStyleBackColor = true;
+            // 
+            // chVietName
+            // 
+            chVietName.AutoSize = true;
+            chVietName.Location = new Point(33, 40);
+            chVietName.Name = "chVietName";
+            chVietName.Size = new Size(15, 14);
+            chVietName.TabIndex = 77;
+            chVietName.UseVisualStyleBackColor = true;
+            // 
+            // chDt
+            // 
+            chDt.AutoSize = true;
+            chDt.Location = new Point(232, 128);
+            chDt.Name = "chDt";
+            chDt.Size = new Size(15, 14);
+            chDt.TabIndex = 76;
+            chDt.UseVisualStyleBackColor = true;
+            // 
+            // chDm
+            // 
+            chDm.AutoSize = true;
+            chDm.Location = new Point(232, 84);
+            chDm.Name = "chDm";
+            chDm.Size = new Size(15, 14);
+            chDm.TabIndex = 75;
+            chDm.UseVisualStyleBackColor = true;
+            // 
+            // chCqpd
+            // 
+            chCqpd.AutoSize = true;
+            chCqpd.Location = new Point(33, 128);
+            chCqpd.Name = "chCqpd";
+            chCqpd.Size = new Size(15, 14);
+            chCqpd.TabIndex = 74;
+            chCqpd.UseVisualStyleBackColor = true;
+            // 
+            // chDvtt
+            // 
+            chDvtt.AutoSize = true;
+            chDvtt.Location = new Point(33, 84);
+            chDvtt.Name = "chDvtt";
+            chDvtt.Size = new Size(15, 14);
+            chDvtt.TabIndex = 73;
+            chDvtt.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(537, 168);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(107, 23);
+            btnCancel.TabIndex = 46;
+            btnCancel.Text = "Hủy bỏ";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // button1
             // 
@@ -213,7 +298,7 @@
             // dateDen
             // 
             dateDen.Format = DateTimePickerFormat.Custom;
-            dateDen.Location = new Point(344, 168);
+            dateDen.Location = new Point(256, 168);
             dateDen.Name = "dateDen";
             dateDen.Size = new Size(166, 23);
             dateDen.TabIndex = 44;
@@ -221,17 +306,18 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(341, 150);
+            label4.Location = new Point(253, 150);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(28, 15);
             label4.TabIndex = 43;
             label4.Text = "Đến";
+            label4.Click += label4_Click;
             // 
             // dateTu
             // 
             dateTu.Format = DateTimePickerFormat.Custom;
-            dateTu.Location = new Point(163, 168);
+            dateTu.Location = new Point(57, 168);
             dateTu.Name = "dateTu";
             dateTu.Size = new Size(166, 23);
             dateTu.TabIndex = 42;
@@ -239,7 +325,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(160, 150);
+            label5.Location = new Point(54, 150);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(92, 15);
@@ -249,7 +335,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(341, 106);
+            label9.Location = new Point(253, 106);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(44, 15);
@@ -259,7 +345,7 @@
             // cbbDoiTac
             // 
             cbbDoiTac.FormattingEnabled = true;
-            cbbDoiTac.Location = new Point(341, 124);
+            cbbDoiTac.Location = new Point(253, 124);
             cbbDoiTac.Name = "cbbDoiTac";
             cbbDoiTac.Size = new Size(166, 23);
             cbbDoiTac.TabIndex = 39;
@@ -267,7 +353,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(160, 106);
+            label8.Location = new Point(54, 106);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(108, 15);
@@ -277,7 +363,7 @@
             // cbbCoQuanPheDuyet
             // 
             cbbCoQuanPheDuyet.FormattingEnabled = true;
-            cbbCoQuanPheDuyet.Location = new Point(160, 124);
+            cbbCoQuanPheDuyet.Location = new Point(54, 124);
             cbbCoQuanPheDuyet.Name = "cbbCoQuanPheDuyet";
             cbbCoQuanPheDuyet.Size = new Size(166, 23);
             cbbCoQuanPheDuyet.TabIndex = 37;
@@ -285,7 +371,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(341, 62);
+            label6.Location = new Point(253, 62);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(62, 15);
@@ -295,7 +381,7 @@
             // cbbDanhMuc
             // 
             cbbDanhMuc.FormattingEnabled = true;
-            cbbDanhMuc.Location = new Point(341, 80);
+            cbbDanhMuc.Location = new Point(253, 80);
             cbbDanhMuc.Name = "cbbDanhMuc";
             cbbDanhMuc.Size = new Size(166, 23);
             cbbDanhMuc.TabIndex = 35;
@@ -303,7 +389,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(160, 62);
+            label7.Location = new Point(54, 62);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(99, 15);
@@ -313,7 +399,7 @@
             // cbbDonViTrucThuoc
             // 
             cbbDonViTrucThuoc.FormattingEnabled = true;
-            cbbDonViTrucThuoc.Location = new Point(160, 80);
+            cbbDonViTrucThuoc.Location = new Point(54, 80);
             cbbDonViTrucThuoc.Name = "cbbDonViTrucThuoc";
             cbbDonViTrucThuoc.Size = new Size(166, 23);
             cbbDonViTrucThuoc.TabIndex = 33;
@@ -330,7 +416,7 @@
             // 
             // txtEng
             // 
-            txtEng.Location = new Point(341, 36);
+            txtEng.Location = new Point(253, 36);
             txtEng.Name = "txtEng";
             txtEng.Size = new Size(166, 23);
             txtEng.TabIndex = 5;
@@ -338,7 +424,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(341, 18);
+            label2.Location = new Point(253, 18);
             label2.Name = "label2";
             label2.Size = new Size(82, 15);
             label2.TabIndex = 4;
@@ -346,7 +432,7 @@
             // 
             // txtVn
             // 
-            txtVn.Location = new Point(160, 36);
+            txtVn.Location = new Point(54, 36);
             txtVn.Name = "txtVn";
             txtVn.Size = new Size(166, 23);
             txtVn.TabIndex = 3;
@@ -354,30 +440,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(160, 18);
+            label1.Location = new Point(54, 18);
             label1.Name = "label1";
             label1.Size = new Size(80, 15);
             label1.TabIndex = 2;
             label1.Text = "Tên Tiếng Việt";
-            // 
-            // checkedListBox1
-            // 
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "Tên Tiếng Việt", "Tên Tiếng Anh", "Đơn vị trực thuộc", "Danh mục", "Cơ quan phê duyệt", "Đối tác", "Ngày bắt đầu" });
-            checkedListBox1.Location = new Point(9, 18);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(144, 184);
-            checkedListBox1.TabIndex = 1;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(537, 168);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(107, 23);
-            btnCancel.TabIndex = 46;
-            btnCancel.Text = "Hủy bỏ";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
             // 
             // ProjectSearchForm
             // 
@@ -410,7 +477,6 @@
         private ToolTip toolTip2;
         private ToolTip toolTip3;
         private Panel panel1;
-        private CheckedListBox checkedListBox1;
         private TextBox txtVn;
         private Label label1;
         private TextBox txtEng;
@@ -430,5 +496,12 @@
         private Label label5;
         private Button button1;
         private Button btnCancel;
+        private CheckBox chDt;
+        private CheckBox chDm;
+        private CheckBox chCqpd;
+        private CheckBox chDvtt;
+        private CheckBox chStartDate;
+        private CheckBox chEngName;
+        private CheckBox chVietName;
     }
 }

@@ -6,6 +6,7 @@ using IPM_winform.IPM.Views.DoiTac;
 using IPM_winform.IPM.Views.DonViTrucThuoc;
 using IPM_winform.IPM.Views.DuAn;
 using IPM_winform.IPM.Views.User;
+using IPM_winform.Reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,8 @@ namespace IPM_winform.IPM.Views.Factories
                     return new UserForm();
                 case "project":
                     return new ProjectForm();
+                case "danhsachduanReport":
+                    return new DanhSachDuAnForm();
                 default:
                     throw new ArgumentOutOfRangeException();
 

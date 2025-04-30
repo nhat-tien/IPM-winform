@@ -1,5 +1,7 @@
-﻿using IPM.Infrastructure.EntityFrameworkDataAccess;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using IPM.Infrastructure.EntityFrameworkDataAccess;
 using IPM_winform.Controls;
+using IPM_winform.Services;
 using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Author = IPM_winform.Services.Author;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
@@ -102,10 +105,14 @@ namespace IPM_winform.IPM.Views.DuAn
                  );
             };
 
-            if(project.IsEnd)
+            if (project.IsEnd)
             {
                 btnUpdate.Visible = false;
                 button1.Visible = false;
+                if(Services.Author.IsAdmin())
+                {
+                    btnKhoiPhuc.Visible = true;
+                }
             }
         }
 
@@ -162,6 +169,13 @@ namespace IPM_winform.IPM.Views.DuAn
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             _parentView.GoToUpdateManager(_id);
+        }
+
+        private void btnKhoiPhuc_Click(object sender, EventArgs e)
+        {
+            db.Projects.Where(e => e.ProjectId == _id).ExecuteUpdate(r =>
+            r
+            .SetProperty(e => e.IsEnd, false));
         }
     }
 

@@ -142,6 +142,7 @@ namespace IPM_winform.IPM.Views.DuAn
             cbbDonViTrucThuoc.ValueMember = null;
             cbbDonViTrucThuoc.DisplayMember = "AffiliatedUnitName";
             cbbDonViTrucThuoc.DataSource = entities;
+            cbbDonViTrucThuoc.Text = "";
         }
         public void SetDataSourceDanhMuc()
         {
@@ -149,6 +150,7 @@ namespace IPM_winform.IPM.Views.DuAn
             cbbDanhMuc.ValueMember = null;
             cbbDanhMuc.DisplayMember = "CategoryName";
             cbbDanhMuc.DataSource = entities;
+            cbbDanhMuc.Text = "";
         }
         public void SetDataSourceCoQuanPheDuyet()
         {
@@ -156,6 +158,7 @@ namespace IPM_winform.IPM.Views.DuAn
             cbbCoQuanPheDuyet.ValueMember = null;
             cbbCoQuanPheDuyet.DisplayMember = "ApprovingAgencyName";
             cbbCoQuanPheDuyet.DataSource = entities;
+            cbbCoQuanPheDuyet.Text = "";
         }
         public void SetDataSourceDoiTac()
         {
@@ -163,6 +166,7 @@ namespace IPM_winform.IPM.Views.DuAn
             cbbDoiTac.ValueMember = null;
             cbbDoiTac.DisplayMember = "CounterpartyName";
             cbbDoiTac.DataSource = entities;
+            cbbDoiTac.Text = "";
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -173,37 +177,36 @@ namespace IPM_winform.IPM.Views.DuAn
         private void button1_Click(object sender, EventArgs e)
         {
             var projects = _initialProjects;
-            var items = checkedListBox1.CheckedItems;
 
-            if (items.Contains("Tên Tiếng Việt"))
+            if (chVietName.Checked)
             {
                 projects = projects.Where(e => e.ProjectNameVietnamese.Contains(txtVn.Text));
             }
-            if (items.Contains("Tên Tiếng Anh"))
+            if (chEngName.Checked)
             {
                 projects = projects.Where(e => e.ProjectNameEnglish.Contains(txtEng.Text));
             }
-            if (items.Contains("Đơn vị trực thuộc"))
+            if (chDvtt.Checked)
             {
                 var condition = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem;
                 projects = projects.Where(e => e.AffiliatedUnitId == condition.AffiliatedUnitId);
             }
-            if (items.Contains("Danh mục"))
+            if (chDm.Checked)
             {
                 var condition = (Category)cbbDanhMuc.SelectedItem;
                 projects = projects.Where(e => e.CategoryId == condition.CategoryId);
             }
-            if (items.Contains("Cơ quan phê duyệt"))
+            if (chCqpd.Checked)
             {
                 var condition = (ApprovingAgency)cbbCoQuanPheDuyet.SelectedItem;
                 projects = projects.Where(e => e.ApprovingAgencyId == condition.ApprovingAgencyId);
             }
-            if (items.Contains("Đối tác"))
+            if (chDt.Checked)
             {
                 var condition = (Counterparty)cbbDoiTac.SelectedItem;
                 projects = projects.Where(e => e.CounterpartyId == condition.CounterpartyId);
             }
-            if (items.Contains("Ngày bắt đầu"))
+            if (chStartDate.Checked)
             {
                 DateTime tuNgay = dateTu.Value.Date;
                 DateTime denNgay = dateDen.Value.Date;
@@ -220,6 +223,11 @@ namespace IPM_winform.IPM.Views.DuAn
         private void btnCancel_Click(object sender, EventArgs e)
         {
             LoadData(_initialProjects);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
