@@ -110,7 +110,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>= "Ngày lập " &amp; Today</Value>
+                    <Value>=Parameters!NgayLap.Value</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -191,7 +191,7 @@
             <Top>1.82167in</Top>
             <Left>0.2654in</Left>
             <Height>0.25in</Height>
-            <Width>1.46236in</Width>
+            <Width>1.59373in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -224,7 +224,7 @@
             <Top>2.11333in</Top>
             <Left>0.2654in</Left>
             <Height>0.25in</Height>
-            <Width>1.46236in</Width>
+            <Width>1.59373in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -243,7 +243,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Đơn vị trực thuộc</Value>
+                    <Value>Đơn vị trực thuộc:</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -257,7 +257,7 @@
             <Top>2.405in</Top>
             <Left>0.26541in</Left>
             <Height>0.25in</Height>
-            <Width>1.46236in</Width>
+            <Width>1.59373in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -276,7 +276,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Danh mục</Value>
+                    <Value>Danh mục:</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -290,7 +290,7 @@
             <Top>2.69667in</Top>
             <Left>0.26541in</Left>
             <Height>0.25in</Height>
-            <Width>1.46236in</Width>
+            <Width>1.59373in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -309,7 +309,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Cơ quan phê duyệt</Value>
+                    <Value>Cơ quan phê duyệt:</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -323,7 +323,7 @@
             <Top>2.98833in</Top>
             <Left>0.2654in</Left>
             <Height>0.25in</Height>
-            <Width>1.46236in</Width>
+            <Width>1.59373in</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -342,7 +342,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Đối tác</Value>
+                    <Value>Đối tác:</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -356,7 +356,7 @@
             <Top>3.28in</Top>
             <Left>0.26541in</Left>
             <Height>0.25in</Height>
-            <Width>1.46236in</Width>
+            <Width>1.59373in</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -386,7 +386,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.98833in</Top>
-            <Left>1.85914in</Left>
+            <Left>1.8869in</Left>
             <Height>0.25in</Height>
             <Width>4.60124in</Width>
             <ZIndex>9</ZIndex>
@@ -418,7 +418,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>1.82167in</Top>
-            <Left>1.85914in</Left>
+            <Left>1.8869in</Left>
             <Height>0.25in</Height>
             <Width>4.60124in</Width>
             <ZIndex>10</ZIndex>
@@ -450,7 +450,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.11333in</Top>
-            <Left>1.85914in</Left>
+            <Left>1.8869in</Left>
             <Height>0.25in</Height>
             <Width>4.60124in</Width>
             <ZIndex>11</ZIndex>
@@ -482,7 +482,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.405in</Top>
-            <Left>1.85915in</Left>
+            <Left>1.88691in</Left>
             <Height>0.25in</Height>
             <Width>4.60124in</Width>
             <ZIndex>12</ZIndex>
@@ -514,7 +514,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.69667in</Top>
-            <Left>1.85915in</Left>
+            <Left>1.88691in</Left>
             <Height>0.25in</Height>
             <Width>4.60124in</Width>
             <ZIndex>13</ZIndex>
@@ -546,7 +546,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>3.28in</Top>
-            <Left>1.85915in</Left>
+            <Left>1.88691in</Left>
             <Height>0.25in</Height>
             <Width>4.60124in</Width>
             <ZIndex>14</ZIndex>
@@ -1269,7 +1269,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Mô tả dự án</Value>
+                    <Value>Mô tả dự án:</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1334,7 +1334,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Mục tiêu dự án</Value>
+                    <Value>Mục tiêu dự án:</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1431,7 +1431,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Nội dung dự án</Value>
+                    <Value>Nội dung dự án:</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1508,6 +1508,10 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="NgayLap">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1558,6 +1562,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>NoiDung</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>NgayLap</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

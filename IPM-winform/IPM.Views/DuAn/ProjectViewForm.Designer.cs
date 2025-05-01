@@ -49,9 +49,11 @@
             label3 = new Label();
             label2 = new Label();
             groupBox2 = new GroupBox();
-            btnKhoiPhuc = new Button();
+            flowLayoutPanel4 = new FlowLayoutPanel();
             btnUpdate = new Button();
             button1 = new Button();
+            btnReport = new Button();
+            btnKhoiPhuc = new Button();
             groupBox4 = new GroupBox();
             flowLayoutPanel2 = new FlowLayoutPanel();
             groupBox3 = new GroupBox();
@@ -59,6 +61,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -66,7 +69,7 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(13, 22);
+            btnBack.Location = new Point(4, 3);
             btnBack.Margin = new Padding(4, 3, 4, 3);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(88, 27);
@@ -284,10 +287,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btnKhoiPhuc);
-            groupBox2.Controls.Add(btnUpdate);
-            groupBox2.Controls.Add(button1);
-            groupBox2.Controls.Add(btnBack);
+            groupBox2.Controls.Add(flowLayoutPanel4);
             groupBox2.Location = new Point(3, 858);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(604, 78);
@@ -295,20 +295,22 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
             // 
-            // btnKhoiPhuc
+            // flowLayoutPanel4
             // 
-            btnKhoiPhuc.Location = new Point(502, 22);
-            btnKhoiPhuc.Name = "btnKhoiPhuc";
-            btnKhoiPhuc.Size = new Size(102, 27);
-            btnKhoiPhuc.TabIndex = 16;
-            btnKhoiPhuc.Text = "Khôi phục dự án";
-            btnKhoiPhuc.UseVisualStyleBackColor = true;
-            btnKhoiPhuc.Visible = false;
-            btnKhoiPhuc.Click += btnKhoiPhuc_Click;
+            flowLayoutPanel4.Controls.Add(btnBack);
+            flowLayoutPanel4.Controls.Add(btnUpdate);
+            flowLayoutPanel4.Controls.Add(button1);
+            flowLayoutPanel4.Controls.Add(btnReport);
+            flowLayoutPanel4.Controls.Add(btnKhoiPhuc);
+            flowLayoutPanel4.Dock = DockStyle.Fill;
+            flowLayoutPanel4.Location = new Point(3, 19);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new Size(598, 56);
+            flowLayoutPanel4.TabIndex = 17;
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(108, 22);
+            btnUpdate.Location = new Point(99, 3);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(102, 27);
             btnUpdate.TabIndex = 15;
@@ -318,13 +320,34 @@
             // 
             // button1
             // 
-            button1.Location = new Point(216, 22);
+            button1.Location = new Point(207, 3);
             button1.Name = "button1";
             button1.Size = new Size(102, 27);
             button1.TabIndex = 14;
             button1.Text = "Kết thúc dự án";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // btnReport
+            // 
+            btnReport.Location = new Point(315, 3);
+            btnReport.Name = "btnReport";
+            btnReport.Size = new Size(102, 27);
+            btnReport.TabIndex = 17;
+            btnReport.Text = "Báo cáo";
+            btnReport.UseVisualStyleBackColor = true;
+            btnReport.Click += btnReport_Click;
+            // 
+            // btnKhoiPhuc
+            // 
+            btnKhoiPhuc.Location = new Point(423, 3);
+            btnKhoiPhuc.Name = "btnKhoiPhuc";
+            btnKhoiPhuc.Size = new Size(102, 27);
+            btnKhoiPhuc.TabIndex = 16;
+            btnKhoiPhuc.Text = "Khôi phục dự án";
+            btnKhoiPhuc.UseVisualStyleBackColor = true;
+            btnKhoiPhuc.Visible = false;
+            btnKhoiPhuc.Click += btnKhoiPhuc_Click;
             // 
             // groupBox4
             // 
@@ -389,6 +412,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
+            flowLayoutPanel4.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
@@ -426,5 +450,7 @@
         private FlowLayoutPanel flowLayoutPanel2;
         private FlowLayoutPanel flowLayoutPanel3;
         private Button btnKhoiPhuc;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private Button btnReport;
     }
 }

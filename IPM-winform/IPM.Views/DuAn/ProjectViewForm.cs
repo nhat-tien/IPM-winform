@@ -17,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Author = IPM_winform.Services.Author;
+using IPM_winform.Reports;
 
 namespace IPM_winform.IPM.Views.DuAn
 {
@@ -109,7 +110,7 @@ namespace IPM_winform.IPM.Views.DuAn
             {
                 btnUpdate.Visible = false;
                 button1.Visible = false;
-                if(Services.Author.IsAdmin())
+                if (Services.Author.IsAdmin())
                 {
                     btnKhoiPhuc.Visible = true;
                 }
@@ -176,6 +177,11 @@ namespace IPM_winform.IPM.Views.DuAn
             db.Projects.Where(e => e.ProjectId == _id).ExecuteUpdate(r =>
             r
             .SetProperty(e => e.IsEnd, false));
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            _parentView.SetChildren(new ChiTietDuAnForm(_id));
         }
     }
 
