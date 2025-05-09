@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using IPM_winform.Services;
 
 namespace IPM_winform.IPM.Views.DoiTac
 {
@@ -65,8 +66,11 @@ namespace IPM_winform.IPM.Views.DoiTac
 
         public override void OnDelete(int id)
         {
-            db.Counterparties.Where(r => r.CounterpartyId == id).ExecuteDelete();
-            Reload();
+            DBExceptionHandler.Handle(() =>
+            {
+                db.Counterparties.Where(r => r.CounterpartyId == id).ExecuteDelete();
+                Reload();
+            });
         }
 
         public override void OnUpdate(string id, object name)

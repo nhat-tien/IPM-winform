@@ -46,8 +46,8 @@ namespace IPM_winform.IPM.Views.DuAn
                     ProjectName = row.ProjectNameVietnamese,
                     Description = row.Description,
                     AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
-                    Memeber = "0",
-                    File = "0",
+                    Memeber = row.Participations.Count().ToString(),
+                    File = row.Files.Count().ToString(),
                     OnView = () =>
                     {
                         _parentView.GoToUpdate(row.ProjectId);
@@ -70,35 +70,9 @@ namespace IPM_winform.IPM.Views.DuAn
 
         private void ProjectIndexFriendlyUI_Load(object sender, EventArgs e)
         {
-            foreach (var part in _rows)
-            {
-                var row = part.Project;
-                if(row.IsEnd)
-                {
-                    continue;
-                }
-                flowLayoutPanel1.Controls.Add(new ProjectBlock()
-                {
-                    ProjectName = row.ProjectNameVietnamese,
-                    Description = row.Description,
-                    AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
-                    Memeber = "0",
-                    File = "0",
-                    OnView = () =>
-                    {
-                        _parentView.GoToUpdate(row.ProjectId);
-                    },
-                    OnDelete = () =>
-                    {
-                        _parentView.OnDelete(row.ProjectId);
-                        Reload();
-                    },
-                    Owner = part.Owner,
-                    IsEnd = row.IsEnd,
-                });
-            }
+            Reload();
 
-            if(Services.Author.IsUser())
+            if (Services.Author.IsUser())
             {
                 btnAdd.Visible = false;
                 groupBox1.Visible = false;
@@ -112,7 +86,7 @@ namespace IPM_winform.IPM.Views.DuAn
             flowLayoutPanel1.Controls.Clear();
             foreach (var part in _rows)
             {
-                
+
                 var row = part.Project;
 
                 if (sortEnd)
@@ -130,28 +104,28 @@ namespace IPM_winform.IPM.Views.DuAn
                     };
                 }
 
-          
-                 flowLayoutPanel1.Controls.Add(new ProjectBlock()
+
+                flowLayoutPanel1.Controls.Add(new ProjectBlock()
+                {
+                    ProjectName = row.ProjectNameVietnamese,
+                    Description = row.Description,
+                    AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
+                    Memeber = row.Participations.Count().ToString(),
+                    File = row.Files.Count().ToString(),
+                    OnView = () =>
+                       {
+                           _parentView.GoToUpdate(row.ProjectId);
+                       },
+                    OnDelete = () =>
                     {
-                        ProjectName = row.ProjectNameVietnamese,
-                        Description = row.Description,
-                        AffiliatedUnit = row.AffiliatedUnit?.AffiliatedUnitName,
-                        Memeber = "0",
-                        File = "0",
-                        OnView = () =>
-                        {
-                            _parentView.GoToUpdate(row.ProjectId);
-                        },
-                        OnDelete = () =>
-                        {
-                            _parentView.OnDelete(row.ProjectId);
-                            Reload();
-                        },
-                        Owner = part.Owner,
-                        IsEnd = row.IsEnd,
-                 });
-      
-               
+                        _parentView.OnDelete(row.ProjectId);
+                        Reload();
+                    },
+                    Owner = part.Owner,
+                    IsEnd = row.IsEnd,
+                });
+
+
             }
         }
 
@@ -159,7 +133,7 @@ namespace IPM_winform.IPM.Views.DuAn
         {
 
         }
-       
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

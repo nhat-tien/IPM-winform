@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using IPM_winform.Services;
 
 namespace IPM_winform.IPM.Views.User
 {
@@ -87,6 +88,12 @@ namespace IPM_winform.IPM.Views.User
         {
             SetChildren(new UserUpdateForm(this, id));
             ChangeLabel("update");
+        }
+
+        public override void OnDelete(int id)
+        {
+           
+                db.Users.Where(e => e.UserId == id).ExecuteDelete();
         }
     }
 }

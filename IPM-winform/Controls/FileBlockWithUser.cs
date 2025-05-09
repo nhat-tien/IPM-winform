@@ -98,7 +98,7 @@ namespace IPM_winform.Controls
                 case ".doc":
                 case ".docx":
                     return Properties.Resources.icons8_word_file_64;
-                case ".xls":
+                case ".xlsx":
                     return Properties.Resources.icons8_xls_64;
                 case ".pdf":
                     return Properties.Resources.icons8_pdf_64;

@@ -24,6 +24,7 @@ namespace IPM_winform.IPM.Views
         {
             InitializeComponent();
             SetUserName(_user?.FirstName);
+            SetUserAvatar(_user?.AvatarUrl);
             //new DashBoardPresenter(this);
             AddActionListener();
             SetChildren(new Home());
@@ -125,6 +126,10 @@ namespace IPM_winform.IPM.Views
             label2.Text = $"Welcome {name}";
         }
 
+        private void SetUserAvatar(string url)
+        {
+            pictureBox1.Image = String.IsNullOrEmpty(url) ? Properties.Resources.user : Image.FromFile(url);
+        }
         private void home_Click(object sender, EventArgs e)
         {
 

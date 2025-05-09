@@ -3,6 +3,7 @@ namespace IPM.Infrastructure.EntityFrameworkDataAccess;
 using IPM_winform.IPM.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using IPM_winform.IPM.Infrastructure.Entities;
+using System.Configuration;
 
 public class AppDBContext : DbContext
 {
@@ -29,7 +30,7 @@ public class AppDBContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Data Source=ADMIN-PC;Database=IPM;Initial Catalog=IPM;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+        optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["IPM"].ConnectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

@@ -3,6 +3,7 @@ using IPM_winform.Dtos;
 using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
 using IPM_winform.IPM.Views.GenericForm;
+using IPM_winform.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -65,8 +66,10 @@ namespace IPM_winform.IPM.Views.DonViTrucThuoc
 
         public override void OnDelete(int id)
         {
-            db.AffiliatedUnits.Where(r => r.AffiliatedUnitId == id).ExecuteDelete();
-            Reload();
+            DBExceptionHandler.Handle(() => {
+                db.AffiliatedUnits.Where(r => r.AffiliatedUnitId == id).ExecuteDelete();
+                Reload();
+            });
         }
 
         public override void OnUpdate(string id, object name)

@@ -32,13 +32,15 @@ namespace IPM_winform.IPM.Views.DuAn
         {
 
             var user = Session.getSession();
-            var userFromDb = db.Users
-                .Include(e => e.Participations)
-                .ThenInclude(e => e.Project)
+            var part = db.Participations                
+                .Include(e => e.Project)
+                .ThenInclude(e => e.Files)
+                .Include(e => e.Project)
                 .ThenInclude(e => e.AffiliatedUnit)
-                .Where(e => e.UserId == user.UserId)
-                .FirstOrDefault();
-            return userFromDb.Participations;
+                .Include(e => e.Project)
+                .ThenInclude(e => e.Participations)
+                .Where(e => e.UserId == user.UserId);
+            return part;
         }
 
         public override void GoToIndex()

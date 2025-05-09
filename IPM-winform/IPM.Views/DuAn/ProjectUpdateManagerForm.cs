@@ -156,7 +156,11 @@ namespace IPM_winform.IPM.Views.DuAn
             cbbCoQuanPheDuyet.SelectedItem = cqpd.FirstOrDefault(e => e.ApprovingAgencyId == project.ApprovingAgencyId); ;
             cbbDoiTac.SelectedItem = dt.FirstOrDefault(e => e.CounterpartyId == project.CounterpartyId);
 
-            _ownerId = project.Participations.FirstOrDefault(e => e.Owner).UserId;
+            var owner = project.Participations.FirstOrDefault(e => e.Owner);
+            if(owner is not null)
+            {
+                _ownerId = owner.UserId;
+            }
             var user = project.Participations.Select(e => e.User).ToList();
             var userIds = user.Select(e => e.UserId).ToList();
             _users = db.Users.Where(e => !userIds.Contains(e.UserId)).ToList();

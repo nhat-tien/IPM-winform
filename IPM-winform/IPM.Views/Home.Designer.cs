@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel3 = new Panel();
@@ -39,6 +42,7 @@
             panel2 = new Panel();
             label4 = new Label();
             label2 = new Label();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             elipseControl2 = new Controls.ElipseControl();
             elipseControl3 = new Controls.ElipseControl();
             elipseControl1 = new Controls.ElipseControl();
@@ -47,6 +51,7 @@
             panel3.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -56,6 +61,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 23F));
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
+            tableLayoutPanel1.Controls.Add(chart1, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
@@ -207,6 +213,24 @@
             label2.TabIndex = 1;
             label2.Text = "Tổng số người dùng";
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            chart1.Dock = DockStyle.Fill;
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
+            chart1.Location = new Point(3, 134);
+            chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "s1";
+            chart1.Series.Add(series1);
+            chart1.Size = new Size(653, 269);
+            chart1.TabIndex = 1;
+            chart1.Text = "chart1";
+            // 
             // elipseControl2
             // 
             elipseControl2.CornerRadius = 20;
@@ -240,6 +264,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
         }
 
@@ -259,5 +284,6 @@
         private Controls.ElipseControl elipseControl2;
         private Controls.ElipseControl elipseControl3;
         private Controls.ElipseControl elipseControl1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

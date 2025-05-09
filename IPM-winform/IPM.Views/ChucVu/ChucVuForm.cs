@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IPM_winform.IPM.Views.GenericForm;
 using Microsoft.EntityFrameworkCore;
+using IPM_winform.Services;
 
 namespace IPM_winform.IPM.Views.ChucVu
 {
@@ -65,8 +66,10 @@ namespace IPM_winform.IPM.Views.ChucVu
 
         public override void OnDelete(int id)
         {
+            DBExceptionHandler.Handle(() => { 
             db.Positions.Where(r => r.PositionId == id).ExecuteDelete();
             Reload();
+            });
         }
 
         public override void OnUpdate(string id, object name)

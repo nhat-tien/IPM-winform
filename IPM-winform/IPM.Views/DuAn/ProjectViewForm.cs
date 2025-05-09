@@ -83,7 +83,7 @@ namespace IPM_winform.IPM.Views.DuAn
                 flowLayoutPanel2.Controls.Add(
                     new UserBlock()
                     {
-                        Name = user.LastName + " " + user.LastName,
+                        Name = user.LastName + " " + user.FirstName,
                         Email = user.Email,
                         AvatarUrl = user.AvatarUrl,
                     }

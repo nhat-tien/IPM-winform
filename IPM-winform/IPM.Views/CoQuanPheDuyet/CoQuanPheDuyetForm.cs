@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using IPM_winform.Services;
 
 namespace IPM_winform.IPM.Views.CoQuanPheDuyet
 {
@@ -65,9 +66,11 @@ namespace IPM_winform.IPM.Views.CoQuanPheDuyet
 
         public override void OnDelete(int id)
         {
-           
-            db.ApprovingAgencies.Where(r => r.ApprovingAgencyId == id).ExecuteDelete();
-            Reload();
+            DBExceptionHandler.Handle(() =>
+            {
+                db.ApprovingAgencies.Where(r => r.ApprovingAgencyId == id).ExecuteDelete();
+                Reload();
+            });
         }
 
         public override void OnUpdate(string id, object name)
