@@ -10,8 +10,4 @@ public class File : BaseEntity
     public User User { get; set; }
     public int ProjectId { get; set; }
     public Project? Project { get; set; }
-    public int? FileTypeId { get; set; }
-    public FileType? FileType { get; set; }
-
-   
 }

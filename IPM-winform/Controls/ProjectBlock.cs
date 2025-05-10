@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Author = IPM_winform.Services.Author;
 
 namespace IPM_winform.Controls
 {
@@ -91,6 +92,11 @@ namespace IPM_winform.Controls
             if (!Owner)
             {
                 xóaToolStripMenuItem.Visible = false;
+                
+            }
+            if(Author.IsNonUser())
+            {
+                kếtThúcDựÁnToolStripMenuItem.Visible = false;
             }
 
             if(IsEnd)
