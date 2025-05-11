@@ -148,8 +148,13 @@ namespace IPM_winform.Reports
                 projects = projects.Where(e => e.ApprovingAgencyId == selectedItem?.ApprovingAgencyId);
                 condition += $"- Cơ quan phê duyệt: {selectedItem?.ApprovingAgencyId}\n";
             }
-
-            LoadDataToReport(projects.ToList(),condition);
+            if(condition == "")
+            {
+                LoadDataToReport(projects.ToList());
+            } else
+            {
+                LoadDataToReport(projects.ToList(), condition);
+            }
 
         }
 

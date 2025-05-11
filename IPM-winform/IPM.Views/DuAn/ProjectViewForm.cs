@@ -101,7 +101,7 @@ namespace IPM_winform.IPM.Views.DuAn
                     Status = file.Status,
                     OnCheck = ConfirmFile,
                     OnDelete = DeleteFile,
-                    OnReject = RejectFile
+                    OnReject = RejectFile,
                 }
                  );
             };
@@ -148,6 +148,59 @@ namespace IPM_winform.IPM.Views.DuAn
 
         }
 
+        private void panel1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                foreach (string file in files)
+                {
+                    string sourceFile = file;
+                    string destinationDir = @"C:\IPM-winform\Data\files\";
+                    string fileName = Path.GetFileNameWithoutExtension(sourceFile) + DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetExtension(sourceFile);
+                    string destinationPath = Path.Combine(destinationDir, fileName);
+                    try
+                    {
+                        if (!Directory.Exists(destinationDir))
+                        {
+                            Directory.CreateDirectory(destinationDir);
+                        }
+                        System.IO.File.Copy(sourceFile, destinationPath, true);
+
+                        db.Files.Add(new Infrastructure.Entities.File()
+                        {
+                            FileName = fileName,
+                            ObjectName = destinationPath,
+                            ProjectId = _id,
+                            UserId = Session.getSession().UserId,
+                            Status = "wait"
+                        });
+                        db.SaveChanges();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.ToString());
+                    }
+
+                }
+                LoadData();
+            }
+        }
+
         //private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         //{
         //    //Confirm
@@ -182,6 +235,45 @@ namespace IPM_winform.IPM.Views.DuAn
         private void btnReport_Click(object sender, EventArgs e)
         {
             _parentView.SetChildren(new ChiTietDuAnForm(_id));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string sourceFile = ofd.FileName;
+                    string destinationDir = @"C:\IPM-winform\Data\files\";
+                    string fileName = Path.GetFileNameWithoutExtension(sourceFile) + DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetExtension(sourceFile);
+                    string destinationPath = Path.Combine(destinationDir, fileName);
+                    try
+                    {
+                        if (!Directory.Exists(destinationDir))
+                        {
+                            Directory.CreateDirectory(destinationDir);
+                        }
+                        System.IO.File.Copy(sourceFile, destinationPath, true);
+
+                        db.Files.Add(new Infrastructure.Entities.File()
+                        {
+                            FileName = fileName,
+                            ObjectName = destinationPath,
+                            ProjectId = _id,
+                            UserId = Session.getSession().UserId,
+                            Status = "wait"
+                        });
+                        db.SaveChanges();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.ToString());
+                    }
+                }
+                flowLayoutPanel2.Controls.Clear();
+                LoadData();
+            }
         }
     }
 

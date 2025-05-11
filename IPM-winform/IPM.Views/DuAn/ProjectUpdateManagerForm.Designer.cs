@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBack = new Button();
-            btnUpdate = new Button();
             label1 = new Label();
             txtProjectNameVn = new TextBox();
             groupBox1 = new GroupBox();
+            txtDesc = new RichTextBox();
+            label12 = new Label();
             label9 = new Label();
             cbbDoiTac = new ComboBox();
             label8 = new Label();
@@ -49,7 +49,6 @@
             label3 = new Label();
             txtProjectNameEng = new TextBox();
             label2 = new Label();
-            groupBox2 = new GroupBox();
             groupBox4 = new GroupBox();
             flowLayoutPanel4 = new FlowLayoutPanel();
             flowLayoutPanel3 = new FlowLayoutPanel();
@@ -57,35 +56,14 @@
             button3 = new Button();
             txtSearch = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            txtDesc = new RichTextBox();
-            label12 = new Label();
+            groupBox2 = new GroupBox();
+            btnBack = new Button();
+            btnUpdate = new Button();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnBack
-            // 
-            btnBack.Location = new Point(13, 22);
-            btnBack.Margin = new Padding(4, 3, 4, 3);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(88, 27);
-            btnBack.TabIndex = 11;
-            btnBack.Text = "Trở về";
-            btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.Location = new Point(109, 22);
-            btnUpdate.Margin = new Padding(4, 3, 4, 3);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(88, 27);
-            btnUpdate.TabIndex = 10;
-            btnUpdate.Text = "Cập nhật";
-            btnUpdate.UseVisualStyleBackColor = true;
-            btnUpdate.Click += btnAdd_Click;
             // 
             // label1
             // 
@@ -129,10 +107,28 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(683, 318);
+            groupBox1.Size = new Size(755, 318);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin chung";
+            // 
+            // txtDesc
+            // 
+            txtDesc.Location = new Point(367, 105);
+            txtDesc.Name = "txtDesc";
+            txtDesc.Size = new Size(166, 66);
+            txtDesc.TabIndex = 35;
+            txtDesc.Text = "";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(364, 87);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(38, 15);
+            label12.TabIndex = 34;
+            label12.Text = "Mô tả";
             // 
             // label9
             // 
@@ -278,17 +274,6 @@
             label2.TabIndex = 11;
             label2.Text = "Tên Dự Án (Tiếng Anh)";
             // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(btnBack);
-            groupBox2.Controls.Add(btnUpdate);
-            groupBox2.Location = new Point(3, 585);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(683, 78);
-            groupBox2.TabIndex = 13;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Thao tác";
-            // 
             // groupBox4
             // 
             groupBox4.Controls.Add(flowLayoutPanel4);
@@ -298,7 +283,7 @@
             groupBox4.Controls.Add(txtSearch);
             groupBox4.Location = new Point(3, 327);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(683, 252);
+            groupBox4.Size = new Size(755, 252);
             groupBox4.TabIndex = 15;
             groupBox4.TabStop = false;
             groupBox4.Text = "Thành viên";
@@ -360,54 +345,64 @@
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(698, 784);
+            flowLayoutPanel1.Size = new Size(789, 788);
             flowLayoutPanel1.TabIndex = 12;
             // 
-            // txtDesc
+            // groupBox2
             // 
-            txtDesc.Location = new Point(367, 105);
-            txtDesc.Name = "txtDesc";
-            txtDesc.Size = new Size(166, 66);
-            txtDesc.TabIndex = 35;
-            txtDesc.Text = "";
+            groupBox2.Controls.Add(btnBack);
+            groupBox2.Controls.Add(btnUpdate);
+            groupBox2.Location = new Point(3, 585);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(755, 78);
+            groupBox2.TabIndex = 17;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Thao tác";
             // 
-            // label12
+            // btnBack
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(364, 87);
-            label12.Margin = new Padding(4, 0, 4, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(38, 15);
-            label12.TabIndex = 34;
-            label12.Text = "Mô tả";
+            btnBack.Location = new Point(13, 22);
+            btnBack.Margin = new Padding(4, 3, 4, 3);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(88, 27);
+            btnBack.TabIndex = 11;
+            btnBack.Text = "Trở về";
+            btnBack.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(109, 22);
+            btnUpdate.Margin = new Padding(4, 3, 4, 3);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(88, 27);
+            btnUpdate.TabIndex = 10;
+            btnUpdate.Text = "Cập nhật";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // ProjectUpdateManagerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(698, 784);
+            ClientSize = new Size(789, 788);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProjectUpdateManagerForm";
             Text = "doc";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button btnBack;
-        private Button btnUpdate;
         private Label label1;
         private TextBox txtProjectNameVn;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
         private TextBox txtProjectNameEng;
         private Label label2;
         private GroupBox groupBox4;
@@ -433,5 +428,8 @@
         private FlowLayoutPanel flowLayoutPanel3;
         private RichTextBox txtDesc;
         private Label label12;
+        private GroupBox groupBox2;
+        private Button btnBack;
+        private Button btnUpdate;
     }
 }

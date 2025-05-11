@@ -32,17 +32,15 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            btnEdit = new Button();
+            btnView = new Button();
             btnDelete = new Button();
             btnAdd = new Button();
             button1 = new Button();
             btnExport = new Button();
-            btnImport = new Button();
             dataGridView1 = new DataGridView();
             toolTip1 = new ToolTip(components);
             toolTip2 = new ToolTip(components);
             toolTip3 = new ToolTip(components);
-            btnView = new Button();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -75,117 +73,16 @@
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.Controls.Add(btnView);
-            flowLayoutPanel2.Controls.Add(btnEdit);
             flowLayoutPanel2.Controls.Add(btnDelete);
             flowLayoutPanel2.Controls.Add(btnAdd);
             flowLayoutPanel2.Controls.Add(button1);
             flowLayoutPanel2.Controls.Add(btnExport);
-            flowLayoutPanel2.Controls.Add(btnImport);
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.RightToLeft = RightToLeft.Yes;
             flowLayoutPanel2.Size = new Size(663, 42);
             flowLayoutPanel2.TabIndex = 0;
-            // 
-            // btnEdit
-            // 
-            btnEdit.BackColor = Color.FromArgb(247, 155, 56);
-            btnEdit.Cursor = Cursors.Hand;
-            btnEdit.FlatAppearance.BorderSize = 0;
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.ForeColor = SystemColors.ControlLightLight;
-            btnEdit.Image = Properties.Resources.pencil;
-            btnEdit.Location = new Point(581, 3);
-            btnEdit.Margin = new Padding(4, 3, 4, 3);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(35, 35);
-            btnEdit.TabIndex = 14;
-            toolTip3.SetToolTip(btnEdit, "Chỉnh sửa");
-            btnEdit.UseVisualStyleBackColor = false;
-            btnEdit.Click += btnEdit_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.FromArgb(247, 56, 56);
-            btnDelete.Cursor = Cursors.Hand;
-            btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Image = Properties.Resources.trash;
-            btnDelete.Location = new Point(538, 3);
-            btnDelete.Margin = new Padding(4, 3, 4, 3);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(35, 35);
-            btnDelete.TabIndex = 13;
-            toolTip2.SetToolTip(btnDelete, "Xóa");
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnAdd
-            // 
-            btnAdd.BackColor = Color.FromArgb(56, 140, 247);
-            btnAdd.BackgroundImageLayout = ImageLayout.Stretch;
-            btnAdd.Cursor = Cursors.Hand;
-            btnAdd.FlatAppearance.BorderSize = 0;
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdd.ForeColor = SystemColors.ControlLightLight;
-            btnAdd.Image = Properties.Resources.plus;
-            btnAdd.Location = new Point(494, 3);
-            btnAdd.Margin = new Padding(4, 3, 4, 3);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(36, 35);
-            btnAdd.TabIndex = 12;
-            toolTip1.SetToolTip(btnAdd, "Thêm");
-            btnAdd.UseVisualStyleBackColor = false;
-            btnAdd.Click += btnAdd_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(363, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(124, 23);
-            button1.TabIndex = 15;
-            button1.Text = "Tìm kiếm nâng cao";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // btnExport
-            // 
-            btnExport.Location = new Point(282, 3);
-            btnExport.Name = "btnExport";
-            btnExport.Size = new Size(75, 23);
-            btnExport.TabIndex = 17;
-            btnExport.Text = "Export";
-            btnExport.UseVisualStyleBackColor = true;
-            btnExport.Click += btnExport_Click;
-            // 
-            // btnImport
-            // 
-            btnImport.Enabled = false;
-            btnImport.Location = new Point(201, 3);
-            btnImport.Name = "btnImport";
-            btnImport.Size = new Size(75, 23);
-            btnImport.TabIndex = 18;
-            btnImport.Text = "Import";
-            btnImport.UseVisualStyleBackColor = true;
-            btnImport.Click += btnImport_Click;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 51);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(663, 371);
-            dataGridView1.TabIndex = 1;
-            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // btnView
             // 
@@ -204,6 +101,76 @@
             toolTip3.SetToolTip(btnView, "Chỉnh sửa");
             btnView.UseVisualStyleBackColor = false;
             btnView.Click += button2_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(247, 56, 56);
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDelete.ForeColor = SystemColors.ControlLightLight;
+            btnDelete.Image = Properties.Resources.trash;
+            btnDelete.Location = new Point(581, 3);
+            btnDelete.Margin = new Padding(4, 3, 4, 3);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(35, 35);
+            btnDelete.TabIndex = 13;
+            toolTip2.SetToolTip(btnDelete, "Xóa");
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.FromArgb(56, 140, 247);
+            btnAdd.BackgroundImageLayout = ImageLayout.Stretch;
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.FlatAppearance.BorderSize = 0;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdd.ForeColor = SystemColors.ControlLightLight;
+            btnAdd.Image = Properties.Resources.plus;
+            btnAdd.Location = new Point(537, 3);
+            btnAdd.Margin = new Padding(4, 3, 4, 3);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(36, 35);
+            btnAdd.TabIndex = 12;
+            toolTip1.SetToolTip(btnAdd, "Thêm");
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(406, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(124, 23);
+            button1.TabIndex = 15;
+            button1.Text = "Tìm kiếm nâng cao";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // btnExport
+            // 
+            btnExport.Location = new Point(325, 3);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(75, 23);
+            btnExport.TabIndex = 17;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += btnExport_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 51);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(663, 371);
+            dataGridView1.TabIndex = 1;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // ProjectIndexForm
             // 
@@ -226,7 +193,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel2;
-        private Button btnEdit;
         private Button btnDelete;
         private Button btnAdd;
         private DataGridView dataGridView1;
@@ -235,7 +201,6 @@
         private ToolTip toolTip3;
         private Button button1;
         private Button btnExport;
-        private Button btnImport;
         private Button btnView;
     }
 }

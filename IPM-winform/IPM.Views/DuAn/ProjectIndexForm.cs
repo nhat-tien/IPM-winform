@@ -52,16 +52,7 @@ namespace IPM_winform.IPM.Views.DuAn
             btnDelete.BackColor = Color.FromArgb(247, 56, 56);
         }
 
-        private void DisableEditBtn()
-        {
-            btnEdit.Enabled = false;
-            btnEdit.BackColor = Color.FromArgb(40, 247, 155, 56);
-        }
-        private void EnableEditBtn()
-        {
-            btnEdit.Enabled = true;
-            btnEdit.BackColor = Color.FromArgb(247, 155, 56);
-        }
+        
 
         private void DisableViewBtn()
         {
@@ -79,19 +70,16 @@ namespace IPM_winform.IPM.Views.DuAn
             int numOfRowSelected = dataGridView1.SelectedRows.Count;
             if (numOfRowSelected > 1)
             {
-                EnableDeleteBtn();
-                DisableEditBtn();
+                EnableDeleteBtn();                
                 DisableViewBtn();
             }
             else if (numOfRowSelected == 1)
             {
-                EnableDeleteBtn();
-                EnableEditBtn();
+                EnableDeleteBtn();         
                 EnableViewBtn();
             }
             else
             {
-                DisableEditBtn();
                 DisableDeleteBtn();
                 DisableViewBtn();
             }

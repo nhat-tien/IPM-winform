@@ -114,7 +114,7 @@ namespace IPM_winform.Controls
             setIconStatus();
             if (Author.IsUser())
             {
-                contextMenuStrip2.Visible = false;
+                lbStatus.ContextMenuStrip = null;
             }
         }
 

@@ -94,7 +94,7 @@ namespace IPM_winform.Controls
                 xóaToolStripMenuItem.Visible = false;
                 
             }
-            if(Author.IsNonUser())
+            if(Author.IsUser())
             {
                 kếtThúcDựÁnToolStripMenuItem.Visible = false;
             }
@@ -107,9 +107,9 @@ namespace IPM_winform.Controls
 
         private void kếtThúcDựÁnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (OnDelete != null)
+            if (OnEnd != null)
             {
-                OnDelete();
+                OnEnd();
             }
         }
     }

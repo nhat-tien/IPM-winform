@@ -42,6 +42,7 @@
             toolTip1 = new ToolTip(components);
             toolTip2 = new ToolTip(components);
             toolTip3 = new ToolTip(components);
+            btnImport = new Button();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -79,6 +80,7 @@
             flowLayoutPanel2.Controls.Add(btnAdd);
             flowLayoutPanel2.Controls.Add(button1);
             flowLayoutPanel2.Controls.Add(btnExport);
+            flowLayoutPanel2.Controls.Add(btnImport);
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -185,6 +187,16 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
+            // btnImport
+            // 
+            btnImport.Location = new Point(243, 3);
+            btnImport.Name = "btnImport";
+            btnImport.Size = new Size(75, 23);
+            btnImport.TabIndex = 20;
+            btnImport.Text = "Import";
+            btnImport.UseVisualStyleBackColor = true;
+            btnImport.Click += btnImport_Click;
+            // 
             // UserIndexForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -217,5 +229,6 @@
         private DataGridView dataGridView1;
         private Button button1;
         private Button btnExport;
+        private Button btnImport;
     }
 }

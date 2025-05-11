@@ -57,6 +57,9 @@
             groupBox4 = new GroupBox();
             flowLayoutPanel2 = new FlowLayoutPanel();
             groupBox3 = new GroupBox();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            button4 = new Button();
             flowLayoutPanel3 = new FlowLayoutPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             groupBox1.SuspendLayout();
@@ -64,6 +67,8 @@
             flowLayoutPanel4.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -111,7 +116,7 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(604, 318);
+            groupBox1.Size = new Size(716, 318);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin chung";
@@ -290,7 +295,7 @@
             groupBox2.Controls.Add(flowLayoutPanel4);
             groupBox2.Location = new Point(3, 858);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(604, 78);
+            groupBox2.Size = new Size(716, 78);
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thao tác";
@@ -305,7 +310,7 @@
             flowLayoutPanel4.Dock = DockStyle.Fill;
             flowLayoutPanel4.Location = new Point(3, 19);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(598, 56);
+            flowLayoutPanel4.Size = new Size(710, 56);
             flowLayoutPanel4.TabIndex = 17;
             // 
             // btnUpdate
@@ -354,7 +359,7 @@
             groupBox4.Controls.Add(flowLayoutPanel2);
             groupBox4.Location = new Point(3, 327);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(604, 252);
+            groupBox4.Size = new Size(716, 252);
             groupBox4.TabIndex = 15;
             groupBox4.TabStop = false;
             groupBox4.Text = "Thành viên";
@@ -369,18 +374,53 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(panel1);
+            groupBox3.Controls.Add(button4);
             groupBox3.Controls.Add(flowLayoutPanel3);
             groupBox3.Location = new Point(3, 585);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(604, 267);
+            groupBox3.Size = new Size(716, 267);
             groupBox3.TabIndex = 14;
             groupBox3.TabStop = false;
             groupBox3.Text = "file";
             // 
+            // panel1
+            // 
+            panel1.AllowDrop = true;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(28, 57);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(217, 163);
+            panel1.TabIndex = 21;
+            panel1.DragDrop += panel1_DragDrop;
+            panel1.DragEnter += panel1_DragEnter;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.Untitled_2025_04_21_1003;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(217, 163);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(94, 226);
+            button4.Margin = new Padding(4, 3, 4, 3);
+            button4.Name = "button4";
+            button4.Size = new Size(88, 27);
+            button4.TabIndex = 20;
+            button4.Text = "Browse";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // flowLayoutPanel3
             // 
             flowLayoutPanel3.AutoScroll = true;
-            flowLayoutPanel3.Location = new Point(13, 57);
+            flowLayoutPanel3.Location = new Point(268, 57);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Size = new Size(442, 204);
             flowLayoutPanel3.TabIndex = 1;
@@ -395,7 +435,7 @@
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(644, 788);
+            flowLayoutPanel1.Size = new Size(743, 788);
             flowLayoutPanel1.TabIndex = 12;
             // 
             // ProjectViewForm
@@ -403,7 +443,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(644, 788);
+            ClientSize = new Size(743, 788);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProjectViewForm";
@@ -415,6 +455,8 @@
             flowLayoutPanel4.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -452,5 +494,8 @@
         private Button btnKhoiPhuc;
         private FlowLayoutPanel flowLayoutPanel4;
         private Button btnReport;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Button button4;
     }
 }

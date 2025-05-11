@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,8 @@ namespace IPM_winform.IPM.Views.User
 
         private void UserUpdateForm_Load(object sender, EventArgs e)
         {
+           
+
             var user = db.Users.FirstOrDefault(e => e.UserId == _id);
             if(user is null)
             {

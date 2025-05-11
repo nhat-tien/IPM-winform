@@ -54,10 +54,16 @@
             Ten = new Label();
             txtHoLot = new TextBox();
             label1 = new Label();
-            checkedListBox1 = new CheckedListBox();
             toolTip1 = new ToolTip(components);
             toolTip2 = new ToolTip(components);
             toolTip3 = new ToolTip(components);
+            chHoLot = new CheckBox();
+            chEmail = new CheckBox();
+            chDvtt = new CheckBox();
+            chRole = new CheckBox();
+            chTen = new CheckBox();
+            chSdt = new CheckBox();
+            chChucVu = new CheckBox();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -171,6 +177,13 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(chChucVu);
+            panel1.Controls.Add(chSdt);
+            panel1.Controls.Add(chTen);
+            panel1.Controls.Add(chRole);
+            panel1.Controls.Add(chDvtt);
+            panel1.Controls.Add(chEmail);
+            panel1.Controls.Add(chHoLot);
             panel1.Controls.Add(cbbRole);
             panel1.Controls.Add(txtSoDienThoai);
             panel1.Controls.Add(txtEmail);
@@ -188,7 +201,6 @@
             panel1.Controls.Add(Ten);
             panel1.Controls.Add(txtHoLot);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(checkedListBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
@@ -199,7 +211,7 @@
             // cbbRole
             // 
             cbbRole.FormattingEnabled = true;
-            cbbRole.Location = new Point(160, 168);
+            cbbRole.Location = new Point(137, 168);
             cbbRole.Name = "cbbRole";
             cbbRole.Size = new Size(166, 23);
             cbbRole.TabIndex = 49;
@@ -213,7 +225,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(160, 80);
+            txtEmail.Location = new Point(137, 80);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(166, 23);
             txtEmail.TabIndex = 47;
@@ -241,7 +253,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(160, 150);
+            label5.Location = new Point(137, 150);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(40, 15);
@@ -269,7 +281,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(160, 106);
+            label8.Location = new Point(137, 106);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(99, 15);
@@ -279,7 +291,7 @@
             // cbbDonViTrucThuoc
             // 
             cbbDonViTrucThuoc.FormattingEnabled = true;
-            cbbDonViTrucThuoc.Location = new Point(160, 124);
+            cbbDonViTrucThuoc.Location = new Point(137, 124);
             cbbDonViTrucThuoc.Name = "cbbDonViTrucThuoc";
             cbbDonViTrucThuoc.Size = new Size(166, 23);
             cbbDonViTrucThuoc.TabIndex = 37;
@@ -297,7 +309,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(160, 62);
+            label7.Location = new Point(137, 62);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(36, 15);
@@ -332,7 +344,7 @@
             // 
             // txtHoLot
             // 
-            txtHoLot.Location = new Point(160, 36);
+            txtHoLot.Location = new Point(137, 36);
             txtHoLot.Name = "txtHoLot";
             txtHoLot.Size = new Size(166, 23);
             txtHoLot.TabIndex = 3;
@@ -340,20 +352,74 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(160, 18);
+            label1.Location = new Point(137, 18);
             label1.Name = "label1";
             label1.Size = new Size(40, 15);
             label1.TabIndex = 2;
             label1.Text = "Họ lót";
             // 
-            // checkedListBox1
+            // chHoLot
             // 
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "Họ lót", "Tên", "Email", "Số điện thoại", "Đơn vị trực thuộc", "Chức vụ", "Vai trò" });
-            checkedListBox1.Location = new Point(9, 18);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(144, 184);
-            checkedListBox1.TabIndex = 1;
+            chHoLot.AutoSize = true;
+            chHoLot.Location = new Point(113, 40);
+            chHoLot.Name = "chHoLot";
+            chHoLot.Size = new Size(15, 14);
+            chHoLot.TabIndex = 50;
+            chHoLot.UseVisualStyleBackColor = true;
+            // 
+            // chEmail
+            // 
+            chEmail.AutoSize = true;
+            chEmail.Location = new Point(113, 84);
+            chEmail.Name = "chEmail";
+            chEmail.Size = new Size(15, 14);
+            chEmail.TabIndex = 51;
+            chEmail.UseVisualStyleBackColor = true;
+            // 
+            // chDvtt
+            // 
+            chDvtt.AutoSize = true;
+            chDvtt.Location = new Point(113, 128);
+            chDvtt.Name = "chDvtt";
+            chDvtt.Size = new Size(15, 14);
+            chDvtt.TabIndex = 52;
+            chDvtt.UseVisualStyleBackColor = true;
+            // 
+            // chRole
+            // 
+            chRole.AutoSize = true;
+            chRole.Location = new Point(113, 173);
+            chRole.Name = "chRole";
+            chRole.Size = new Size(15, 14);
+            chRole.TabIndex = 53;
+            chRole.UseVisualStyleBackColor = true;
+            // 
+            // chTen
+            // 
+            chTen.AutoSize = true;
+            chTen.Location = new Point(320, 40);
+            chTen.Name = "chTen";
+            chTen.Size = new Size(15, 14);
+            chTen.TabIndex = 54;
+            chTen.UseVisualStyleBackColor = true;
+            // 
+            // chSdt
+            // 
+            chSdt.AutoSize = true;
+            chSdt.Location = new Point(320, 84);
+            chSdt.Name = "chSdt";
+            chSdt.Size = new Size(15, 14);
+            chSdt.TabIndex = 55;
+            chSdt.UseVisualStyleBackColor = true;
+            // 
+            // chChucVu
+            // 
+            chChucVu.AutoSize = true;
+            chChucVu.Location = new Point(320, 128);
+            chChucVu.Name = "chChucVu";
+            chChucVu.Size = new Size(15, 14);
+            chChucVu.TabIndex = 56;
+            chChucVu.UseVisualStyleBackColor = true;
             // 
             // UserSearchForm
             // 
@@ -386,7 +452,6 @@
         private ToolTip toolTip2;
         private ToolTip toolTip3;
         private Panel panel1;
-        private CheckedListBox checkedListBox1;
         private TextBox txtHoLot;
         private Label label1;
         private TextBox txtTen;
@@ -404,5 +469,12 @@
         private TextBox txtEmail;
         private TextBox txtSoDienThoai;
         private ComboBox cbbRole;
+        private CheckBox chHoLot;
+        private CheckBox chChucVu;
+        private CheckBox chSdt;
+        private CheckBox chTen;
+        private CheckBox chRole;
+        private CheckBox chDvtt;
+        private CheckBox chEmail;
     }
 }

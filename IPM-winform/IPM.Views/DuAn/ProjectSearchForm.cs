@@ -1,4 +1,5 @@
-﻿using IPM.Infrastructure.EntityFrameworkDataAccess;
+﻿using DocumentFormat.OpenXml.Presentation;
+using IPM.Infrastructure.EntityFrameworkDataAccess;
 using IPM_winform.Dtos;
 using IPM_winform.IPM.Infrastructure;
 using IPM_winform.IPM.Infrastructure.Entities;
@@ -178,6 +179,15 @@ namespace IPM_winform.IPM.Views.DuAn
         {
             var projects = _initialProjects;
 
+            if (cbbStatus.SelectedIndex == 0)
+            {
+                projects = projects.Where(e => e.IsEnd == false);               
+            }
+            else if (cbbStatus.SelectedIndex == 1)
+            {
+                projects = projects.Where(e => e.IsEnd == true);
+            }
+
             if (chVietName.Checked)
             {
                 projects = projects.Where(e => e.ProjectNameVietnamese.Contains(txtVn.Text));
@@ -208,12 +218,23 @@ namespace IPM_winform.IPM.Views.DuAn
             }
             if (chStartDate.Checked)
             {
-                DateTime tuNgay = dateTu.Value.Date;
-                DateTime denNgay = dateDen.Value.Date;
+                DateTime tuNgay = dateBdTu.Value.Date;
+                DateTime denNgay = dateBdDen.Value.Date;
                 projects = projects.Where(e =>
                 {
                     return DateTime.Compare(e.StartDate, tuNgay) >= 0
                     && DateTime.Compare(e.StartDate, denNgay) <= 0;
+                });
+            }
+
+            if (chEndDate.Checked)
+            {
+                DateTime tuNgay = dateKtTu.Value.Date;
+                DateTime denNgay = dateKtDen.Value.Date;
+                projects = projects.Where(e =>
+                {
+                    return DateTime.Compare(e.EndDate, tuNgay) >= 0
+                    && DateTime.Compare(e.EndDate, denNgay) <= 0;
                 });
             }
 

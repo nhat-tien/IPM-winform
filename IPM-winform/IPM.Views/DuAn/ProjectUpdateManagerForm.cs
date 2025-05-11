@@ -42,59 +42,7 @@ namespace IPM_winform.IPM.Views.DuAn
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var addParticipates = _addParticipate.Select(e =>
-            {
-                {
-                    return new Participation()
-                    {
-                        ProjectId = _id,
-                        UserId = e.UserId,
-                        Owner = false
-                    };
-                }
-            });
-
-            var deleteParticipates = _deleteParticipate.Select(e =>
-            {
-                {
-                    return new Participation()
-                    {
-                        UserId = e.UserId,
-                        Owner = false
-                    };
-                }
-            });
-
-            var project = db.Projects.Single(e => e.ProjectId == _id);
-            if (project is null)
-            {
-                return;
-            };
-
-            project.ProjectNameVietnamese = txtProjectNameVn.Text;
-            project.ProjectNameEnglish = txtProjectNameEng.Text;
-            project.ProjectPurpose = txtMucTieu.Text;
-            project.Content = txtContent.Text;
-            project.Description = txtDesc.Text;
-            project.AffiliatedUnit = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem;
-            project.Category = (Category)cbbDanhMuc.SelectedItem;
-            project.ApprovingAgency = (ApprovingAgency)cbbCoQuanPheDuyet.SelectedItem;
-            project.Counterparty = (Counterparty)cbbDoiTac.SelectedItem;
-            project.StartDate = startedDate.Value.Date;
-
-            db.Projects.Update(project);
-
-            db.Participations.AddRange(addParticipates);
-
-            foreach (var participation in deleteParticipates)
-            {
-                db.Participations
-                    .Where(e => e.UserId == participation.UserId)
-                    .Where(e => e.ProjectId == _id)
-                    .ExecuteDelete();
-            }
-
-            db.SaveChanges();
+           
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -157,7 +105,7 @@ namespace IPM_winform.IPM.Views.DuAn
             cbbDoiTac.SelectedItem = dt.FirstOrDefault(e => e.CounterpartyId == project.CounterpartyId);
 
             var owner = project.Participations.FirstOrDefault(e => e.Owner);
-            if(owner is not null)
+            if (owner is not null)
             {
                 _ownerId = owner.UserId;
             }
@@ -165,6 +113,7 @@ namespace IPM_winform.IPM.Views.DuAn
             var userIds = user.Select(e => e.UserId).ToList();
             _users = db.Users.Where(e => !userIds.Contains(e.UserId)).ToList();
             _participate = user;
+
         }
 
         public void LoadDataUser()
@@ -340,11 +289,63 @@ namespace IPM_winform.IPM.Views.DuAn
             {
                 e.Effect = DragDropEffects.Copy;
             }
+        }
 
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var addParticipates = _addParticipate.Select(e =>
+            {
+                {
+                    return new Participation()
+                    {
+                        ProjectId = _id,
+                        UserId = e.UserId,
+                        Owner = false
+                    };
+                }
+            });
 
+            var deleteParticipates = _deleteParticipate.Select(e =>
+            {
+                {
+                    return new Participation()
+                    {
+                        UserId = e.UserId,
+                        Owner = false
+                    };
+                }
+            });
 
+            var project = db.Projects.Single(e => e.ProjectId == _id);
+            if (project is null)
+            {
+                return;
+            };
 
+            project.ProjectNameVietnamese = txtProjectNameVn.Text;
+            project.ProjectNameEnglish = txtProjectNameEng.Text;
+            project.ProjectPurpose = txtMucTieu.Text;
+            project.Content = txtContent.Text;
+            project.Description = txtDesc.Text;
+            project.AffiliatedUnit = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem;
+            project.Category = (Category)cbbDanhMuc.SelectedItem;
+            project.ApprovingAgency = (ApprovingAgency)cbbCoQuanPheDuyet.SelectedItem;
+            project.Counterparty = (Counterparty)cbbDoiTac.SelectedItem;
+            project.StartDate = startedDate.Value.Date;
 
+            db.Projects.Update(project);
+
+            db.Participations.AddRange(addParticipates);
+
+            foreach (var participation in deleteParticipates)
+            {
+                db.Participations
+                    .Where(e => e.UserId == participation.UserId)
+                    .Where(e => e.ProjectId == _id)
+                    .ExecuteDelete();
+            }
+
+            db.SaveChanges();
         }
     }
 

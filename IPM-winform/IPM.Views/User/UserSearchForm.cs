@@ -158,36 +158,36 @@ namespace IPM_winform.IPM.Views.User
         private void button1_Click(object sender, EventArgs e)
         {
             var users = _initialUsers;
-            var items = checkedListBox1.CheckedItems;
+          
 
-            if (items.Contains("Họ lót"))
+            if (chHoLot.Checked)
             {
                 users = users.Where(e => e.LastName.Contains(txtHoLot.Text));
             }
-            if (items.Contains("Tên"))
+            if (chTen.Checked)
             {
                 users = users.Where(e => e.FirstName.Contains(Ten.Text));
             }
-            if (items.Contains("Email"))
+            if (chEmail.Checked)
             {
                 users = users.Where(e => e.Email.Contains(txtEmail.Text));
             }
-            if (items.Contains("Số điện thoại"))
+            if (chSdt.Checked)
             {
                 users = users.Where(e => e.PhoneNumber.Contains(txtSoDienThoai.Text));
             }
-            if (items.Contains("Đơn vị trực thuộc"))
+            if (chDvtt.Checked)
             {
                 var condition = (AffiliatedUnit)cbbDonViTrucThuoc.SelectedItem;
                 users = users.Where(e => e.AffiliatedUnitId == condition.AffiliatedUnitId);
             }
-            if (items.Contains("Chức vụ"))
+            if (chChucVu.Checked)
             {
                 var condition = (Position)cbbChucVu.SelectedItem;
                 users = users.Where(e => e.PositionId == condition.PositionId);
             }
 
-            if (items.Contains("Vai trò"))
+            if (chRole.Checked)
             {
                 var condition = (string) cbbRole.SelectedItem;
                 users = users.Where(e => e.Role == condition);

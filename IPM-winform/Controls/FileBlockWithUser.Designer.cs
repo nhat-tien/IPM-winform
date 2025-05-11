@@ -117,13 +117,13 @@
             // 
             contextMenuStrip2.Items.AddRange(new ToolStripItem[] { xácNhậnToolStripMenuItem, từChốiToolStripMenuItem });
             contextMenuStrip2.Name = "contextMenuStrip2";
-            contextMenuStrip2.Size = new Size(124, 48);
+            contextMenuStrip2.Size = new Size(181, 70);
             // 
             // xácNhậnToolStripMenuItem
             // 
             xácNhậnToolStripMenuItem.Image = Properties.Resources.icons8_check_48;
             xácNhậnToolStripMenuItem.Name = "xácNhậnToolStripMenuItem";
-            xácNhậnToolStripMenuItem.Size = new Size(123, 22);
+            xácNhậnToolStripMenuItem.Size = new Size(180, 22);
             xácNhậnToolStripMenuItem.Text = "Xác nhận";
             xácNhậnToolStripMenuItem.Click += xácNhậnToolStripMenuItem_Click;
             // 
@@ -131,7 +131,7 @@
             // 
             từChốiToolStripMenuItem.Image = Properties.Resources.icons8_x_64;
             từChốiToolStripMenuItem.Name = "từChốiToolStripMenuItem";
-            từChốiToolStripMenuItem.Size = new Size(123, 22);
+            từChốiToolStripMenuItem.Size = new Size(180, 22);
             từChốiToolStripMenuItem.Text = "Từ chối";
             từChốiToolStripMenuItem.Click += từChốiToolStripMenuItem_Click;
             // 
